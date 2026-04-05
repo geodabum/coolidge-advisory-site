@@ -424,10 +424,10 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
   <div class="container">
     <h2>Ready to see what&rsquo;s in your data?</h2>
     <p>We start with a conversation. No pitch decks, no pressure. Let&rsquo;s discuss where you are and what&rsquo;s possible.</p>
-    <a href="mailto:george@coolidgeadvisory.com" class="cta-btn">george@coolidgeadvisory.com</a>
+    <a href="mailto:info@coolidgeadvisory.com" class="cta-btn">info@coolidgeadvisory.com</a>
     <div class="cta-contact">
       <a href="tel:+19419151863">(941) 915-1863</a>
-      <a href="mailto:george@coolidgeadvisory.com">george@coolidgeadvisory.com</a>
+      <a href="mailto:info@coolidgeadvisory.com">info@coolidgeadvisory.com</a>
       <a>Tampa, FL &middot; Worldwide</a>
     </div>
   </div>
@@ -445,11 +445,4 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>16)});
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
-},{threshold:0.12,rootMargin:'0px 0px -32px 0px'});
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t){t.scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('navLinks').classList.remove('open')}})
-});
-</script>
-</body>
-</html>
+},{threshold:0.12,rootMargin:
