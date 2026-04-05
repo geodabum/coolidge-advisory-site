@@ -141,21 +141,21 @@ footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(1
 footer .container{display:flex;justify-content:space-between;align-items:center}
 footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
 @media(max-width:768px){
-  .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-  .nav-links.open{display:flex}
-  .menu-btn{display:block}
-  .services-grid,.method-grid{grid-template-columns:1fr}
-  .method-step:not(:last-child)::after{display:none}
-  .industries-grid,.diff-grid{grid-template-columns:1fr}
-  .about-inner{grid-template-columns:1fr}
-  .about-left{margin:0 auto 1.5rem}
-  .hero{padding:7.5rem 0 3.5rem}
-  .trust-sep{display:none}
-  .stats .container{gap:2rem}
-  .stat-number{font-size:1.375rem}
-  .platform-list{gap:1.25rem}
-  .cta-contact{flex-direction:column;gap:.75rem}
-  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+.nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.nav-links.open{display:flex}
+.menu-btn{display:block}
+.services-grid,.method-grid{grid-template-columns:1fr}
+.method-step:not(:last-child)::after{display:none}
+.industries-grid,.diff-grid{grid-template-columns:1fr}
+.about-inner{grid-template-columns:1fr}
+.about-left{margin:0 auto 1.5rem}
+.hero{padding:7.5rem 0 3.5rem}
+.trust-sep{display:none}
+.stats .container{gap:2rem}
+.stat-number{font-size:1.375rem}
+.platform-list{gap:1.25rem}
+.cta-contact{flex-direction:column;gap:.75rem}
+footer .container{flex-direction:column;gap:.5rem;text-align:center}
 }
 </style>
 </head>
@@ -185,10 +185,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
     <div class="hero-eyebrow">Data Architecture &middot; Analytics &middot; AI</div>
     <h1>Your data has a story.<br><em>We build the architecture to tell it.</em></h1>
     <p class="hero-body">We design and build the systems that turn your operational data into trusted numbers your leadership team can actually act on. Across healthcare, finance, manufacturing, and distribution.</p>
-    <a href="#contact" class="hero-cta">
-      Start a conversation
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-    </a>
+    <a href="#contact" class="hero-cta">Start a conversation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
 
@@ -218,23 +215,17 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
     <p class="section-subtitle fade-in">Most companies are sitting on years of operational data they cannot easily access, trust, or use. We build the infrastructure that changes that, from the data layer through the executive dashboard.</p>
     <div class="services-grid">
       <div class="service-card fade-in">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg></div>
         <h3>Data Architecture &amp; Engineering</h3>
         <p>We build the foundation that connects your systems and organizes your data into a single, governed source of truth. Structured in layers, secured by role, and designed to scale as your business grows.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.08s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg></div>
         <h3>Analytics &amp; Reporting</h3>
         <p>Dashboards for your leadership team. Operational reports for your floor managers. Financial visibility for your controller. Every stakeholder gets the right numbers, in the right format, updated automatically.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.16s">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-        </div>
+        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
         <h3>AI &amp; Automation</h3>
         <p>Demand forecasting that improves your purchasing. Anomaly detection that catches errors before they cost you. Process automation that eliminates thousands of manual hours per year. AI applied to real business problems.</p>
       </div>
@@ -267,66 +258,24 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
     <p class="section-subtitle fade-in">We do not learn your industry on your dime. We bring years of hands-on experience with the regulations, workflows, and data challenges specific to your sector.</p>
     <div class="industries-grid">
       <div class="industry-card fade-in">
-        <div class="industry-header">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3>Healthcare</h3>
-        </div>
+        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Healthcare</h3></div>
         <p>Financial decision support, regulatory compliance, competitive market intelligence, and clinical analytics. Our healthcare experience includes reconciling billions in financial data across enterprise health systems and building statewide regulatory platforms covering the full provider landscape.</p>
-        <div class="industry-tags">
-          <span class="industry-tag">EPIC / EHR</span>
-          <span class="industry-tag">AHCA / Regulatory</span>
-          <span class="industry-tag">Strata / EPSi</span>
-          <span class="industry-tag">Claims Analytics</span>
-          <span class="industry-tag">HL7 / FHIR</span>
-          <span class="industry-tag">HIPAA</span>
-        </div>
+        <div class="industry-tags"><span class="industry-tag">EPIC / EHR</span><span class="industry-tag">AHCA / Regulatory</span><span class="industry-tag">Strata / EPSi</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.08s">
-        <div class="industry-header">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          </div>
-          <h3>Financial Services</h3>
-        </div>
+        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Financial Services</h3></div>
         <p>Regulatory reporting, risk analytics, portfolio visibility, and transaction monitoring. We build data platforms that meet the precision and auditability that financial institutions require, with governance and compliance built into every layer.</p>
-        <div class="industry-tags">
-          <span class="industry-tag">Regulatory Reporting</span>
-          <span class="industry-tag">Risk Analytics</span>
-          <span class="industry-tag">GL Modernization</span>
-          <span class="industry-tag">SOX Compliance</span>
-        </div>
+        <div class="industry-tags"><span class="industry-tag">Regulatory Reporting</span><span class="industry-tag">Risk Analytics</span><span class="industry-tag">GL Modernization</span><span class="industry-tag">SOX Compliance</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.16s">
-        <div class="industry-header">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l4-4h6l4 4v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h1"/><path d="M14 12h1"/></svg>
-          </div>
-          <h3>Manufacturing</h3>
-        </div>
+        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l4-4h6l4 4v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h1"/><path d="M14 12h1"/></svg></div><h3>Manufacturing</h3></div>
         <p>Production analytics, quality monitoring, supply chain visibility, and ERP modernization. We help manufacturers see what their legacy systems are hiding: real margins by product, true cost drivers, and operational bottlenecks that gut feeling alone cannot find.</p>
-        <div class="industry-tags">
-          <span class="industry-tag">ERP Modernization</span>
-          <span class="industry-tag">Production Analytics</span>
-          <span class="industry-tag">OEE Monitoring</span>
-          <span class="industry-tag">Supply Chain</span>
-        </div>
+        <div class="industry-tags"><span class="industry-tag">ERP Modernization</span><span class="industry-tag">Production Analytics</span><span class="industry-tag">OEE Monitoring</span><span class="industry-tag">Supply Chain</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.24s">
-        <div class="industry-header">
-          <div class="industry-icon">
-            <svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg>
-          </div>
-          <h3>Distribution</h3>
-        </div>
+        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div><h3>Distribution</h3></div>
         <p>Inventory optimization, demand forecasting, warehouse efficiency, and customer profitability analysis. We connect order, inventory, and fulfillment data across the entire operation so distributors can find margin that spreadsheets miss.</p>
-        <div class="industry-tags">
-          <span class="industry-tag">Demand Forecasting</span>
-          <span class="industry-tag">Inventory Optimization</span>
-          <span class="industry-tag">Warehouse Analytics</span>
-          <span class="industry-tag">Margin Analysis</span>
-        </div>
+        <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">Margin Analysis</span></div>
       </div>
     </div>
   </div>
@@ -366,22 +315,10 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
     <h2 class="section-title fade-in">Built differently.</h2>
     <p class="section-subtitle fade-in">We are not a staffing agency, a generalist firm, or a vendor pushing one platform. We are specialists who design, build, and stand behind every layer we deliver.</p>
     <div class="diff-grid">
-      <div class="diff-card fade-in">
-        <h3>Strategy Through Delivery</h3>
-        <p>We design the solution and build it ourselves. No handoffs between a strategy team and an implementation team. Unified practice, single vision, end to end.</p>
-      </div>
-      <div class="diff-card fade-in" style="transition-delay:.07s">
-        <h3>Mentorship Model</h3>
-        <p>We do not build and disappear. Every engagement includes structured knowledge transfer and ongoing mentorship so your internal team can own and evolve the platform long-term.</p>
-      </div>
-      <div class="diff-card fade-in" style="transition-delay:.14s">
-        <h3>Future-Proof Foundation</h3>
-        <p>The platform we build is designed to survive system migrations, software changes, and organizational growth. Invest once in the right foundation. It carries forward.</p>
-      </div>
-      <div class="diff-card fade-in" style="transition-delay:.21s">
-        <h3>Outcomes Over Hours</h3>
-        <p>We measure success by results: margin improvements identified, manual hours eliminated, decisions accelerated, compliance risks resolved. Your ROI is our scorecard.</p>
-      </div>
+      <div class="diff-card fade-in"><h3>Strategy Through Delivery</h3><p>We design the solution and build it ourselves. No handoffs between a strategy team and an implementation team. Unified practice, single vision, end to end.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.07s"><h3>Mentorship Model</h3><p>We do not build and disappear. Every engagement includes structured knowledge transfer and ongoing mentorship so your internal team can own and evolve the platform long-term.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.14s"><h3>Future-Proof Foundation</h3><p>The platform we build is designed to survive system migrations, software changes, and organizational growth. Invest once in the right foundation. It carries forward.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.21s"><h3>Outcomes Over Hours</h3><p>We measure success by results: margin improvements identified, manual hours eliminated, decisions accelerated, compliance risks resolved. Your ROI is our scorecard.</p></div>
     </div>
   </div>
 </section>
@@ -390,30 +327,20 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
   <div class="container">
     <div class="about-inner fade-in">
       <div class="about-left">
-        <div class="about-mark">
-          <div class="bar bar-1"></div>
-          <div class="bar bar-2"></div>
-          <div class="bar bar-3"></div>
-        </div>
-        <div class="cred-badges">
-          <span class="cred-badge">MBA</span>
-          <span class="cred-badge">MHA</span>
-          <span class="cred-badge">CSBI</span>
-          <span class="cred-badge">LSSGB</span>
-        </div>
+        <div class="about-mark"><div class="bar bar-1"></div><div class="bar bar-2"></div><div class="bar bar-3"></div></div>
+        <div class="cred-badges"><span class="cred-badge">MBA</span><span class="cred-badge">MHA</span><span class="cred-badge">CSBI</span><span class="cred-badge">LSSGB</span></div>
       </div>
       <div>
         <div class="section-label">The firm</div>
         <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem">Coolidge Advisory is a data architecture and analytics consultancy serving healthcare systems, financial institutions, manufacturers, and distributors worldwide. Our practice is built on 13+ years of enterprise-scale delivery, with deep specialization in building the data infrastructure that connects operational systems to executive decision-making.</p>
         <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem">We maintain a deliberate, high-touch model. Our engagements are led by senior practitioners, not junior associates. We bring in specialized talent as needed for specific workloads, but the strategy, architecture, and client relationship are always held at the principal level.</p>
-
         <div style="border-top:1px solid rgba(176,196,216,0.3);padding-top:1.5rem">
           <div class="section-label">Leadership</div>
           <div class="about-name">George Bommersheim</div>
           <div class="about-title">Founding Principal</div>
           <p>George founded Coolidge Advisory after more than a decade leading data architecture and analytics engineering for a major enterprise health system. His work there included building statewide regulatory intelligence platforms, reconciling $2T+ in financial data across the Florida provider landscape, and leading full-lifecycle system migrations across EPIC, Strata, and EPSi.</p>
-          <p>His background spans both the technical and executive sides of data strategy. He holds dual master&rsquo;s degrees in Business Administration and Healthcare Administration (both with honors), and carries certifications in Business Intelligence (CSBI) and Lean Six Sigma (LSSGB). Prior to healthcare, he built and managed international supply chain operations across five European countries.</p>
-          <p style="margin-bottom:0">George&rsquo;s approach reflects a core belief: the best data platforms are designed by people who also build them. Strategy without engineering is a slide deck. Engineering without strategy is technical debt. Coolidge Advisory delivers both.</p>
+          <p>His background spans both the technical and executive sides of data strategy. He holds dual master&#x2019;s degrees in Business Administration and Healthcare Administration (both with honors), and carries certifications in Business Intelligence (CSBI) and Lean Six Sigma (LSSGB). Prior to healthcare, he built and managed international supply chain operations across five European countries.</p>
+          <p style="margin-bottom:0">George&#x2019;s approach reflects a core belief: the best data platforms are designed by people who also build them. Strategy without engineering is a slide deck. Engineering without strategy is technical debt. Coolidge Advisory delivers both.</p>
         </div>
       </div>
     </div>
@@ -422,8 +349,8 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
 
 <section class="cta" id="contact">
   <div class="container">
-    <h2>Ready to see what&rsquo;s in your data?</h2>
-    <p>We start with a conversation. No pitch decks, no pressure. Let&rsquo;s discuss where you are and what&rsquo;s possible.</p>
+    <h2>Ready to see what&#x2019;s in your data?</h2>
+    <p>We start with a conversation. No pitch decks, no pressure. Let&#x2019;s discuss where you are and what&#x2019;s possible.</p>
     <a href="mailto:info@coolidgeadvisory.com" class="cta-btn">info@coolidgeadvisory.com</a>
     <div class="cta-contact">
       <a href="tel:+19419151863">(941) 915-1863</a>
@@ -435,14 +362,37 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
 
 <footer>
   <div class="container">
-    <p>&copy; 2026 Coolidge Advisory, Inc. All rights reserved.</p>
+    <p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p>
     <p>Tampa, Florida</p>
   </div>
 </footer>
 
 <script>
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>16)});
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})
-},{threshold:0.12,rootMargin:
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 16);
+});
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  observer.observe(el);
+});
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var t = document.querySelector(a.getAttribute('href'));
+    if (t) {
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
