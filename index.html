@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coolidge Advisory | Data Architecture · Analytics · AI</title>
-<meta name="description" content="Coolidge Advisory designs and builds enterprise data platforms that turn operational complexity into executive clarity. 13+ years across healthcare, financial services, legal, manufacturing, and distribution.">
+<meta name="description" content="Coolidge Advisory builds enterprise data platforms for companies that have outgrown their reporting, their ERP, or both. Healthcare, financial services, legal, manufacturing, and distribution.">
 <meta property="og:title" content="Coolidge Advisory | Data Architecture · Analytics · AI">
-<meta property="og:description" content="Enterprise data platforms built on 13+ years of deep vertical expertise. Healthcare, financial services, legal, manufacturing, and distribution.">
+<meta property="og:description" content="Your ERP is aging. Your reports take days. Your margins are a mystery. We fix that. Enterprise data platforms built on 13+ years of delivery.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coolidgeadvisory.com">
 <meta property="og:image" content="https://coolidgeadvisory.com/coolidge-icon-512.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coolidge Advisory | Data Architecture · Analytics · AI">
-<meta name="twitter:description" content="Enterprise data platforms built on 13+ years of deep vertical expertise.">
+<meta name="twitter:description" content="Enterprise data platforms built on 13+ years of delivery across six industries.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
 :root{
 --navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F2F6FA;
 --text:#2D2D2D;--text-secondary:#5A6B7D;--border:#B0C4D8;--white:#FFFFFF;
---gold:#C9A84C;
 --serif:'Libre Baskerville',Georgia,serif;
 --sans:'DM Sans',system-ui,sans-serif;
 }
@@ -34,7 +33,6 @@ a:hover{color:var(--navy)}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(176,196,216,0.2);transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 1px 24px rgba(27,58,92,0.07)}
 nav .container{display:flex;align-items:center;justify-content:space-between;height:60px}
@@ -48,39 +46,53 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
 .menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
 
-/* HERO */
 .hero{padding:9.5rem 0 5rem;background:var(--navy-deep);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-40%;right:-15%;width:70%;height:180%;background:radial-gradient(ellipse at center,rgba(46,117,182,0.1) 0%,transparent 65%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(46,117,182,0.2),transparent)}
 .hero .container{position:relative;z-index:1}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,117,182,0.12);border:1px solid rgba(46,117,182,0.2);padding:5px 14px;border-radius:100px;font-size:.6875rem;font-weight:600;color:rgba(133,183,235,0.9);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.25rem}
-.hero h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.25rem);color:var(--white);line-height:1.22;max-width:720px;font-weight:400;margin-bottom:1.5rem}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.25rem);color:var(--white);line-height:1.22;max-width:740px;font-weight:400;margin-bottom:1.5rem}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero-body{font-size:1.05rem;color:rgba(255,255,255,0.62);max-width:560px;line-height:1.85;margin-bottom:2.5rem}
+.hero-body{font-size:1.05rem;color:rgba(255,255,255,0.62);max-width:580px;line-height:1.85;margin-bottom:2.5rem}
 .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy);padding:.8rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s;letter-spacing:.01em}
 .hero-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
 .hero-cta svg{width:14px;height:14px;transition:transform .25s}
 .hero-cta:hover svg{transform:translateX(3px)}
 
-/* STATS */
 .stats{padding:2.75rem 0;background:var(--navy);border-bottom:1px solid rgba(133,183,235,0.1)}
 .stats .container{display:flex;justify-content:center;gap:3.25rem;flex-wrap:wrap}
 .stat{text-align:center;min-width:120px}
 .stat-number{font-family:var(--serif);font-size:1.6rem;color:var(--white);font-weight:700;line-height:1.2}
 .stat-label{font-size:.625rem;color:rgba(133,183,235,0.7);letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem;font-weight:500;line-height:1.4}
 
-/* TRUST */
 .trust{padding:2.25rem 0;border-bottom:1px solid rgba(176,196,216,0.2)}
 .trust .container{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:center}
 .trust-item{font-size:.75rem;color:var(--text-secondary);font-weight:500;letter-spacing:.03em}
 .trust-sep{width:4px;height:4px;border-radius:50%;background:var(--border);flex-shrink:0}
 
-/* SECTION */
+.pain{padding:5rem 0;background:var(--white)}
+.pain-header{text-align:center;margin-bottom:3rem}
+.pain-header .section-label{margin-bottom:.875rem}
+.pain-header .section-title{margin-left:auto;margin-right:auto;max-width:600px}
+.pain-header .section-subtitle{margin-left:auto;margin-right:auto;max-width:580px}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pain-card{padding:1.75rem 1.5rem;border:1px solid rgba(176,196,216,0.25);border-radius:8px;position:relative;transition:all .3s}
+.pain-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(27,58,92,0.06);transform:translateY(-1px)}
+.pain-icon{font-size:1.5rem;margin-bottom:.75rem}
+.pain-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.pain-card p{font-size:.8125rem;color:var(--text-secondary);line-height:1.75}
+
 .section-label{font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.875rem}
 .section-title{font-family:var(--serif);font-size:clamp(1.625rem,3.2vw,2.25rem);color:var(--navy);line-height:1.25;margin-bottom:.875rem;max-width:560px}
 .section-subtitle{font-size:1rem;color:var(--text-secondary);max-width:540px;margin-bottom:3rem;line-height:1.85}
 
-/* SERVICES */
+.who{padding:4rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.08)}
+.who .container{text-align:center}
+.who-label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(133,183,235,0.7);margin-bottom:1rem}
+.who-headline{font-family:var(--serif);font-size:clamp(1.25rem,2.5vw,1.625rem);color:var(--white);max-width:700px;margin:0 auto 1.5rem;line-height:1.4;font-weight:400}
+.who-profiles{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1.75rem}
+.who-tag{font-size:.75rem;font-weight:600;color:rgba(255,255,255,0.85);background:rgba(46,117,182,0.15);border:1px solid rgba(46,117,182,0.25);padding:6px 16px;border-radius:100px;letter-spacing:.02em}
+
 .services{padding:5.5rem 0}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
 .service-card{padding:2.25rem 1.75rem;border:1px solid rgba(176,196,216,0.3);border-radius:8px;transition:all .3s;position:relative;overflow:hidden}
@@ -91,8 +103,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .service-icon svg{width:22px;height:22px;stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .service-card h3{font-size:1.0625rem;font-weight:700;color:var(--navy);margin-bottom:.625rem;letter-spacing:-.01em}
 .service-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75}
+.service-outcome{display:block;margin-top:.875rem;font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.02em}
 
-/* PLATFORMS */
 .platforms{padding:3rem 0;background:var(--light);border-top:1px solid rgba(176,196,216,0.2);border-bottom:1px solid rgba(176,196,216,0.2)}
 .platforms .container{text-align:center}
 .platforms-label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1.25rem}
@@ -100,7 +112,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .platform-item{font-size:.8125rem;font-weight:600;color:var(--navy);opacity:.5;letter-spacing:.01em;transition:opacity .2s}
 .platform-item:hover{opacity:1}
 
-/* INDUSTRIES */
 .industries{padding:5.5rem 0}
 .industries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .industry-card{padding:2rem 1.75rem;border:1px solid rgba(176,196,216,0.3);border-radius:8px;transition:all .3s}
@@ -109,11 +120,11 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .industry-icon{width:40px;height:40px;background:var(--light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .industry-icon svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .industry-card h3{font-size:1rem;font-weight:700;color:var(--navy)}
+.industry-pain{font-size:.8125rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;font-style:italic}
 .industry-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75;margin-bottom:.75rem}
 .industry-tags{display:flex;flex-wrap:wrap;gap:.375rem}
 .industry-tag{font-size:.6875rem;font-weight:600;color:var(--accent);background:rgba(46,117,182,0.08);padding:3px 10px;border-radius:100px;letter-spacing:.02em}
 
-/* METHODOLOGY */
 .methodology{padding:5.5rem 0;background:var(--navy-deep)}
 .methodology .section-label{color:rgba(133,183,235,0.7)}
 .methodology .section-title{color:var(--white)}
@@ -129,7 +140,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .method-step h3{font-size:1.0625rem;font-weight:700;color:var(--white);margin-bottom:.625rem}
 .method-step p{font-size:.8125rem;color:rgba(255,255,255,0.42);line-height:1.75}
 
-/* RESULTS */
 .results{padding:5.5rem 0;background:var(--white);border-top:1px solid rgba(176,196,216,0.2)}
 .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .result-card{padding:2rem 1.75rem;background:var(--light);border-radius:8px;border-left:3px solid var(--accent);position:relative;transition:all .3s}
@@ -139,16 +149,22 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .result-body{font-size:.8125rem;color:var(--text-secondary);line-height:1.75}
 .result-metric{display:inline-block;margin-top:.75rem;font-size:.75rem;font-weight:700;color:var(--navy);background:var(--white);padding:4px 12px;border-radius:4px;border:1px solid rgba(176,196,216,0.3);letter-spacing:.01em}
 
-/* DIFF */
-.diff{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(176,196,216,0.2)}
+.cost{padding:4.5rem 0;background:var(--light);border-top:1px solid rgba(176,196,216,0.2);border-bottom:1px solid rgba(176,196,216,0.2)}
+.cost .container{text-align:center;max-width:680px}
+.cost .section-label{margin-bottom:.875rem}
+.cost h2{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,1.875rem);color:var(--navy);margin-bottom:1.25rem;line-height:1.3}
+.cost p{font-size:.9375rem;color:var(--text-secondary);line-height:1.85;margin-bottom:.75rem}
+.cost-list{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:1.75rem}
+.cost-item{font-size:.8125rem;font-weight:600;color:var(--navy);background:var(--white);padding:8px 18px;border-radius:6px;border:1px solid rgba(176,196,216,0.3)}
+
+.diff{padding:5.5rem 0;background:var(--white)}
 .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.diff-card{padding:2rem 1.75rem;border-left:2px solid var(--accent);background:var(--white);border-radius:0 6px 6px 0;transition:border-color .2s}
+.diff-card{padding:2rem 1.75rem;border-left:2px solid var(--accent);background:var(--light);border-radius:0 6px 6px 0;transition:border-color .2s}
 .diff-card:hover{border-left-color:var(--navy)}
 .diff-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
 .diff-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75}
 
-/* ABOUT */
-.about{padding:5.5rem 0}
+.about{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(176,196,216,0.2)}
 .about-inner{display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:start}
 .about-left{display:flex;flex-direction:column;align-items:center;gap:1.25rem;flex-shrink:0}
 .about-mark{width:120px;height:120px;background:var(--navy);border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:24px}
@@ -157,33 +173,31 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .about-mark .bar-2{width:62%;opacity:.6}
 .about-mark .bar-3{width:48%;opacity:1}
 .cred-badges{display:flex;flex-wrap:wrap;gap:.375rem;justify-content:center;max-width:140px}
-.cred-badge{font-size:.5625rem;font-weight:700;color:var(--navy);background:var(--light);border:1px solid rgba(176,196,216,0.4);padding:2px 8px;border-radius:3px;letter-spacing:.06em}
+.cred-badge{font-size:.5625rem;font-weight:700;color:var(--navy);background:var(--white);border:1px solid rgba(176,196,216,0.4);padding:2px 8px;border-radius:3px;letter-spacing:.06em}
 .about-name{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin-bottom:.2rem}
 .about-title{font-size:.875rem;color:var(--accent);font-weight:600;margin-bottom:1.25rem}
 .about p{font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:.875rem}
 
-/* CTA */
-.cta{padding:4.5rem 0;background:var(--navy-deep);text-align:center;position:relative}
+.cta{padding:5rem 0;background:var(--navy-deep);text-align:center;position:relative}
 .cta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(46,117,182,0.2),transparent)}
 .cta h2{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2rem);color:var(--white);margin-bottom:.875rem}
-.cta>div>p{color:rgba(255,255,255,0.45);font-size:1rem;margin-bottom:2rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
+.cta>div>p{color:rgba(255,255,255,0.45);font-size:1rem;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8}
 .cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy);padding:.875rem 2.25rem;border-radius:5px;font-weight:600;font-size:.9375rem;transition:all .25s}
 .cta-btn:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+.cta-sub{font-size:.75rem;color:rgba(255,255,255,0.35);margin-top:.75rem;font-weight:500}
 .cta-contact{display:flex;justify-content:center;gap:2.5rem;margin-top:2.25rem;flex-wrap:wrap}
 .cta-contact a{color:rgba(255,255,255,0.4);font-size:.8125rem;transition:color .2s;letter-spacing:.01em}
 .cta-contact a:hover{color:var(--white)}
 
-/* FOOTER */
 footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.08)}
 footer .container{display:flex;justify-content:space-between;align-items:center}
 footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
 
-/* MOBILE */
 @media(max-width:768px){
 .nav-links{display:none;position:absolute;top:60px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
 .nav-links.open{display:flex}
 .menu-btn{display:block}
-.services-grid,.method-grid{grid-template-columns:1fr}
+.services-grid,.method-grid,.pain-grid{grid-template-columns:1fr}
 .method-step:not(:last-child)::after{display:none}
 .industries-grid,.diff-grid,.results-grid{grid-template-columns:1fr}
 .about-inner{grid-template-columns:1fr}
@@ -197,6 +211,8 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.22);letter-spacing:.02em}
 .platform-list{gap:1.25rem}
 .cta-contact{flex-direction:column;gap:.75rem}
 footer .container{flex-direction:column;gap:.5rem;text-align:center}
+.who-profiles{gap:.75rem}
+.cost-list{gap:.5rem}
 }
 </style>
 </head>
@@ -214,7 +230,7 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       <a href="#approach">Approach</a>
       <a href="#results">Results</a>
       <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Get in touch</a>
+      <a href="#contact" class="nav-cta">Request a Review</a>
     </div>
     <button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')">
       <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -225,9 +241,9 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <section class="hero">
   <div class="container">
     <div class="hero-eyebrow">Data Architecture &middot; Analytics &middot; AI</div>
-    <h1>Your data is an asset.<br><em>We engineer it to perform like one.</em></h1>
-    <p class="hero-body">We design and build the data infrastructure that gives leadership teams the numbers they need to protect margin, accelerate decisions, and operate with confidence. Across healthcare, finance, legal, manufacturing, and distribution.</p>
-    <a href="#contact" class="hero-cta">Start a conversation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <h1>Your reports take days. Your margins are a mystery. <em>Your ERP can't keep up.</em></h1>
+    <p class="hero-body">You know your data holds the answers. You just cannot get to them. We build the data infrastructure that gives your leadership team one version of the truth, so you can stop guessing and start making decisions with confidence.</p>
+    <a href="#contact" class="hero-cta">Request a Data Readiness Review <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   </div>
 </section>
 
@@ -251,26 +267,86 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
+<section class="pain" id="problems">
+  <div class="container">
+    <div class="pain-header">
+      <div class="section-label fade-in">Sound familiar?</div>
+      <h2 class="section-title fade-in" style="max-width:620px">These are the problems<br>your data should be solving.</h2>
+      <p class="section-subtitle fade-in" style="max-width:580px">If any of these sound like your organization, you are exactly who we work with.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card fade-in">
+        <div class="pain-icon">&#128202;</div>
+        <h3>"Our reports take days to build and nobody trusts the numbers."</h3>
+        <p>Your controller pulls data from three systems, reconciles it in Excel, and delivers a report that is already outdated. Leadership decisions get delayed because nobody agrees on the numbers.</p>
+      </div>
+      <div class="pain-card fade-in" style="transition-delay:.07s">
+        <div class="pain-icon">&#128200;</div>
+        <h3>"I can't tell you which customers or products are actually profitable."</h3>
+        <p>You know total revenue. You know total costs. But you cannot see margin by product line, by customer, by region, or by provider. The data exists, but it is trapped in disconnected systems.</p>
+      </div>
+      <div class="pain-card fade-in" style="transition-delay:.14s">
+        <div class="pain-icon">&#9888;&#65039;</div>
+        <h3>"Our ERP is end-of-life and we don't know where to start."</h3>
+        <p>You are running AX 2012, GP, NAV, or an aging system your vendor stopped supporting. You know a migration is coming, but the idea of touching your data is paralyzing.</p>
+      </div>
+      <div class="pain-card fade-in" style="transition-delay:.21s">
+        <div class="pain-icon">&#128101;</div>
+        <h3>"Our best people spend their time on manual data work."</h3>
+        <p>Your analysts are copying and pasting between systems. Your finance team rebuilds the same spreadsheets every month. Skilled people doing work that software should handle.</p>
+      </div>
+      <div class="pain-card fade-in" style="transition-delay:.28s">
+        <div class="pain-icon">&#128274;</div>
+        <h3>"We have data everywhere but no single source of truth."</h3>
+        <p>Sales says one number, operations says another, finance says a third. There is no governed, consistent data layer connecting your systems into a unified view.</p>
+      </div>
+      <div class="pain-card fade-in" style="transition-delay:.35s">
+        <div class="pain-icon">&#128640;</div>
+        <h3>"We want to use AI but our data isn't ready."</h3>
+        <p>Everyone is talking about AI, but you know your data is too fragmented, too dirty, or too siloed to feed a model that would produce anything useful. You need the foundation first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="who">
+  <div class="container">
+    <div class="who-label fade-in">Who we work with</div>
+    <div class="who-headline fade-in">We work with companies that have outgrown their data capabilities. Typically $10M to $500M+ in revenue, running legacy systems, and ready to make decisions on real numbers instead of gut instinct.</div>
+    <div class="who-profiles fade-in">
+      <span class="who-tag">Health Systems &amp; Physician Practices</span>
+      <span class="who-tag">Financial Institutions</span>
+      <span class="who-tag">Law Firms</span>
+      <span class="who-tag">Food &amp; Beverage Distributors</span>
+      <span class="who-tag">Manufacturers</span>
+      <span class="who-tag">Importers &amp; Supply Chain</span>
+    </div>
+  </div>
+</section>
+
 <section class="services" id="services">
   <div class="container">
-    <div class="section-label fade-in">What we do</div>
-    <h2 class="section-title fade-in">We turn complex data<br>into competitive advantage.</h2>
-    <p class="section-subtitle fade-in">Most companies are sitting on years of operational data they cannot easily access, trust, or act on. We build the infrastructure that changes that, from the data layer through the executive dashboard, so your leadership team stops guessing and starts governing.</p>
+    <div class="section-label fade-in">What we deliver</div>
+    <h2 class="section-title fade-in">One version of the truth.<br>Built to last.</h2>
+    <p class="section-subtitle fade-in">We do not sell software. We build the data infrastructure that connects your systems, cleans your data, and puts trusted numbers in front of the people who need them.</p>
     <div class="services-grid">
       <div class="service-card fade-in">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg></div>
-        <h3>Data Architecture &amp; Engineering</h3>
-        <p>We build the foundation that connects your systems and organizes your data into a single, governed source of truth. Medallion architecture, star schema modeling, role-based security, and lineage tracking, all designed to scale as your business grows and survive system migrations.</p>
+        <h3>One Source of Truth</h3>
+        <p>We connect your ERP, billing, clinical, operational, and financial systems into a single governed data platform. Medallion architecture, star schema modeling, role-based security, and full lineage tracking. Everyone works from the same numbers.</p>
+        <span class="service-outcome">Your CFO and your ops lead finally agree.</span>
       </div>
       <div class="service-card fade-in" style="transition-delay:.08s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg></div>
-        <h3>Analytics &amp; Executive Reporting</h3>
-        <p>Dashboards that show your CFO true margin by product, customer, and region. Operational reports that give floor managers real-time visibility. Financial analytics your controller can certify. Every stakeholder gets the right numbers, in the right format, updated automatically.</p>
+        <h3>Margin &amp; Revenue Visibility</h3>
+        <p>Dashboards that show your leadership true margin by product, customer, region, provider, or matter. Operational reports that update automatically. Financial analytics your controller can certify and your board can trust.</p>
+        <span class="service-outcome">See where you are making money. And where you are not.</span>
       </div>
       <div class="service-card fade-in" style="transition-delay:.16s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-        <h3>AI &amp; Process Automation</h3>
-        <p>Demand forecasting that improves purchasing accuracy. Anomaly detection that catches errors before they cost you. Process automation that eliminates tens of thousands of manual hours per year. AI applied to real business problems with measurable ROI.</p>
+        <h3>AI, Forecasting &amp; Automation</h3>
+        <p>Demand forecasting that improves purchasing decisions. Anomaly detection that catches errors before they cost you. Process automation that gives your best people their time back. AI applied to real business problems with measurable ROI.</p>
+        <span class="service-outcome">Tens of thousands of manual hours returned to your team.</span>
       </div>
     </div>
   </div>
@@ -299,32 +375,37 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <section class="industries" id="industries">
   <div class="container">
     <div class="section-label fade-in">Industries</div>
-    <h2 class="section-title fade-in">Deep expertise where<br>it matters most.</h2>
-    <p class="section-subtitle fade-in">We do not learn your industry on your dime. We bring years of hands-on experience with the regulations, workflows, ERP systems, and data challenges specific to your sector.</p>
+    <h2 class="section-title fade-in">We already know<br>your industry.</h2>
+    <p class="section-subtitle fade-in">We do not learn your workflows, your regulations, or your data challenges on your dime. We have built platforms in your sector before and we bring that experience from day one.</p>
     <div class="industries-grid">
       <div class="industry-card fade-in">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Healthcare</h3></div>
-        <p>From enterprise health systems to multi-location physician practices. Financial decision support, regulatory compliance, competitive market intelligence, and clinical analytics. Our healthcare experience includes reconciling billions in financial data across statewide provider landscapes and building regulatory platforms used at the executive level.</p>
-        <div class="industry-tags"><span class="industry-tag">EPIC / EHR</span><span class="industry-tag">AHCA / Regulatory</span><span class="industry-tag">Strata / EPSi</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span><span class="industry-tag">Physician Practice Analytics</span></div>
+        <div class="industry-pain">"We cannot see true cost per case, per provider, or per service line."</div>
+        <p>From enterprise health systems to multi-location physician practices. Financial decision support, regulatory compliance, competitive market intelligence, clinical analytics, and payer mix visibility. We have reconciled billions in financial data across statewide provider landscapes and built the regulatory platforms that executives rely on daily.</p>
+        <div class="industry-tags"><span class="industry-tag">EPIC / EHR</span><span class="industry-tag">AHCA / Regulatory</span><span class="industry-tag">Strata / EPSi</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span><span class="industry-tag">Per-Provider Profitability</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.08s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Financial Services</h3></div>
-        <p>Regulatory reporting, risk analytics, portfolio visibility, and transaction monitoring. We build data platforms that meet the precision and auditability that financial institutions require, with governance and compliance built into every layer from day one.</p>
+        <div class="industry-pain">"Our regulatory reporting takes too long and we are not confident in the numbers."</div>
+        <p>Regulatory reporting, risk analytics, portfolio visibility, and transaction monitoring. We build data platforms that meet the precision and auditability that financial institutions require, with governance and compliance built into every layer from the start.</p>
         <div class="industry-tags"><span class="industry-tag">Regulatory Reporting</span><span class="industry-tag">Risk Analytics</span><span class="industry-tag">GL Modernization</span><span class="industry-tag">SOX Compliance</span><span class="industry-tag">Transaction Monitoring</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.16s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l4-4h6l4 4v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h1"/><path d="M14 12h1"/></svg></div><h3>Manufacturing</h3></div>
+        <div class="industry-pain">"We don't know our true margins by product line. Our ERP can't tell us."</div>
         <p>Production analytics, quality monitoring, supply chain visibility, and ERP modernization. We help manufacturers see what their legacy systems are hiding: real margins by product line, true cost drivers, and operational bottlenecks that gut feeling alone cannot find.</p>
         <div class="industry-tags"><span class="industry-tag">ERP Modernization</span><span class="industry-tag">Production Analytics</span><span class="industry-tag">OEE Monitoring</span><span class="industry-tag">Supply Chain</span><span class="industry-tag">Margin by Product Line</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.24s">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div><h3>Distribution</h3></div>
-        <p>Inventory optimization, demand forecasting, warehouse efficiency, and customer profitability analysis. We connect order, inventory, and fulfillment data across the entire operation so distributors can find margin that spreadsheets miss and make purchasing decisions on data instead of intuition.</p>
-        <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">Margin Analysis</span><span class="industry-tag">SKU Profitability</span></div>
+        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div><h3>Distribution &amp; Import</h3></div>
+        <div class="industry-pain">"We are buying on intuition instead of data. We have no idea which SKUs are profitable."</div>
+        <p>Inventory optimization, demand forecasting, warehouse efficiency, customer profitability, and SKU-level margin analysis. We connect order, inventory, and fulfillment data across the entire operation so distributors and importers can make purchasing and pricing decisions on data, not guesswork.</p>
+        <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">SKU Profitability</span><span class="industry-tag">AX / D365 Migration</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.32s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Legal &amp; Professional Services</h3></div>
-        <p>Matter profitability analysis, resource utilization tracking, client revenue analytics, and operational reporting. We build data platforms that connect billing, time tracking, and case data into a single trusted view, giving firm leadership the financial clarity to manage growth and profitability.</p>
+        <div class="industry-pain">"We can't see profitability at the matter or client level."</div>
+        <p>Matter profitability analysis, resource utilization tracking, client revenue analytics, and operational reporting. We connect billing, time tracking, and case data into a single trusted view, giving firm leadership the financial clarity to manage growth, pricing, and staffing decisions.</p>
         <div class="industry-tags"><span class="industry-tag">Matter Profitability</span><span class="industry-tag">Billing Analytics</span><span class="industry-tag">Utilization Tracking</span><span class="industry-tag">Client Revenue Analysis</span></div>
       </div>
     </div>
@@ -353,7 +434,7 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
         <div class="method-number">Layer 03 / Gold</div>
         <div class="method-bar"></div>
         <h3>Deliver</h3>
-        <p>Clean, trusted data is organized for the people who need it: executives get dashboards with margin and revenue visibility, managers get operational reports, analysts get self-service access, and AI models get the structured inputs they require to generate forecasts and recommendations.</p>
+        <p>Clean, trusted data is organized for the people who need it. Executives get margin and revenue dashboards. Managers get operational reports. Analysts get self-service access. AI models get the structured inputs they need to generate forecasts and recommendations.</p>
       </div>
     </div>
   </div>
@@ -362,19 +443,19 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <section class="results" id="results">
   <div class="container">
     <div class="section-label fade-in">Client outcomes</div>
-    <h2 class="section-title fade-in">Measured in margin,<br>not just milestones.</h2>
-    <p class="section-subtitle fade-in">We do not hand you a platform and walk away. We measure our success by the financial and operational impact our work delivers to your bottom line.</p>
+    <h2 class="section-title fade-in">Measured in margin,<br>not milestones.</h2>
+    <p class="section-subtitle fade-in">We do not hand over a platform and walk away. We measure our work by the financial and operational impact it delivers to your bottom line.</p>
     <div class="results-grid">
       <div class="result-card fade-in">
         <div class="result-type">Enterprise Health System</div>
         <div class="result-headline">Statewide Regulatory Intelligence Platform</div>
-        <p class="result-body">Built a financial decision-support platform reconciling $2T+ in data across Florida&#x2019;s complete provider landscape. Replaced weeks of manual reporting with automated executive dashboards. Enabled leadership to benchmark performance, identify competitive threats, and respond to regulatory changes in real time.</p>
+        <p class="result-body">Built a financial decision-support platform reconciling $2T+ in data across Florida's complete provider landscape. Replaced weeks of manual reporting with automated executive dashboards. Enabled leadership to benchmark performance, identify competitive threats, and respond to regulatory changes in real time.</p>
         <span class="result-metric">$2T+ reconciled &middot; Manual reporting eliminated</span>
       </div>
       <div class="result-card fade-in" style="transition-delay:.07s">
         <div class="result-type">Food Importer &amp; Distributor</div>
         <div class="result-headline">Legacy ERP to Modern Lakehouse</div>
-        <p class="result-body">Architecting a full data modernization initiative for a national food importer, migrating from end-of-life ERP to a modern lakehouse on Microsoft Fabric. Building executive dashboards that surface real-time margin by product, customer, and region. Visibility that did not previously exist at any level of the organization.</p>
+        <p class="result-body">Architecting a full data modernization initiative for a national food importer, migrating from end-of-life AX 2012 to a modern lakehouse on Microsoft Fabric. Building executive dashboards that surface real-time margin by product, customer, and region. Visibility that did not previously exist at any level of the organization.</p>
         <span class="result-metric">10,000+ SKUs &middot; Real-time margin visibility</span>
       </div>
       <div class="result-card fade-in" style="transition-delay:.14s">
@@ -393,18 +474,33 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
+<section class="cost">
+  <div class="container">
+    <div class="section-label fade-in">The cost of waiting</div>
+    <h2 class="fade-in">Every quarter you wait, the gap widens.</h2>
+    <p class="fade-in">Your competitors are modernizing their data infrastructure right now. The companies that move first gain compounding advantages in margin visibility, operational efficiency, and decision speed. The companies that wait keep paying the hidden costs of inaction.</p>
+    <div class="cost-list fade-in">
+      <span class="cost-item">Manual reports that consume your best people</span>
+      <span class="cost-item">Margin erosion you cannot see</span>
+      <span class="cost-item">Decisions delayed by weeks</span>
+      <span class="cost-item">Compliance risk from ungoverned data</span>
+      <span class="cost-item">ERP migration without a data strategy</span>
+    </div>
+  </div>
+</section>
+
 <section class="diff" id="why">
   <div class="container">
     <div class="section-label fade-in">Why Coolidge</div>
     <h2 class="section-title fade-in">Built differently.</h2>
     <p class="section-subtitle fade-in">We are not a staffing agency, a generalist firm, or a vendor pushing one platform. We are specialists who design, build, and stand behind every layer we deliver.</p>
     <div class="diff-grid">
-      <div class="diff-card fade-in"><h3>Strategy Through Delivery</h3><p>We design the solution and build it ourselves. No handoffs between a strategy team and an implementation team. The person who architects your platform is the person writing the code. Unified practice, single vision, end to end.</p></div>
+      <div class="diff-card fade-in"><h3>Strategy Through Delivery</h3><p>We design the solution and build it ourselves. No handoffs between a strategy team and an implementation team. The person who architects your platform is the person writing the code. Unified practice, single accountability, end to end.</p></div>
       <div class="diff-card fade-in" style="transition-delay:.07s"><h3>Revenue-First Thinking</h3><p>We start with the questions your CFO and CEO are asking: Where is margin leaking? Which customers are profitable? Where are we exposed? Then we build the platform that answers them. Technology serves the business question, not the other way around.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.14s"><h3>Mentorship Model</h3><p>We do not build and disappear. Every engagement includes structured knowledge transfer and ongoing mentorship so your internal team can own, operate, and evolve the platform long-term. Your investment compounds.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.21s"><h3>Future-Proof Foundation</h3><p>The platform we build is designed to survive system migrations, ERP upgrades, and organizational growth. Invest once in the right foundation. When your systems change, the data layer carries forward, protecting every dollar you put in.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.14s"><h3>Mentorship Model</h3><p>We do not build and disappear. Every engagement includes structured knowledge transfer and ongoing mentorship so your internal team can own, operate, and evolve the platform long-term. Your investment compounds over time.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.21s"><h3>Future-Proof Foundation</h3><p>The platform we build is designed to survive system migrations, ERP upgrades, and organizational growth. Invest once in the right foundation. When your systems change, the data layer carries forward, protecting every dollar you have put in.</p></div>
       <div class="diff-card fade-in" style="transition-delay:.28s"><h3>Outcomes Over Hours</h3><p>We measure success by results: margin improvements identified, manual hours eliminated, decisions accelerated, compliance risks resolved. Your ROI is our scorecard, not billable hours.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.35s"><h3>Cross-Industry Pattern Recognition</h3><p>Having delivered across healthcare, finance, legal, manufacturing, and distribution, we recognize patterns that single-industry consultants miss. Solutions that work in supply chain optimization often translate directly to clinical operations, and vice versa.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.35s"><h3>Cross-Industry Pattern Recognition</h3><p>Having delivered across healthcare, finance, legal, manufacturing, and distribution, we recognize patterns that single-industry consultants miss. Solutions proven in supply chain optimization often translate directly to clinical operations, and vice versa.</p></div>
     </div>
   </div>
 </section>
@@ -435,9 +531,10 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 
 <section class="cta" id="contact">
   <div class="container">
-    <h2>Ready to see what&#x2019;s hiding in your data?</h2>
-    <p>We start with a conversation about where you are, what decisions you need to make, and where your data is falling short. No pitch decks. No pressure.</p>
+    <h2>Request a Data Readiness Review.</h2>
+    <p>A 30-minute conversation about where your data is today, what decisions it should be supporting, and what it would take to get there. No pitch decks. No pressure. Just a clear-eyed assessment from someone who builds these platforms for a living.</p>
     <a href="mailto:info@coolidgeadvisory.com" class="cta-btn">info@coolidgeadvisory.com</a>
+    <div class="cta-sub">Typically responds within one business day.</div>
     <div class="cta-contact">
       <a href="tel:+19419151863">(941) 915-1863</a>
       <a href="mailto:info@coolidgeadvisory.com">info@coolidgeadvisory.com</a>
