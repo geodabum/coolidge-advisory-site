@@ -55,7 +55,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,117,182,0.1);border:1px solid rgba(46,117,182,0.18);padding:5px 14px;border-radius:100px;font-size:.6875rem;font-weight:600;color:rgba(133,183,235,0.85);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem}
 .hero h1{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3.15rem);color:var(--white);line-height:1.25;max-width:720px;font-weight:400;margin-bottom:1.75rem}
 .hero h1 em{font-style:italic;color:var(--accent)}
-.hero-body{font-size:1.0625rem;color:rgba(255,255,255,0.55);max-width:560px;line-height:1.9;margin-bottom:2.75rem}
+.hero-body{font-size:1.0625rem;color:rgba(255,255,255,0.62);max-width:560px;line-height:1.9;margin-bottom:2.75rem}
 .hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--navy);padding:.8rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s;letter-spacing:.01em}
 .hero-cta:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
 .hero-cta svg{width:14px;height:14px;transition:transform .25s}
@@ -102,10 +102,13 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .service-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75}
 
 /* ── PLATFORMS ── */
-.platforms{padding:2.75rem 0;background:var(--white);border-bottom:1px solid rgba(194,209,222,0.25)}
+.platforms{padding:3.5rem 0;background:var(--white);border-bottom:1px solid rgba(194,209,222,0.25)}
 .platforms .container{text-align:center}
-.platforms-label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:1.25rem}
-.platform-list{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:center}
+.platforms-label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:2rem}
+.platform-group{margin-bottom:1.5rem}
+.platform-group:last-child{margin-bottom:0}
+.platform-group-label{font-size:.5625rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:.625rem;opacity:.7}
+.platform-list{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;align-items:center}
 .platform-item{font-size:.8125rem;font-weight:600;color:var(--navy);opacity:.45;letter-spacing:.01em;transition:opacity .2s}
 .platform-item:hover{opacity:1}
 
@@ -205,6 +208,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
 .stat-number{font-size:1.25rem}
 .stat-label{font-size:.5625rem}
 .platform-list{gap:1.25rem}
+.platform-list{gap:1rem}
 .cta-contact{flex-direction:column;gap:.75rem}
 footer .container{flex-direction:column;gap:.5rem;text-align:center}
 }
@@ -246,7 +250,7 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <section class="stats">
   <div class="container">
     <div class="stat"><div class="stat-number">13+</div><div class="stat-label">Years Enterprise<br>Delivery</div></div>
-    <div class="stat"><div class="stat-number">$2T+</div><div class="stat-label">Financial Data<br>Reconciled</div></div>
+    <div class="stat"><div class="stat-number">$2T+</div><div class="stat-label">Financial Data<br>Architected</div></div>
     <div class="stat"><div class="stat-number">25,000+</div><div class="stat-label">Manual Hours<br>Eliminated</div></div>
     <div class="stat"><div class="stat-number">6</div><div class="stat-label">Industry<br>Verticals</div></div>
     <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Principal-Led<br>Engagements</div></div>
@@ -272,33 +276,33 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
     <div class="challenge-grid">
       <div class="challenge-card fade-in">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>Reporting that consumes instead of informs</h3>
-        <p>Finance teams spending days building reports by pulling from multiple systems, reconciling in spreadsheets, and delivering numbers that are already outdated by the time leadership sees them.</p>
+        <h3>Reporting delays that stall executive decisions</h3>
+        <p>Your finance team spends days pulling data from multiple systems, reconciling in spreadsheets, and delivering numbers that are outdated on arrival. Leadership cannot act because the reporting cycle is slower than the business cycle.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.07s">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Margin and profitability that remain invisible</h3>
-        <p>Total revenue is known. Total cost is known. But true margin by product line, by customer, by provider, by matter, or by region cannot be determined because the data lives in disconnected systems.</p>
+        <h3>Margin erosion that cannot be quantified</h3>
+        <p>Revenue is known. Total cost is known. But margin by product line, by customer, by provider, by matter, by region cannot be determined because the data is fragmented across systems that were never designed to talk to each other.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.14s">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-        <h3>Legacy ERP at end of life</h3>
-        <p>Organizations running AX 2012, GP, NAV, or aging platforms their vendor has stopped supporting. The migration is inevitable, but without a data strategy, the risk of disruption is significant.</p>
+        <h3>Legacy ERP creating operational and security risk</h3>
+        <p>Systems like AX 2012, GP, and NAV are past end-of-life with no security patches being issued. Every month without a migration strategy compounds the risk to operations, data integrity, and compliance posture.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.21s">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Skilled people absorbed by manual work</h3>
-        <p>Analysts copying data between systems. Controllers rebuilding the same workbooks monthly. Operations teams maintaining processes by hand that should have been automated years ago.</p>
+        <h3>High-value people absorbed by low-value work</h3>
+        <p>Analysts copying data between systems. Controllers rebuilding the same workbooks every month. Your most capable people spending the majority of their time on manual processes that should have been automated years ago.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.28s">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3>Multiple versions of the truth</h3>
-        <p>Sales reports one number, operations reports another, finance reports a third. Without a governed data layer, there is no authoritative source for the organization to align behind.</p>
+        <h3>No single version of the truth</h3>
+        <p>Sales, operations, and finance each report different numbers for the same metric. Without a governed, authoritative data layer, executive alignment is impossible. Every meeting begins with reconciling whose numbers are right.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.35s">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-        <h3>AI ambitions without a data foundation</h3>
-        <p>Forecasting, anomaly detection, and intelligent automation all require clean, structured, governed data. Most organizations are not there yet. The foundation must come first.</p>
+        <h3>AI and forecasting ambitions without the foundation</h3>
+        <p>Demand forecasting, anomaly detection, and intelligent automation all require clean, structured, governed data as input. Without the right data architecture in place, AI initiatives produce noise rather than insight.</p>
       </div>
     </div>
   </div>
@@ -314,7 +318,7 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       <div class="service-card fade-in">
         <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg></div>
         <h3>Data Architecture &amp; Engineering</h3>
-        <p>We connect ERP, billing, clinical, operational, and financial systems into a single governed platform. Medallion architecture, star schema modeling, role-based security, full lineage tracking, and data quality governance. One version of the truth for every stakeholder in the organization.</p>
+        <p>We connect ERP, billing, clinical, operational, and financial systems into a single governed platform. Medallion architecture, star schema dimensional modeling, DirectLake optimization, role-based security, full lineage tracking, and data quality governance. Architected for performance from the start so that capacity is never wasted and platform costs remain controlled as your data and user base grow.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.08s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg></div>
@@ -323,8 +327,8 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       </div>
       <div class="service-card fade-in" style="transition-delay:.16s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-        <h3>AI, Forecasting &amp; Automation</h3>
-        <p>Demand forecasting that improves purchasing accuracy. Anomaly detection that identifies errors before they reach financial statements. Process automation that returns tens of thousands of manual hours annually. AI applied to measurable business outcomes.</p>
+        <h3>AI, Forecasting &amp; Intelligent Automation</h3>
+        <p>Demand forecasting that transforms purchasing from intuition to precision. Anomaly detection that identifies errors before they reach financial statements. AI-powered analytics through fine-tuned Copilot integration, Power BI intelligent narratives, and custom models built on your governed data. Process automation that returns tens of thousands of manual hours annually to your highest-value people.</p>
       </div>
     </div>
   </div>
@@ -333,20 +337,56 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <!-- ═══ PLATFORMS ═══ -->
 <section class="platforms">
   <div class="container">
-    <div class="platforms-label fade-in">Platforms &amp; Technologies</div>
-    <div class="platform-list fade-in">
-      <span class="platform-item">Microsoft Fabric</span>
-      <span class="platform-item">Snowflake</span>
-      <span class="platform-item">Databricks</span>
-      <span class="platform-item">Azure Synapse</span>
-      <span class="platform-item">dbt</span>
-      <span class="platform-item">Power BI</span>
-      <span class="platform-item">Delta Lake</span>
-      <span class="platform-item">SQL Server</span>
-      <span class="platform-item">Python</span>
-      <span class="platform-item">Dynamics AX / D365</span>
-      <span class="platform-item">EPIC / EHR</span>
-      <span class="platform-item">UiPath</span>
+    <div class="platforms-label fade-in">Platforms, Systems &amp; Technologies</div>
+    <div class="platform-group fade-in">
+      <div class="platform-group-label">Data &amp; Analytics Platforms</div>
+      <div class="platform-list">
+        <span class="platform-item">Microsoft Fabric</span>
+        <span class="platform-item">DirectLake</span>
+        <span class="platform-item">Snowflake</span>
+        <span class="platform-item">Databricks</span>
+        <span class="platform-item">Azure Synapse</span>
+        <span class="platform-item">Delta Lake</span>
+        <span class="platform-item">Power BI</span>
+        <span class="platform-item">Dimensional Insights</span>
+        <span class="platform-item">dbt</span>
+        <span class="platform-item">SQL Server</span>
+        <span class="platform-item">Python</span>
+        <span class="platform-item">Azure DevOps</span>
+      </div>
+    </div>
+    <div class="platform-group fade-in" style="transition-delay:.07s">
+      <div class="platform-group-label">ERP &amp; Enterprise Systems</div>
+      <div class="platform-list">
+        <span class="platform-item">Dynamics AX / D365</span>
+        <span class="platform-item">SAP</span>
+        <span class="platform-item">Sage</span>
+        <span class="platform-item">NetSuite</span>
+        <span class="platform-item">Streamline</span>
+        <span class="platform-item">QuickBooks Enterprise</span>
+      </div>
+    </div>
+    <div class="platform-group fade-in" style="transition-delay:.14s">
+      <div class="platform-group-label">Healthcare &amp; Clinical</div>
+      <div class="platform-list">
+        <span class="platform-item">EPIC</span>
+        <span class="platform-item">Strata Decision Technology</span>
+        <span class="platform-item">EPSi</span>
+        <span class="platform-item">Sunrise / Allscripts</span>
+        <span class="platform-item">Eggplant</span>
+        <span class="platform-item">HL7 / FHIR</span>
+        <span class="platform-item">AHCA Datasets</span>
+      </div>
+    </div>
+    <div class="platform-group fade-in" style="transition-delay:.21s">
+      <div class="platform-group-label">Logistics, Automation &amp; AI</div>
+      <div class="platform-list">
+        <span class="platform-item">FedEx / UPS Integration</span>
+        <span class="platform-item">UiPath</span>
+        <span class="platform-item">Copilot / AI Studio</span>
+        <span class="platform-item">Azure OpenAI</span>
+        <span class="platform-item">GraphQL</span>
+      </div>
     </div>
   </div>
 </section>
@@ -360,8 +400,8 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
     <div class="industries-grid">
       <div class="industry-card fade-in">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Healthcare</h3></div>
-        <p>Enterprise health systems and multi-location physician practices. Financial decision support, regulatory compliance, competitive market intelligence, clinical analytics, per-provider profitability, and payer mix visibility. Our healthcare work includes reconciling billions in financial data across statewide provider landscapes and building the regulatory intelligence platforms that executive teams depend on.</p>
-        <div class="industry-tags"><span class="industry-tag">EPIC / EHR</span><span class="industry-tag">AHCA / Regulatory</span><span class="industry-tag">Strata / EPSi</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span><span class="industry-tag">Per-Provider Profitability</span></div>
+        <p>Enterprise health systems and multi-location physician practices. Financial decision support, regulatory compliance, competitive market intelligence, clinical analytics, per-provider profitability, and payer mix visibility. Our healthcare work includes architecting billions in financial data across statewide provider landscapes using AHCA regulatory datasets, building intelligence platforms across EPIC, Strata, and EPSi, and delivering the executive analytics that leadership teams depend on to benchmark performance and identify competitive positioning.</p>
+        <div class="industry-tags"><span class="industry-tag">EPIC / EHR</span><span class="industry-tag">AHCA / Regulatory</span><span class="industry-tag">Strata / EPSi</span><span class="industry-tag">Sunrise / Allscripts</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.08s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Financial Services</h3></div>
@@ -375,8 +415,8 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       </div>
       <div class="industry-card fade-in" style="transition-delay:.24s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div><h3>Distribution &amp; Import</h3></div>
-        <p>Inventory optimization, demand forecasting, warehouse efficiency, customer profitability, and SKU-level margin analysis. We connect order, inventory, and fulfillment data across the complete operation, enabling purchasing and pricing decisions grounded in data rather than assumption.</p>
-        <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">SKU Profitability</span><span class="industry-tag">AX / D365 Migration</span></div>
+        <p>Inventory optimization, demand forecasting, warehouse efficiency, customer profitability, SKU-level margin analysis, and logistics capacity management. We connect order, inventory, fulfillment, and carrier data across the complete operation, enabling purchasing, pricing, and shipping decisions grounded in data rather than assumption. Our architecture ensures capacity is never overburdened by inefficient data pipelines, keeping platform costs controlled as volume scales.</p>
+        <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">SKU Profitability</span><span class="industry-tag">Logistics &amp; Carrier Integration</span><span class="industry-tag">ERP Migration</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.32s">
         <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Legal &amp; Professional Services</h3></div>
@@ -425,15 +465,15 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
     <div class="results-grid">
       <div class="result-card fade-in">
         <div class="result-type">Enterprise Health System</div>
-        <div class="result-headline">Statewide Regulatory Intelligence Platform</div>
-        <p class="result-body">Designed and built a financial decision-support platform reconciling $2T+ in data across Florida's complete provider landscape. Replaced weeks of manual regulatory reporting with automated executive dashboards. Enabled leadership to benchmark organizational performance, identify competitive positioning, and respond to regulatory changes in real time.</p>
-        <div class="result-metrics"><span class="result-metric">$2T+ reconciled</span><span class="result-metric">Manual reporting eliminated</span><span class="result-metric">Real-time competitive intelligence</span></div>
+        <div class="result-headline">Statewide Regulatory Intelligence &amp; Financial Decision Support</div>
+        <p class="result-body">Designed and built a financial decision-support platform reconciling $2T+ in data across Florida's complete provider landscape using AHCA regulatory datasets. Architected competitive intelligence models enabling executive leadership to benchmark organizational performance against every provider in the state. Led full-lifecycle system migrations across EPIC, Strata, EPSi, and Dimensional Insights, replacing weeks of manual regulatory reporting with automated executive dashboards and real-time competitive positioning.</p>
+        <div class="result-metrics"><span class="result-metric">$2T+ architected</span><span class="result-metric">Statewide AHCA analytics</span><span class="result-metric">Multi-system migration</span></div>
       </div>
       <div class="result-card fade-in" style="transition-delay:.07s">
-        <div class="result-type">National Food Importer &amp; Distributor</div>
-        <div class="result-headline">End-of-Life ERP to Modern Lakehouse</div>
-        <p class="result-body">Leading a full data modernization initiative for a national food importer operating on end-of-life AX 2012. Architecting a modern lakehouse on Microsoft Fabric with executive dashboards surfacing real-time margin by product, customer, and region. Delivering visibility that did not previously exist at any level of the organization.</p>
-        <div class="result-metrics"><span class="result-metric">10,000+ SKUs</span><span class="result-metric">AX 2012 migration</span><span class="result-metric">Real-time margin visibility</span></div>
+        <div class="result-type">Global Chocolate &amp; Confectionery Company</div>
+        <div class="result-headline">Data Modernization, AI Forecasting &amp; Executive Intelligence</div>
+        <p class="result-body">Modernized the complete data architecture for an internationally operating chocolate and confectionery company. Built a governed lakehouse with medallion architecture and star schema modeling, delivering executive dashboards for real-time margin by product, customer, and region. Implemented AI-driven demand forecasting and inventory intelligence across global operations, transforming purchasing and production planning from intuition-based to data-driven.</p>
+        <div class="result-metrics"><span class="result-metric">Global operations</span><span class="result-metric">AI demand forecasting</span><span class="result-metric">Real-time margin visibility</span></div>
       </div>
       <div class="result-card fade-in" style="transition-delay:.14s">
         <div class="result-type">Physician Practices</div>
@@ -478,14 +518,14 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       </div>
       <div>
         <div class="section-label">The firm</div>
-        <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem">Coolidge Advisory is a data architecture and analytics consultancy that has delivered enterprise-grade platforms across healthcare systems, physician practices, financial institutions, law firms, manufacturers, and distributors across the United States and internationally. Our practice spans six industries and ranges from regional mid-market organizations to statewide enterprise operations involving billions in reconciled financial data.</p>
+        <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem">Coolidge Advisory is a data architecture and analytics consultancy that has delivered enterprise-grade platforms across healthcare systems, physician practices, financial institutions, law firms, manufacturers, and distributors across the United States and internationally. Our practice spans six industries and ranges from regional mid-market organizations to statewide enterprise operations involving billions in architected financial data.</p>
         <p style="font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem">We operate a deliberately principal-led model. Every engagement, from initial architecture through production deployment, is led and delivered by senior practitioners who build what they design. The person who sets the strategy is the same person writing the code and standing behind the results.</p>
         <div style="border-top:1px solid rgba(194,209,222,0.35);padding-top:1.5rem">
           <div class="section-label">Leadership</div>
           <div class="about-name">George Bommersheim</div>
           <div class="about-title">Founding Principal</div>
           <p>George founded Coolidge Advisory on a conviction earned over more than a decade of enterprise delivery: the highest-quality data platforms are designed by people who also build them. Strategy without engineering produces slide decks. Engineering without strategy produces technical debt. This firm delivers both.</p>
-          <p>His career spans building statewide regulatory intelligence platforms reconciling $2T+ in financial data, leading full-lifecycle system migrations across EPIC, Strata, and EPSi, and delivering analytics platforms for physician practices, law firms, manufacturers, and distributors across the United States, Europe, Australia, and New Zealand. Before healthcare, he built and managed international supply chain operations across five European countries, including Switzerland.</p>
+          <p>His career spans building statewide regulatory intelligence platforms architecting $2T+ in financial data, leading full-lifecycle system migrations across EPIC, Strata, EPSi, and Dimensional Insights, and delivering analytics platforms for physician practices, law firms, manufacturers, and distributors across the United States, Europe, Australia, and New Zealand. Before healthcare, he built and managed international supply chain and logistics operations across five European countries, including Switzerland, with direct experience in carrier integration, capacity planning, and cost optimization across global fulfillment networks.</p>
           <p style="margin-bottom:0">George holds dual master&#x2019;s degrees in Business Administration and Healthcare Administration, both earned with honors. He carries certifications in Business Intelligence (CSBI) and Lean Six Sigma (LSSGB). His background across both the technical and executive dimensions of data strategy is what allows Coolidge Advisory to engage at the C-suite level while delivering at the engineering level.</p>
         </div>
       </div>
@@ -517,20 +557,4 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 <script>
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 16);
-});
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -32px 0px' });
-document.querySelectorAll('.fade-in').forEach(function(el) {
-  observer.observe(el);
-});
-</script>
-
-</body>
-</html>
+  nav.classList.toggle('scrolled', window.
