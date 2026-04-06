@@ -165,6 +165,19 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 
 /* ABOUT */
 .about{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(194,209,222,0.25)}
+
+/* INSIGHTS */
+.insights{padding:5.5rem 0;background:var(--white);border-top:1px solid rgba(194,209,222,0.25)}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.insight-card{padding:1.75rem 1.5rem;border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s;display:flex;flex-direction:column}
+.insight-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(27,58,92,0.05);transform:translateY(-1px)}
+.insight-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem}
+.insight-tag{font-size:.5625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(46,117,182,0.06);padding:3px 8px;border-radius:3px}
+.insight-date{font-size:.6875rem;color:var(--text-secondary);opacity:.6}
+.insight-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:.5rem;flex-grow:1}
+.insight-card p{font-size:.8125rem;color:var(--text-secondary);line-height:1.7}
+.insights-more{text-align:center;margin-top:2.5rem}
+.insights-more a{font-size:.8125rem;font-weight:600;color:var(--accent);letter-spacing:.02em}
 .about-inner{display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:start}
 .about-left{display:flex;flex-direction:column;align-items:center;gap:1.25rem;flex-shrink:0}
 .about-mark{width:120px;height:120px;background:var(--navy);border-radius:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:24px}
@@ -201,7 +214,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   .menu-btn{display:block}
   .challenge-grid,.services-grid,.method-grid{grid-template-columns:1fr}
   .method-step:not(:last-child)::after{display:none}
-  .industries-grid,.diff-grid,.results-grid{grid-template-columns:1fr}
+  .industries-grid,.diff-grid,.results-grid,.insights-grid{grid-template-columns:1fr}
   .about-inner{grid-template-columns:1fr}
   .about-left{margin:0 auto 1.5rem}
   .hero{padding:7.5rem 0 3.5rem}
@@ -229,6 +242,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
       <a href="#industries">Industries</a>
       <a href="#approach">Approach</a>
       <a href="#results">Engagements</a>
+      <a href="#insights">Insights</a>
       <a href="#about">Firm</a>
       <a href="#contact" class="nav-cta">Schedule a Briefing</a>
     </div>
@@ -501,6 +515,89 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   </div>
 </section>
 
+<section class="insights" id="insights">
+  <div class="container">
+    <div class="section-label fade-in">Insights</div>
+    <h2 class="section-title fade-in">Perspectives on data,<br>architecture, and AI.</h2>
+    <p class="section-subtitle fade-in">Thought leadership from our practice. Technical depth for the CTO. Business impact for the CEO. Written by the people who build the platforms.</p>
+    <div class="insights-grid">
+
+      <div class="insight-card fade-in">
+        <div class="insight-meta"><span class="insight-tag">ERP Migration</span><span class="insight-date">Mar 2026</span></div>
+        <h3>What Your AX 2012 Data Migration Actually Requires</h3>
+        <p>AX 2012 R3 exited extended support in January 2023. If you are still running it, here is what a data-first migration strategy looks like, what most implementation partners get wrong, and why the data layer should be built before the ERP is replaced.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.05s">
+        <div class="insight-meta"><span class="insight-tag">Analytics</span><span class="insight-date">Mar 2026</span></div>
+        <h3>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin</h3>
+        <p>Most Power BI implementations connect directly to source systems without a governed semantic layer. The result is dashboards that look impressive but produce numbers nobody can certify. Here is how to fix it.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.1s">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <h3>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost</h3>
+        <p>The choice between DirectLake and Import Mode in Microsoft Fabric has a direct impact on capacity consumption, refresh costs, and query performance. Most organizations make this decision by default. It should be made by design.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.05s">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <h3>Medallion Architecture Is Not Optional. It Is the Foundation.</h3>
+        <p>Bronze, Silver, Gold is not a buzzword. It is the pattern that separates data platforms that scale from data platforms that collapse under their own weight. Why every enterprise analytics initiative should start here.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.1s">
+        <div class="insight-meta"><span class="insight-tag">Data Modeling</span><span class="insight-date">Jan 2026</span></div>
+        <h3>Star Schema for the CFO: Why Dimensional Modeling Is a Business Decision, Not a Technical One</h3>
+        <p>Your CFO does not care about fact tables and dimensions. They care about seeing margin by product, by customer, by region, in a format they can trust. Star schema is how that becomes possible. Here is the business case.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.15s">
+        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Jan 2026</span></div>
+        <h3>Your Data Is Not Ready for AI. Here Is What "Ready" Actually Looks Like.</h3>
+        <p>Every vendor is selling AI. Very few are asking whether your data foundation can support it. Demand forecasting, anomaly detection, and Copilot integration all require structured, governed, quality-controlled inputs. Without that, AI produces noise.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.05s">
+        <div class="insight-meta"><span class="insight-tag">Healthcare</span><span class="insight-date">Dec 2025</span></div>
+        <h3>AHCA Data as Competitive Intelligence: What Most Health Systems Are Missing</h3>
+        <p>Florida's AHCA datasets contain the financial and operational fingerprint of every provider in the state. Most health systems use this data for compliance. The ones gaining market share use it for competitive positioning.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.1s">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Dec 2025</span></div>
+        <h3>The Hidden Cost of Bad Data Architecture: Why Capacity Overruns Are an Engineering Problem, Not a Budget Problem</h3>
+        <p>When your Fabric or Snowflake bill doubles in six months, the instinct is to reduce usage. The real problem is usually upstream: unnecessary data duplication, missing partitioning, or Import Mode where DirectLake should be. Architecture determines cost.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.15s">
+        <div class="insight-meta"><span class="insight-tag">Distribution</span><span class="insight-date">Nov 2025</span></div>
+        <h3>Demand Forecasting for Distributors: Moving from Gut Instinct to Data-Driven Purchasing</h3>
+        <p>Most mid-market distributors still make purchasing decisions based on experience and historical patterns held in someone's head. AI-driven demand forecasting on governed data changes that equation, reducing overstock and improving fill rates simultaneously.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.05s">
+        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Nov 2025</span></div>
+        <h3>Copilot in Power BI: What It Can Do, What It Cannot, and What Your Data Needs First</h3>
+        <p>Microsoft Copilot in Power BI promises natural language analytics for business users. The promise is real, but only if the underlying data model is properly structured. A star schema with clean business logic is the prerequisite. Without it, Copilot hallucinates.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.1s">
+        <div class="insight-meta"><span class="insight-tag">Strategy</span><span class="insight-date">Oct 2025</span></div>
+        <h3>ERP Replacement Is Not a Data Strategy. Build the Data Layer First.</h3>
+        <p>Organizations planning an ERP migration often assume the new system will solve their reporting and analytics problems. It will not. The data platform should be designed independently of the ERP so that it survives the next migration too.</p>
+      </div>
+
+      <div class="insight-card fade-in" style="transition-delay:.15s">
+        <div class="insight-meta"><span class="insight-tag">Governance</span><span class="insight-date">Oct 2025</span></div>
+        <h3>Data Governance Is Not a Policy Document. It Is an Architecture Pattern.</h3>
+        <p>Most governance initiatives fail because they start with policies and committees instead of engineering. Row-level security, column masking, lineage tracking, and quality gates should be built into the platform from day one, not bolted on after the fact.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="about" id="about">
   <div class="container">
     <div class="about-inner fade-in">
@@ -529,10 +626,10 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   <div class="container">
     <h2>Start with a briefing.</h2>
     <p>A focused conversation about your current data landscape, the decisions your leadership team needs to make, and what a modern data infrastructure would look like for your organization.</p>
-    <a href="/cdn-cgi/l/email-protection#e1888f878ea1828e8e8d8885868480859788928e9398cf828e8c" class="cta-btn"><span class="__cf_email__" data-cfemail="4f262129200f2c202023262b282a2e2b39263c203d36612c2022">[email&#160;protected]</span></a>
+    <a href="mailto:info@coolidgeadvisory.com" class="cta-btn">info@coolidgeadvisory.com</a>
     <div class="cta-contact">
       <a href="tel:+19419151863">(941) 915-1863</a>
-      <a href="/cdn-cgi/l/email-protection#452c2b232a05262a2a292c2122202421332c362a373c6b262a28"><span class="__cf_email__" data-cfemail="1d74737b725d7e72727174797a787c796b746e726f64337e7270">[email&#160;protected]</span></a>
+      <a href="mailto:info@coolidgeadvisory.com">info@coolidgeadvisory.com</a>
       <a>Tampa, FL &middot; Serving Clients Worldwide</a>
     </div>
   </div>
@@ -545,7 +642,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* Enable fade-in animations only after JS confirms observer works */
 document.documentElement.classList.add('js-ready');
 
