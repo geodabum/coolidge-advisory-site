@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coolidge Advisory | Data Architecture · Analytics · AI</title>
+<title>Coolidge Advisory | Data Architecture &middot; Analytics &middot; AI</title>
 <meta name="description" content="Coolidge Advisory designs and builds enterprise data platforms for organizations that have outgrown their reporting, their ERP, or both. 13+ years of delivery across healthcare, financial services, legal, manufacturing, and distribution.">
-<meta property="og:title" content="Coolidge Advisory | Data Architecture · Analytics · AI">
+<meta property="og:title" content="Coolidge Advisory | Data Architecture &middot; Analytics &middot; AI">
 <meta property="og:description" content="Enterprise data platforms built on 13+ years of cross-industry delivery. We build the infrastructure that turns operational data into executive clarity.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://coolidgeadvisory.com">
 <meta property="og:image" content="https://coolidgeadvisory.com/coolidge-icon-512.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolidge Advisory | Data Architecture · Analytics · AI">
+<meta name="twitter:title" content="Coolidge Advisory | Data Architecture &middot; Analytics &middot; AI">
 <meta name="twitter:description" content="Enterprise data platforms built on 13+ years of cross-industry delivery.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -20,20 +20,23 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;
---text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;
---serif:'Libre Baskerville',Georgia,serif;
---sans:'DM Sans',system-ui,sans-serif;
+  --navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;
+  --text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;
+  --serif:'Libre Baskerville',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:none;transition:color .2s}
 a:hover{color:var(--navy)}
 .container{max-width:1100px;margin:0 auto;padding:0 2rem}
-.fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* ── NAV ── */
+/* Fade-in with CSS fallback: visible by default, JS adds .js-ready to enable animation */
+.fade-in{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .7s ease}
+.js-ready .fade-in{opacity:0;transform:translateY(18px)}
+.js-ready .fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25);transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 1px 20px rgba(27,58,92,0.06)}
 nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
@@ -47,7 +50,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
 .menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
 
-/* ── HERO ── */
+/* HERO */
 .hero{padding:10rem 0 5.5rem;background:var(--navy-deep);position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-40%;right:-15%;width:70%;height:180%;background:radial-gradient(ellipse at center,rgba(46,117,182,0.08) 0%,transparent 65%);pointer-events:none}
 .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(46,117,182,0.15),transparent)}
@@ -61,35 +64,35 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .hero-cta svg{width:14px;height:14px;transition:transform .25s}
 .hero-cta:hover svg{transform:translateX(3px)}
 
-/* ── STATS ── */
+/* STATS */
 .stats{padding:2.75rem 0;background:var(--navy);border-bottom:1px solid rgba(133,183,235,0.08)}
 .stats .container{display:flex;justify-content:center;gap:3.5rem;flex-wrap:wrap}
 .stat{text-align:center;min-width:120px}
 .stat-number{font-family:var(--serif);font-size:1.6rem;color:var(--white);font-weight:700;line-height:1.2}
 .stat-label{font-size:.625rem;color:rgba(133,183,235,0.6);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;font-weight:500;line-height:1.4}
 
-/* ── TRUST ── */
+/* TRUST */
 .trust{padding:2rem 0;border-bottom:1px solid rgba(194,209,222,0.25)}
 .trust .container{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;align-items:center}
 .trust-item{font-size:.75rem;color:var(--text-secondary);font-weight:500;letter-spacing:.03em}
 .trust-sep{width:3px;height:3px;border-radius:50%;background:var(--border);flex-shrink:0}
 
-/* ── SECTION COMMON ── */
+/* SECTION COMMON */
 .section-label{font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.875rem}
 .section-title{font-family:var(--serif);font-size:clamp(1.625rem,3.2vw,2.25rem);color:var(--navy);line-height:1.25;margin-bottom:.875rem;max-width:560px}
 .section-subtitle{font-size:1rem;color:var(--text-secondary);max-width:540px;margin-bottom:3rem;line-height:1.85}
 
-/* ── CHALLENGE ── */
+/* CHALLENGE */
 .challenge{padding:5.5rem 0;background:var(--white)}
 .challenge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
-.challenge-card{padding:2rem 1.75rem;border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s;position:relative}
+.challenge-card{padding:2rem 1.75rem;border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s}
 .challenge-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(27,58,92,0.05);transform:translateY(-1px)}
 .challenge-icon{width:40px;height:40px;background:var(--light);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.125rem}
 .challenge-icon svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .challenge-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.35}
 .challenge-card p{font-size:.8125rem;color:var(--text-secondary);line-height:1.75}
 
-/* ── SERVICES ── */
+/* SERVICES */
 .services{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(194,209,222,0.25);border-bottom:1px solid rgba(194,209,222,0.25)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem}
 .service-card{padding:2.25rem 1.75rem;background:var(--white);border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s;position:relative;overflow:hidden}
@@ -101,7 +104,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .service-card h3{font-size:1.0625rem;font-weight:700;color:var(--navy);margin-bottom:.625rem;letter-spacing:-.01em}
 .service-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75}
 
-/* ── PLATFORMS ── */
+/* PLATFORMS */
 .platforms{padding:3.5rem 0;background:var(--white);border-bottom:1px solid rgba(194,209,222,0.25)}
 .platforms .container{text-align:center}
 .platforms-label{font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:2rem}
@@ -112,7 +115,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .platform-item{font-size:.8125rem;font-weight:600;color:var(--navy);opacity:.45;letter-spacing:.01em;transition:opacity .2s}
 .platform-item:hover{opacity:1}
 
-/* ── INDUSTRIES ── */
+/* INDUSTRIES */
 .industries{padding:5.5rem 0;background:var(--white)}
 .industries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .industry-card{padding:2rem 1.75rem;border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s}
@@ -125,7 +128,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .industry-tags{display:flex;flex-wrap:wrap;gap:.375rem}
 .industry-tag{font-size:.6875rem;font-weight:600;color:var(--accent);background:rgba(46,117,182,0.06);padding:3px 10px;border-radius:100px;letter-spacing:.02em}
 
-/* ── METHODOLOGY ── */
+/* METHODOLOGY */
 .methodology{padding:5.5rem 0;background:var(--navy-deep)}
 .methodology .section-label{color:rgba(133,183,235,0.6)}
 .methodology .section-title{color:var(--white)}
@@ -141,7 +144,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .method-step h3{font-size:1.0625rem;font-weight:700;color:var(--white);margin-bottom:.625rem}
 .method-step p{font-size:.8125rem;color:rgba(255,255,255,0.38);line-height:1.75}
 
-/* ── RESULTS ── */
+/* RESULTS */
 .results{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(194,209,222,0.25)}
 .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .result-card{padding:2rem 1.75rem;background:var(--white);border-radius:8px;border-left:3px solid var(--accent);transition:all .3s}
@@ -152,7 +155,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .result-metrics{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.875rem}
 .result-metric{font-size:.6875rem;font-weight:700;color:var(--navy);background:var(--light);padding:4px 12px;border-radius:4px;letter-spacing:.01em}
 
-/* ── DIFF ── */
+/* DIFF */
 .diff{padding:5.5rem 0;background:var(--white);border-top:1px solid rgba(194,209,222,0.25)}
 .diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .diff-card{padding:2rem 1.75rem;border-left:2px solid var(--accent);background:var(--light);border-radius:0 6px 6px 0;transition:border-color .2s}
@@ -160,7 +163,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .diff-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
 .diff-card p{font-size:.875rem;color:var(--text-secondary);line-height:1.75}
 
-/* ── ABOUT ── */
+/* ABOUT */
 .about{padding:5.5rem 0;background:var(--light);border-top:1px solid rgba(194,209,222,0.25)}
 .about-inner{display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:start}
 .about-left{display:flex;flex-direction:column;align-items:center;gap:1.25rem;flex-shrink:0}
@@ -175,7 +178,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .about-title{font-size:.875rem;color:var(--accent);font-weight:600;margin-bottom:1.25rem}
 .about p{font-size:.9375rem;color:var(--text-secondary);line-height:1.8;margin-bottom:.875rem}
 
-/* ── CTA ── */
+/* CTA */
 .cta{padding:5.5rem 0;background:var(--navy-deep);text-align:center;position:relative}
 .cta::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(46,117,182,0.15),transparent)}
 .cta h2{font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2rem);color:var(--white);margin-bottom:.875rem}
@@ -186,31 +189,30 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .cta-contact a{color:rgba(255,255,255,0.35);font-size:.8125rem;transition:color .2s;letter-spacing:.01em}
 .cta-contact a:hover{color:var(--white)}
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
 footer .container{display:flex;justify-content:space-between;align-items:center}
 footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
 
-/* ── MOBILE ── */
+/* MOBILE */
 @media(max-width:768px){
-.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-.nav-links.open{display:flex}
-.menu-btn{display:block}
-.services-grid,.method-grid,.challenge-grid{grid-template-columns:1fr}
-.method-step:not(:last-child)::after{display:none}
-.industries-grid,.diff-grid,.results-grid{grid-template-columns:1fr}
-.about-inner{grid-template-columns:1fr}
-.about-left{margin:0 auto 1.5rem}
-.hero{padding:7.5rem 0 3.5rem}
-.trust-sep{display:none}
-.stats .container{gap:1.5rem}
-.stat{min-width:100px}
-.stat-number{font-size:1.25rem}
-.stat-label{font-size:.5625rem}
-.platform-list{gap:1.25rem}
-.platform-list{gap:1rem}
-.cta-contact{flex-direction:column;gap:.75rem}
-footer .container{flex-direction:column;gap:.5rem;text-align:center}
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:var(--white);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .challenge-grid,.services-grid,.method-grid{grid-template-columns:1fr}
+  .method-step:not(:last-child)::after{display:none}
+  .industries-grid,.diff-grid,.results-grid{grid-template-columns:1fr}
+  .about-inner{grid-template-columns:1fr}
+  .about-left{margin:0 auto 1.5rem}
+  .hero{padding:7.5rem 0 3.5rem}
+  .trust-sep{display:none}
+  .stats .container{gap:1.5rem}
+  .stat{min-width:100px}
+  .stat-number{font-size:1.25rem}
+  .stat-label{font-size:.5625rem}
+  .platform-list{gap:1rem}
+  .cta-contact{flex-direction:column;gap:.75rem}
+  footer .container{flex-direction:column;gap:.5rem;text-align:center}
 }
 </style>
 </head>
@@ -236,7 +238,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="container">
     <div class="hero-eyebrow">Data Architecture &middot; Analytics &middot; AI</div>
@@ -246,7 +247,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ STATS ═══ -->
 <section class="stats">
   <div class="container">
     <div class="stat"><div class="stat-number">13+</div><div class="stat-label">Years Enterprise<br>Delivery</div></div>
@@ -267,12 +267,11 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ THE CHALLENGE ═══ -->
 <section class="challenge">
   <div class="container">
     <div class="section-label fade-in">The challenge</div>
     <h2 class="section-title fade-in">The decisions are urgent.<br>The data is not ready.</h2>
-    <p class="section-subtitle fade-in">These are the conditions we encounter in nearly every engagement. They are not technology problems. They are infrastructure problems, and they compound over time.</p>
+    <p class="section-subtitle fade-in">These are the conditions we encounter in nearly every engagement. They are not technology problems. They are infrastructure problems, and they compound every quarter.</p>
     <div class="challenge-grid">
       <div class="challenge-card fade-in">
         <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
@@ -308,7 +307,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ CAPABILITIES ═══ -->
 <section class="services" id="capabilities">
   <div class="container">
     <div class="section-label fade-in">Capabilities</div>
@@ -323,7 +321,7 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
       <div class="service-card fade-in" style="transition-delay:.08s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg></div>
         <h3>Analytics &amp; Executive Reporting</h3>
-        <p>Dashboards that surface true margin by product, customer, region, provider, or matter. Operational reports that update automatically. Financial analytics your controller can certify and your board can trust. Every metric traced back to its source.</p>
+        <p>Dashboards that surface true margin by product, customer, region, provider, or matter. Operational reports that update automatically. Financial analytics your controller can certify and your board can trust. Every metric traced back to its source with full audit lineage.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.16s">
         <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
@@ -334,7 +332,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ PLATFORMS ═══ -->
 <section class="platforms">
   <div class="container">
     <div class="platforms-label fade-in">Platforms, Systems &amp; Technologies</div>
@@ -391,7 +388,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ INDUSTRIES ═══ -->
 <section class="industries" id="industries">
   <div class="container">
     <div class="section-label fade-in">Industries</div>
@@ -427,7 +423,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ METHODOLOGY ═══ -->
 <section class="methodology" id="approach">
   <div class="container">
     <div class="section-label fade-in">Our approach</div>
@@ -456,7 +451,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ RESULTS ═══ -->
 <section class="results" id="results">
   <div class="container">
     <div class="section-label fade-in">Select engagements</div>
@@ -491,7 +485,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ WHY COOLIDGE ═══ -->
 <section class="diff" id="why">
   <div class="container">
     <div class="section-label fade-in">Why Coolidge</div>
@@ -508,7 +501,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ THE FIRM ═══ -->
 <section class="about" id="about">
   <div class="container">
     <div class="about-inner fade-in">
@@ -533,7 +525,6 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
   </div>
 </section>
 
-<!-- ═══ CTA ═══ -->
 <section class="cta" id="contact">
   <div class="container">
     <h2>Start with a briefing.</h2>
@@ -555,6 +546,34 @@ footer .container{flex-direction:column;gap:.5rem;text-align:center}
 </footer>
 
 <script>
+/* Enable fade-in animations only after JS confirms observer works */
+document.documentElement.classList.add('js-ready');
+
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.
+  nav.classList.toggle('scrolled', window.scrollY > 16);
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  observer.observe(el);
+});
+
+/* Safety fallback: if observer hasn't fired within 3s, show everything */
+setTimeout(function() {
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}, 3000);
+</script>
+
+</body>
+</html>
