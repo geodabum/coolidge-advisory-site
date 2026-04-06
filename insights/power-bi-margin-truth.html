@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin | Coolidge Advisory</title>
+<meta name="description" content="Most Power BI implementations skip the semantic layer. The result is dashboards that look polished but produce numbers your CFO cannot certify.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--navy)}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
+.nav-logo svg{width:30px;height:30px;flex-shrink:0}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
+.article-header{padding:8rem 0 3rem;background:var(--navy-deep)}
+.article-header .container{max-width:760px}
+.article-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.article-tag{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(133,183,235,0.85);background:rgba(46,117,182,0.15);padding:4px 10px;border-radius:3px}
+.article-date{font-size:.75rem;color:rgba(255,255,255,0.35)}
+.article-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;font-weight:400;margin-bottom:1.25rem}
+.article-header p{font-size:1.0625rem;color:rgba(255,255,255,0.5);line-height:1.85;max-width:600px}
+.article-body{padding:3.5rem 0 5rem}
+.article-body .container{max-width:760px}
+.article-body h2{font-family:var(--serif);font-size:1.375rem;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.3}
+.article-body p{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:1.25rem}
+.article-body strong{color:var(--text)}
+.article-body ul{margin:0 0 1.25rem 1.5rem}
+.article-body li{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:.5rem}
+.article-cta{padding:4rem 0;background:var(--light);text-align:center;border-top:1px solid rgba(194,209,222,0.25)}
+.article-cta h2{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin-bottom:.75rem}
+.article-cta p{font-size:.9375rem;color:var(--text-secondary);margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
+.article-cta a.btn{display:inline-flex;background:var(--navy);color:var(--white);padding:.75rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s}
+.article-cta a.btn:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
+.back-link:hover{color:var(--white)}
+footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
+footer .container{display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
+@media(max-width:768px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .article-header{padding:6.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav><div class="container">
+<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
+<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
+<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div></nav>
+<section class="article-header"><div class="container">
+<a href="./" class="back-link">&larr; All Insights</a>
+<div class="article-meta"><span class="article-tag">Analytics</span><span class="article-date">March 2026</span></div>
+<h1>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin</h1>
+<p>The dashboards look polished. The visualizations are professional. But when your CFO asks whether the margin numbers are certifiable, nobody in the room can say yes.</p>
+</div></section>
+<section class="article-body"><div class="container">
+<h2>The dashboard is not the problem. The model underneath it is.</h2>
+<p>Power BI is an exceptionally capable analytics platform. The issue is rarely the tool itself. The issue is what sits between the tool and your source systems. In most organizations, that layer is either missing entirely or built on assumptions that nobody has validated.</p>
+<p>When Power BI connects directly to an ERP database or a collection of spreadsheets, it inherits every inconsistency, duplication, and naming conflict in that data. The dashboard renders beautifully, but the numbers it displays are only as trustworthy as the raw data feeding them. And in most organizations, that raw data has never been governed.</p>
+
+<h2>The semantic layer gap</h2>
+<p>A semantic layer is the business logic that sits between your raw data and your dashboards. It defines what "revenue" means, how "margin" is calculated, which customers are "active," and how regions map to territories. Without this layer, every dashboard author makes their own assumptions. Sales calculates margin one way. Finance calculates it another. Operations uses a third definition. All three dashboards show different numbers for the same metric.</p>
+<p>This is the root cause of the most common complaint executives have about their analytics: "Nobody agrees on the numbers."</p>
+
+<h2>What a governed analytics architecture looks like</h2>
+<p>The fix is not a better dashboard. It is a better data model. Specifically, a star schema dimensional model built on validated, conformed data with business logic defined once and consumed everywhere.</p>
+<p>In this architecture, the source data flows through a medallion pattern (Bronze, Silver, Gold) where it is cleaned, deduplicated, and standardized before it ever reaches a dashboard. Business rules are applied at the Gold layer and encoded in the semantic model. Every report, every dashboard, and every AI model that consumes this data works from the same definitions.</p>
+
+<h2>The margin test</h2>
+<p>Here is a simple test: Ask your CFO to certify the margin numbers on your current dashboards. If they hesitate, the issue is not the dashboard. It is the absence of a governed data layer underneath it. The gap between "we have Power BI" and "we have trustworthy analytics" is the architecture that connects them.</p>
+
+<h2>The business impact</h2>
+<p>Organizations that invest in a proper semantic layer and dimensional model typically see three outcomes. First, report generation time drops dramatically because the data is pre-modeled and pre-validated. Second, executive trust in the numbers increases because every metric is traceable back to its source. Third, the total cost of analytics decreases because you are maintaining one governed model instead of dozens of competing spreadsheets and ad hoc queries.</p>
+<p>The dashboard is the visible part. The architecture underneath it is the part that determines whether your leadership team can actually make decisions on the numbers it shows.</p>
+</div></section>
+<section class="article-cta"><div class="container">
+<h2>Ready to discuss your data architecture?</h2>
+<p>We start with a focused conversation about your current data landscape and what a modern infrastructure would look like for your organization.</p>
+<a href="mailto:info@coolidgeadvisory.com" class="btn">info@coolidgeadvisory.com</a>
+</div></section>
+<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><p>Tampa, Florida</p></div></footer>
+</body></html>

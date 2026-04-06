@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost | Coolidge Advisory</title>
+<meta name="description" content="The choice between DirectLake and Import Mode in Microsoft Fabric directly impacts capacity, cost, and performance. Most organizations make this decision by default.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--navy)}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
+.nav-logo svg{width:30px;height:30px;flex-shrink:0}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
+.article-header{padding:8rem 0 3rem;background:var(--navy-deep)}
+.article-header .container{max-width:760px}
+.article-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.article-tag{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(133,183,235,0.85);background:rgba(46,117,182,0.15);padding:4px 10px;border-radius:3px}
+.article-date{font-size:.75rem;color:rgba(255,255,255,0.35)}
+.article-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;font-weight:400;margin-bottom:1.25rem}
+.article-header p{font-size:1.0625rem;color:rgba(255,255,255,0.5);line-height:1.85;max-width:600px}
+.article-body{padding:3.5rem 0 5rem}
+.article-body .container{max-width:760px}
+.article-body h2{font-family:var(--serif);font-size:1.375rem;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.3}
+.article-body p{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:1.25rem}
+.article-body strong{color:var(--text)}
+.article-body ul{margin:0 0 1.25rem 1.5rem}
+.article-body li{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:.5rem}
+.article-cta{padding:4rem 0;background:var(--light);text-align:center;border-top:1px solid rgba(194,209,222,0.25)}
+.article-cta h2{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin-bottom:.75rem}
+.article-cta p{font-size:.9375rem;color:var(--text-secondary);margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
+.article-cta a.btn{display:inline-flex;background:var(--navy);color:var(--white);padding:.75rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s}
+.article-cta a.btn:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
+.back-link:hover{color:var(--white)}
+footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
+footer .container{display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
+@media(max-width:768px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .article-header{padding:6.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav><div class="container">
+<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
+<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
+<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div></nav>
+<section class="article-header"><div class="container">
+<a href="./" class="back-link">&larr; All Insights</a>
+<div class="article-meta"><span class="article-tag">Architecture</span><span class="article-date">February 2026</span></div>
+<h1>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost</h1>
+<p>Most organizations running Microsoft Fabric are paying more than they need to because a single architecture decision was made by default instead of by design.</p>
+</div></section>
+<section class="article-body"><div class="container">
+<h2>Two modes. Very different cost profiles.</h2>
+<p>Microsoft Fabric offers two primary consumption patterns for Power BI semantic models: Import Mode and DirectLake. Import Mode copies data from the lakehouse into the Power BI dataset, requiring scheduled refreshes and consuming capacity units (CUs) during each refresh cycle. DirectLake reads data directly from Delta/Parquet files in OneLake, eliminating the need for data duplication and significantly reducing refresh overhead.</p>
+<p>The cost implications are substantial. An Import Mode dataset on a large table might consume 15 to 30 minutes of F-capacity during each refresh. Multiply that by the number of datasets and the refresh frequency, and the capacity bill grows quickly. DirectLake, when properly architected, eliminates this entire cost category.</p>
+
+<h2>Why most organizations default to Import Mode</h2>
+<p>Import Mode is the historical default in Power BI. It is what most developers know. It is what most tutorials teach. When organizations migrate to Fabric, they often carry their existing Import Mode patterns forward without evaluating whether DirectLake is viable. In many cases, it is not only viable but dramatically superior.</p>
+<p>The barrier to DirectLake adoption is not the technology. It is the data architecture. DirectLake requires that the underlying data be stored in a specific format (Delta/Parquet), properly partitioned, and organized in a way that enables efficient columnar reads. If the Gold layer of your lakehouse is well-architected, DirectLake works naturally. If the Gold layer is poorly organized, DirectLake falls back to Import Mode silently, and you pay the cost of both patterns.</p>
+
+<h2>The architecture requirements for DirectLake</h2>
+<p>Getting DirectLake right requires attention to several architectural details. Tables must be stored in Delta format with appropriate partitioning strategies. Column cardinality must be managed to avoid exceeding DirectLake guardrails. Row groups must be optimized for the query patterns your dashboards use. And the semantic model must be designed to take advantage of DirectLake's columnar read behavior rather than fighting against it.</p>
+<p>None of this is difficult for an experienced data architect. But all of it is invisible to a Power BI developer who has only worked with Import Mode. The decision point is not "Import vs DirectLake." It is "do we have the architecture to support DirectLake?" And the answer should always be yes, because building that architecture correctly is the same work that makes your entire data platform performant, governed, and cost-efficient.</p>
+
+<h2>The bottom line</h2>
+<p>Architecture determines cost. Organizations that design their Fabric lakehouse with DirectLake in mind from the beginning typically run at 30 to 50 percent lower capacity cost than organizations that default to Import Mode. The savings compound as the number of datasets and users grows. This is not an optimization. It is a design decision that should be made at the beginning of every Fabric engagement, not discovered after the capacity bill arrives.</p>
+</div></section>
+<section class="article-cta"><div class="container">
+<h2>Ready to discuss your data architecture?</h2>
+<p>We start with a focused conversation about your current data landscape and what a modern infrastructure would look like for your organization.</p>
+<a href="mailto:info@coolidgeadvisory.com" class="btn">info@coolidgeadvisory.com</a>
+</div></section>
+<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><p>Tampa, Florida</p></div></footer>
+</body></html>

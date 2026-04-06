@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copilot in Power BI: What It Can Do, What It Cannot, and What Your Data Needs First | Coolidge Advisory</title>
+<meta name="description" content="Copilot promises natural language analytics. The promise is real, but only if the underlying data model is properly structured.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--navy)}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
+.nav-logo svg{width:30px;height:30px;flex-shrink:0}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
+.article-header{padding:8rem 0 3rem;background:var(--navy-deep)}
+.article-header .container{max-width:760px}
+.article-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
+.article-tag{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(133,183,235,0.85);background:rgba(46,117,182,0.15);padding:4px 10px;border-radius:3px}
+.article-date{font-size:.75rem;color:rgba(255,255,255,0.35)}
+.article-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;font-weight:400;margin-bottom:1.25rem}
+.article-header p{font-size:1.0625rem;color:rgba(255,255,255,0.5);line-height:1.85;max-width:600px}
+.article-body{padding:3.5rem 0 5rem}
+.article-body .container{max-width:760px}
+.article-body h2{font-family:var(--serif);font-size:1.375rem;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.3}
+.article-body p{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:1.25rem}
+.article-body strong{color:var(--text)}
+.article-body ul{margin:0 0 1.25rem 1.5rem}
+.article-body li{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:.5rem}
+.article-cta{padding:4rem 0;background:var(--light);text-align:center;border-top:1px solid rgba(194,209,222,0.25)}
+.article-cta h2{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin-bottom:.75rem}
+.article-cta p{font-size:.9375rem;color:var(--text-secondary);margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
+.article-cta a.btn{display:inline-flex;background:var(--navy);color:var(--white);padding:.75rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s}
+.article-cta a.btn:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
+.back-link:hover{color:var(--white)}
+footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
+footer .container{display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
+@media(max-width:768px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .article-header{padding:6.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav><div class="container">
+<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
+<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
+<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div></nav>
+<section class="article-header"><div class="container">
+<a href="./" class="back-link">&larr; All Insights</a>
+<div class="article-meta"><span class="article-tag">AI &amp; Automation</span><span class="article-date">November 2025</span></div>
+<h1>Copilot in Power BI: What It Can Do, What It Cannot, and What Your Data Needs First</h1>
+<p>Microsoft Copilot in Power BI promises to let business users ask questions in plain English and receive instant analytical answers. The technology works. But the prerequisite is a data model that most organizations do not have.</p>
+</div></section>
+<section class="article-body"><div class="container">
+<h2>What Copilot actually does</h2>
+<p>Copilot in Power BI translates natural language questions into DAX queries against a Power BI semantic model. When a user asks "what was our margin by product line last quarter?" Copilot generates the appropriate DAX calculation, executes it against the model, and returns the result in a visual format. It can also generate narrative summaries of dashboard pages and suggest questions based on the data it finds.</p>
+<p>This is genuinely useful functionality. It lowers the barrier to analytics for business users who are not comfortable building their own reports. It accelerates the time from question to answer. And it makes the investment in Power BI more accessible across the organization.</p>
+
+<h2>Where it breaks down</h2>
+<p>Copilot is only as good as the semantic model it queries. If the model contains ambiguous measure names, Copilot guesses. If business definitions are inconsistent (multiple measures called "Revenue" that calculate differently), Copilot picks one without telling you which. If the model lacks proper relationships between tables, Copilot produces results that are technically correct against the model but wrong against business reality.</p>
+<p>The most dangerous failure mode is confident incorrectness. Copilot does not flag uncertainty the way a human analyst would. It returns an answer with the same confidence regardless of whether the underlying model supports the question. A user who does not understand the data model has no way to evaluate whether the answer is trustworthy.</p>
+
+<h2>What your data needs first</h2>
+<p>For Copilot to deliver reliable results, the semantic model must meet specific standards. Measures must be named clearly and unambiguously. Business logic must be defined once, in the semantic layer, not scattered across multiple report-level calculations. Table relationships must be complete and correctly configured. And the underlying data must be clean, because Copilot cannot compensate for data quality issues at the model level.</p>
+<p>This is, fundamentally, the case for star schema dimensional modeling and a governed semantic layer. The same architecture that makes your dashboards trustworthy for human users is the architecture that makes Copilot trustworthy for natural language queries.</p>
+
+<h2>The recommendation</h2>
+<p>Deploy Copilot after your data model is right, not before. Organizations that enable Copilot on a well-governed star schema model see rapid adoption and genuine productivity gains. Organizations that enable it on a poorly structured model see users get wrong answers, lose trust, and stop using it. The technology is ready. The question is whether your data architecture is ready to support it.</p>
+</div></section>
+<section class="article-cta"><div class="container">
+<h2>Ready to discuss your data architecture?</h2>
+<p>We start with a focused conversation about your current data landscape and what a modern infrastructure would look like for your organization.</p>
+<a href="mailto:info@coolidgeadvisory.com" class="btn">info@coolidgeadvisory.com</a>
+</div></section>
+<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><p>Tampa, Florida</p></div></footer>
+</body></html>

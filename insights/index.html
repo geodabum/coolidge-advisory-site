@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights | Coolidge Advisory</title>
+<meta name="description" content="Perspectives on data architecture, analytics, and AI from Coolidge Advisory. Technical depth for the CTO. Business impact for the CEO.">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;transition:color .2s}
+a:hover{color:var(--navy)}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
+.nav-logo svg{width:30px;height:30px;flex-shrink:0}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
+.page-header{padding:8rem 0 3rem;background:var(--navy-deep)}
+.page-header .section-label{font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(133,183,235,0.6);margin-bottom:.875rem}
+.page-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;margin-bottom:1rem}
+.page-header p{font-size:1.0625rem;color:rgba(255,255,255,0.45);max-width:540px;line-height:1.85}
+.insights-section{padding:4rem 0 5.5rem}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.insight-card{border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s;overflow:hidden}
+.insight-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(27,58,92,0.05);transform:translateY(-1px)}
+.insight-card a{display:flex;flex-direction:column;height:100%;padding:1.75rem 1.5rem;text-decoration:none;color:inherit}
+.insight-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem}
+.insight-tag{font-size:.5625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(46,117,182,0.06);padding:3px 8px;border-radius:3px}
+.insight-date{font-size:.6875rem;color:var(--text-secondary);opacity:.6}
+.insight-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:.5rem;flex-grow:1}
+.insight-card p{font-size:.8125rem;color:var(--text-secondary);line-height:1.7}
+footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
+footer .container{display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
+@media(max-width:768px){
+  .nav-links{display:none}.menu-btn{display:block}
+  .insights-grid{grid-template-columns:1fr}
+  .page-header{padding:6.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+<nav><div class="container">
+<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
+<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
+<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+</div></nav>
 
+<section class="page-header">
+  <div class="container">
+    <div class="section-label">Insights</div>
+    <h1>Perspectives on data, architecture, and AI.</h1>
+    <p>Thought leadership from our practice. Technical depth for the CTO. Business impact for the CEO. Written by the people who build the platforms.</p>
+  </div>
+</section>
+
+<section class="insights-section">
+  <div class="container">
+    <div class="insights-grid">
+
+      <div class="insight-card"><a href="ax-2012-migration.html">
+        <div class="insight-meta"><span class="insight-tag">ERP Migration</span><span class="insight-date">Mar 2026</span></div>
+        <h3>What Your AX 2012 Data Migration Actually Requires</h3>
+        <p>Why the data layer should be built before the ERP is replaced. A data-first migration strategy for organizations still running end-of-life Dynamics AX.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="power-bi-margin-truth.html">
+        <div class="insight-meta"><span class="insight-tag">Analytics</span><span class="insight-date">Mar 2026</span></div>
+        <h3>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin</h3>
+        <p>Most implementations skip the semantic layer. The result is dashboards that look polished but produce numbers your CFO cannot certify.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="directlake-architecture.html">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <h3>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost</h3>
+        <p>The choice most organizations make by default. Why it should be made by design, and how it impacts capacity consumption by 30 to 50 percent.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="medallion-architecture.html">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <h3>Medallion Architecture Is Not Optional. It Is the Foundation.</h3>
+        <p>Bronze, Silver, Gold is the pattern that separates data platforms that scale from platforms that collapse under their own weight.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="star-schema-for-cfo.html">
+        <div class="insight-meta"><span class="insight-tag">Data Modeling</span><span class="insight-date">Jan 2026</span></div>
+        <h3>Star Schema for the CFO: Why Dimensional Modeling Is a Business Decision</h3>
+        <p>Your CFO does not care about fact tables. They care about seeing margin by product, by customer, by region, in a format they can trust.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="ai-readiness.html">
+        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Jan 2026</span></div>
+        <h3>Your Data Is Not Ready for AI. Here Is What "Ready" Actually Looks Like.</h3>
+        <p>Every vendor is selling AI. Very few are asking whether your data foundation can support it. Four conditions that must be met first.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="ahca-competitive-intelligence.html">
+        <div class="insight-meta"><span class="insight-tag">Healthcare</span><span class="insight-date">Dec 2025</span></div>
+        <h3>AHCA Data as Competitive Intelligence: What Most Health Systems Are Missing</h3>
+        <p>Florida's AHCA datasets contain the financial fingerprint of every provider in the state. Most use it for compliance. The winners use it for positioning.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="bad-architecture-cost.html">
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Dec 2025</span></div>
+        <h3>The Hidden Cost of Bad Data Architecture</h3>
+        <p>When your Fabric or Snowflake bill doubles, the problem is usually upstream: unnecessary duplication, missing partitioning, or Import Mode where DirectLake should be.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="demand-forecasting-distributors.html">
+        <div class="insight-meta"><span class="insight-tag">Distribution</span><span class="insight-date">Nov 2025</span></div>
+        <h3>Demand Forecasting for Distributors: From Gut Instinct to Data-Driven Purchasing</h3>
+        <p>Most mid-market distributors make purchasing decisions on experience and intuition. AI-driven forecasting on governed data changes that equation.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="copilot-power-bi.html">
+        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Nov 2025</span></div>
+        <h3>Copilot in Power BI: What It Can Do, What It Cannot, and What Your Data Needs First</h3>
+        <p>The promise is real, but only if the underlying data model is properly structured. A star schema with clean business logic is the prerequisite.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="erp-not-data-strategy.html">
+        <div class="insight-meta"><span class="insight-tag">Strategy</span><span class="insight-date">Oct 2025</span></div>
+        <h3>ERP Replacement Is Not a Data Strategy. Build the Data Layer First.</h3>
+        <p>The new ERP will not solve your reporting problems. The data platform should be designed independently so it survives the next migration too.</p>
+      </a></div>
+
+      <div class="insight-card"><a href="data-governance-architecture.html">
+        <div class="insight-meta"><span class="insight-tag">Governance</span><span class="insight-date">Oct 2025</span></div>
+        <h3>Data Governance Is Not a Policy Document. It Is an Architecture Pattern.</h3>
+        <p>Row-level security, lineage tracking, and quality gates should be built into the platform from day one, not written into a binder that nobody reads.</p>
+      </a></div>
+
+    </div>
+  </div>
+</section>
+
+<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><p>Tampa, Florida</p></div></footer>
+</body>
+</html>
