@@ -108,6 +108,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <div class="topbar">
     <h1>Site Analytics</h1>
     <div class="topbar-controls">
+      <select id="ip-filter" onchange="loadAll()" style="min-width:280px">
+        <option value="">All visitors</option>
+      </select>
       <select id="range-select" onchange="loadAll()">
         <option value="1">Today</option>
         <option value="7">Last 7 days</option>
@@ -254,17 +257,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
   <!-- SECTIONS TAB -->
   <div class="tab-panel" id="tab-sections"><div class="container">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
-      <div>
-        <h2 style="font-size:16px;font-weight:600">Section Engagement</h2>
-        <p style="font-size:12px;color:var(--text-muted)">How visitors engage with each section of your homepage.</p>
-      </div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <label style="font-size:12px;color:var(--text-muted)">Filter by visitor:</label>
-        <select id="section-ip-filter" onchange="loadSections()" style="padding:8px 12px;background:var(--bg);border:1px solid var(--card-border);border-radius:6px;color:var(--text);font-size:13px;font-family:inherit;min-width:260px">
-          <option value="">All visitors</option>
-        </select>
-      </div>
+    <div class="table-card" style="margin-bottom:16px">
+      <h2>Section Engagement</h2>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">How visitors engage with each section of your homepage. Use the visitor filter in the top bar to isolate a specific IP.</p>
+      <table class="data-table" id="sections-table">
+        <thead><tr><th>Section</th><th class="num">Views</th><th class="num">Unique</th><th class="num">Avg Time</th><th class="num">Max Time</th><th class="num">Reach Rate</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="chart-card">
+      <h2>Section Funnel</h2>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">What percentage of visitors scroll to each section.</p>
+      <div id="section-funnel"></div>
+    </div>
+  </div></div>
     </div>
     <div class="table-card" style="margin-bottom:16px">
       <table class="data-table" id="sections-table">
@@ -330,12 +336,10 @@ function switchTab(id, btn) {
     refreshLive();
     liveInterval = setInterval(refreshLive, 30000);
   }
-  if (id === 'sections') {
-    loadVisitorDropdown();
-  }
 }
 async function refreshLive() {
-  var recent = await apiFetch('/api/recent?limit=100');
+  var ip = getIp();
+  var recent = await apiFetch('/api/recent?limit=100' + ip);
   renderRecent(recent);
   var indicator = document.getElementById('live-indicator');
   if (indicator) { indicator.textContent = 'Updated ' + new Date().toLocaleTimeString(); }
@@ -344,7 +348,7 @@ async function loadVisitorDropdown() {
   var days = getDays();
   var visitors = await apiFetch('/api/visitors?days=' + days);
   if (!Array.isArray(visitors)) return;
-  var select = document.getElementById('section-ip-filter');
+  var select = document.getElementById('ip-filter');
   var current = select.value;
   select.innerHTML = '<option value="">All visitors</option>';
   visitors.forEach(function(v) {
@@ -357,13 +361,6 @@ async function loadVisitorDropdown() {
   });
   if (current) select.value = current;
 }
-async function loadSections() {
-  var days = getDays();
-  var ip = document.getElementById('section-ip-filter').value;
-  var ipParam = ip ? '&ip=' + encodeURIComponent(ip) : '';
-  var sections = await apiFetch('/api/sections?days=' + days + ipParam);
-  renderSectionsTab(sections);
-}
 
 // --- API ---
 function apiFetch(path) {
@@ -371,24 +368,27 @@ function apiFetch(path) {
   return fetch(WORKER + path + sep + 'key=' + encodeURIComponent(adminKey)).then(r => r.json()).catch(() => ({ error: 'Network error' }));
 }
 function getDays() { return document.getElementById('range-select').value; }
+function getIp() { var v = document.getElementById('ip-filter').value; return v ? '&ip=' + encodeURIComponent(v) : ''; }
 
 // --- Load All ---
 async function loadAll() {
   var days = getDays();
+  var ip = getIp();
+  await loadVisitorDropdown();
   var [overview, pages, referrers, geo, devices, timeline, recent, utm, perf, sessions, sections, heatmap, entryPages] = await Promise.all([
-    apiFetch('/api/overview?days=' + days),
-    apiFetch('/api/pages?days=' + days),
-    apiFetch('/api/referrers?days=' + days),
-    apiFetch('/api/geo?days=' + days),
-    apiFetch('/api/devices?days=' + days),
-    apiFetch('/api/timeline?days=' + days),
-    apiFetch('/api/recent?limit=100'),
-    apiFetch('/api/utm?days=' + days),
-    apiFetch('/api/performance?days=' + days),
-    apiFetch('/api/sessions?limit=30&days=' + days),
-    apiFetch('/api/sections?days=' + days),
-    apiFetch('/api/heatmap?days=' + days),
-    apiFetch('/api/entry-pages?days=' + days),
+    apiFetch('/api/overview?days=' + days + ip),
+    apiFetch('/api/pages?days=' + days + ip),
+    apiFetch('/api/referrers?days=' + days + ip),
+    apiFetch('/api/geo?days=' + days + ip),
+    apiFetch('/api/devices?days=' + days + ip),
+    apiFetch('/api/timeline?days=' + days + ip),
+    apiFetch('/api/recent?limit=100' + ip),
+    apiFetch('/api/utm?days=' + days + ip),
+    apiFetch('/api/performance?days=' + days + ip),
+    apiFetch('/api/sessions?limit=30&days=' + days + ip),
+    apiFetch('/api/sections?days=' + days + ip),
+    apiFetch('/api/heatmap?days=' + days + ip),
+    apiFetch('/api/entry-pages?days=' + days + ip),
   ]);
   renderOverview(overview);
   renderPages(pages);
@@ -403,7 +403,6 @@ async function loadAll() {
   renderSessions(sessions);
   renderSectionsTab(sections);
   renderHeatmap(heatmap);
-  loadVisitorDropdown();
 }
 
 // --- Renderers ---
