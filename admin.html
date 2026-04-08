@@ -81,6 +81,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .session-journey{font-size:12px;color:var(--text-muted);word-break:break-all}
 
 .empty{color:var(--text-muted);padding:20px 0;text-align:center}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 
 @media(max-width:640px){
   .container{padding:16px}
@@ -237,7 +238,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <!-- LIVE FEED TAB -->
   <div class="tab-panel" id="tab-live"><div class="container">
     <div class="recent-card">
-      <h2>Recent Visitors (Live Feed)</h2>
+      <h2>Recent Visitors (Live Feed) <span style="font-size:12px;font-weight:400;color:var(--green);margin-left:8px"><span style="display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;margin-right:4px;animation:pulse 2s infinite"></span><span id="live-indicator">auto-refreshes every 30s</span></span></h2>
       <div class="recent-list" id="recent-list"></div>
     </div>
   </div></div>
@@ -274,11 +275,24 @@ function logout() {
 })();
 
 // --- Tabs ---
+var liveInterval = null;
 function switchTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
+  // Auto-refresh live feed every 30 seconds
+  if (liveInterval) { clearInterval(liveInterval); liveInterval = null; }
+  if (id === 'live') {
+    refreshLive();
+    liveInterval = setInterval(refreshLive, 30000);
+  }
+}
+async function refreshLive() {
+  var recent = await apiFetch('/api/recent?limit=100');
+  renderRecent(recent);
+  var indicator = document.getElementById('live-indicator');
+  if (indicator) { indicator.textContent = 'Updated ' + new Date().toLocaleTimeString(); }
 }
 
 // --- API ---
