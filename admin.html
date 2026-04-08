@@ -239,9 +239,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
   <!-- SECTIONS TAB -->
   <div class="tab-panel" id="tab-sections"><div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
+      <div>
+        <h2 style="font-size:16px;font-weight:600">Section Engagement</h2>
+        <p style="font-size:12px;color:var(--text-muted)">How visitors engage with each section of your homepage.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <label style="font-size:12px;color:var(--text-muted)">Filter by visitor:</label>
+        <select id="section-ip-filter" onchange="loadSections()" style="padding:8px 12px;background:var(--bg);border:1px solid var(--card-border);border-radius:6px;color:var(--text);font-size:13px;font-family:inherit;min-width:260px">
+          <option value="">All visitors</option>
+        </select>
+      </div>
+    </div>
     <div class="table-card" style="margin-bottom:16px">
-      <h2>Section Engagement</h2>
-      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">How visitors engage with each section of your homepage. Time spent and reach rate per section.</p>
       <table class="data-table" id="sections-table">
         <thead><tr><th>Section</th><th class="num">Views</th><th class="num">Unique</th><th class="num">Avg Time</th><th class="num">Max Time</th><th class="num">Reach Rate</th></tr></thead>
         <tbody></tbody>
@@ -300,11 +310,13 @@ function switchTab(id, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   btn.classList.add('active');
-  // Auto-refresh live feed every 30 seconds
   if (liveInterval) { clearInterval(liveInterval); liveInterval = null; }
   if (id === 'live') {
     refreshLive();
     liveInterval = setInterval(refreshLive, 30000);
+  }
+  if (id === 'sections') {
+    loadVisitorDropdown();
   }
 }
 async function refreshLive() {
@@ -312,6 +324,30 @@ async function refreshLive() {
   renderRecent(recent);
   var indicator = document.getElementById('live-indicator');
   if (indicator) { indicator.textContent = 'Updated ' + new Date().toLocaleTimeString(); }
+}
+async function loadVisitorDropdown() {
+  var days = getDays();
+  var visitors = await apiFetch('/api/visitors?days=' + days);
+  if (!Array.isArray(visitors)) return;
+  var select = document.getElementById('section-ip-filter');
+  var current = select.value;
+  select.innerHTML = '<option value="">All visitors</option>';
+  visitors.forEach(function(v) {
+    var loc = [v.city, v.country].filter(x => x && x !== 'Unknown').join(', ');
+    var label = v.ip_address + ' - ' + loc + ' (' + v.page_views + ' views, ' + v.sessions + ' sessions)';
+    var opt = document.createElement('option');
+    opt.value = v.ip_address;
+    opt.textContent = label;
+    select.appendChild(opt);
+  });
+  if (current) select.value = current;
+}
+async function loadSections() {
+  var days = getDays();
+  var ip = document.getElementById('section-ip-filter').value;
+  var ipParam = ip ? '&ip=' + encodeURIComponent(ip) : '';
+  var sections = await apiFetch('/api/sections?days=' + days + ipParam);
+  renderSectionsTab(sections);
 }
 
 // --- API ---
