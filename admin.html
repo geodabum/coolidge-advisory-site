@@ -519,7 +519,7 @@ function renderSessions(rows) {
 
 function renderSectionsTab(d) {
   if (!d || d.error) return;
-  var rows = d.sections || [];
+  var rows = (d.sections || []).filter(r => r.section_id !== 'navLinks' && r.section_id !== 'nav');
   var total = d.total_sessions || 1;
   var tbody = document.querySelector('#sections-table tbody');
   var max = rows.length ? Math.max(...rows.map(r => r.total_views)) : 1;
@@ -541,7 +541,7 @@ function renderSectionsTab(d) {
     var reachPct = Math.round((r.unique_sessions / total) * 100);
     var barWidth = Math.max(reachPct, 5);
     return '<div style="margin-bottom:8px;display:flex;align-items:center;gap:12px">' +
-      '<div style="width:180px;font-size:13px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-muted)">' + esc(r.section_label || r.section_id) + '</div>' +
+      '<div style="width:340px;min-width:340px;font-size:13px;text-align:right;color:var(--text-muted)">' + esc(r.section_label || r.section_id) + '</div>' +
       '<div style="flex:1;background:var(--bg);border-radius:4px;height:28px;position:relative;overflow:hidden">' +
         '<div style="width:' + barWidth + '%;background:linear-gradient(90deg,var(--accent),var(--green));height:100%;border-radius:4px;transition:width .5s"></div>' +
         '<span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:var(--text)">' + reachPct + '% (' + fmtTime(r.avg_time_sec || 0) + ' avg)</span>' +
