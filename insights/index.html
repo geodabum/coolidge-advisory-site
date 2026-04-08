@@ -147,6 +147,7 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
 
 <footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><div style="display:flex;align-items:center;gap:1.25rem"><p>Tampa, Florida</p><a href="https://www.linkedin.com/company/coolidge-advisory" target="_blank" rel="noopener" style="display:flex;opacity:.25;transition:opacity .2s" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='.25'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.9)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div></footer>
 
+
 <script>
 (function() {
   var W = 'https://coolidge-analytics.coolidgeadvisory.workers.dev';
@@ -162,24 +163,22 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   try { var perf = performance.getEntriesByType('navigation')[0]; if (perf) loadMs = Math.round(perf.loadEventEnd - perf.startTime); } catch(e) {}
   var conn = '';
   try { var nav = navigator.connection || navigator.mozConnection || navigator.webkitConnection; if (nav) conn = nav.effectiveType || nav.type || ''; } catch(e) {}
+
   function track() {
     if (loadMs <= 0) { try { var perf = performance.getEntriesByType('navigation')[0]; if (perf && perf.loadEventEnd > 0) loadMs = Math.round(perf.loadEventEnd - perf.startTime); } catch(e) {} }
     var data = {
-      path: location.pathname + location.hash,
-      referrer: document.referrer || '',
+      path: location.pathname + location.hash, referrer: document.referrer || '',
       sw: screen.width, sh: screen.height, sid: sid,
-      lang: navigator.language || '',
-      tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
-      utm_source: params.get('utm_source') || '',
-      utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || '',
-      utm_term: params.get('utm_term') || '',
+      lang: navigator.language || '', tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+      utm_source: params.get('utm_source') || '', utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '', utm_term: params.get('utm_term') || '',
       utm_content: params.get('utm_content') || '',
       load_ms: loadMs, conn: conn, returning: returning
     };
     if (navigator.sendBeacon) { navigator.sendBeacon(W + '/track', JSON.stringify(data)); }
     else { fetch(W + '/track', { method: 'POST', body: JSON.stringify(data), keepalive: true }).catch(function() {}); }
   }
+
   var maxScroll = 0, startTime = Date.now();
   function getScrollPct() {
     var h = document.documentElement, b = document.body;
@@ -190,15 +189,97 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
     return Math.min(100, Math.round((scrollTop / (docHeight - winHeight)) * 100));
   }
   window.addEventListener('scroll', function() { var s = getScrollPct(); if (s > maxScroll) maxScroll = s; }, { passive: true });
+
   function sendPing() {
     var duration = Math.round((Date.now() - startTime) / 1000);
     var data = { sid: sid, path: location.pathname + location.hash, scroll: maxScroll, duration: duration };
     if (navigator.sendBeacon) { navigator.sendBeacon(W + '/ping', JSON.stringify(data)); }
   }
-  document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'hidden') sendPing(); });
-  window.addEventListener('pagehide', sendPing);
-  if (document.readyState === 'complete') { setTimeout(track, 50); }
-  else { window.addEventListener('load', function() { setTimeout(track, 50); }); }
+  document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'hidden') { sendPing(); sendSectionData(); } });
+  window.addEventListener('pagehide', function() { sendPing(); sendSectionData(); });
+
+  var sectionTimers = {};
+  var currentSection = null;
+
+  function initSectionTracking() {
+    var sections = document.querySelectorAll('section[id], [id].hero, div[id]');
+    var tracked = [];
+    sections.forEach(function(el) {
+      var id = el.id;
+      if (!id || id === 'dashboard' || id === 'login-screen') return;
+      var h = el.querySelector('h1, h2, h3');
+      var label = h ? h.textContent.trim().substring(0, 60) : id;
+      tracked.push({ el: el, id: id, label: label });
+      sectionTimers[id] = { label: label, time: 0, entered: false, enter_pct: 0 };
+    });
+    if (tracked.length === 0) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        var id = entry.target.id;
+        if (!sectionTimers[id]) return;
+        if (entry.isIntersecting) {
+          sectionTimers[id].entered = true;
+          sectionTimers[id].lastSeen = Date.now();
+          sectionTimers[id].enter_pct = getScrollPct();
+          currentSection = id;
+          updateScrollSpy(id);
+        } else {
+          if (sectionTimers[id].lastSeen) {
+            sectionTimers[id].time += Math.round((Date.now() - sectionTimers[id].lastSeen) / 1000);
+            sectionTimers[id].lastSeen = null;
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    tracked.forEach(function(s) { observer.observe(s.el); });
+  }
+
+  function sendSectionData() {
+    Object.keys(sectionTimers).forEach(function(id) {
+      if (sectionTimers[id].lastSeen) {
+        sectionTimers[id].time += Math.round((Date.now() - sectionTimers[id].lastSeen) / 1000);
+        sectionTimers[id].lastSeen = Date.now();
+      }
+    });
+    var sections = [];
+    Object.keys(sectionTimers).forEach(function(id) {
+      if (sectionTimers[id].entered) {
+        sections.push({ id: id, label: sectionTimers[id].label, time: sectionTimers[id].time, enter_pct: sectionTimers[id].enter_pct });
+      }
+    });
+    if (sections.length > 0) {
+      var data = { sid: sid, path: location.pathname + location.hash, sections: sections };
+      if (navigator.sendBeacon) { navigator.sendBeacon(W + '/sections', JSON.stringify(data)); }
+    }
+  }
+
+  function updateScrollSpy(activeId) {
+    var navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    navLinks.forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href === '#' + activeId) {
+        link.style.color = '#2E75B6';
+        link.style.borderBottom = '2px solid #2E75B6';
+        link.style.paddingBottom = '2px';
+      } else {
+        link.style.color = '';
+        link.style.borderBottom = '';
+        link.style.paddingBottom = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(track, 50);
+    setTimeout(initSectionTracking, 200);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(track, 50);
+      setTimeout(initSectionTracking, 200);
+    });
+  }
 })();
 </script>
 </body>
