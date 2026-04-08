@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <title>Analytics | Coolidge Advisory</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -39,7 +40,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
 .container{max-width:1320px;margin:0 auto;padding:24px}
 
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
 .stat-card{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:18px 20px}
 .stat-card .label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
 .stat-card .value{font-size:28px;font-weight:700}
@@ -128,6 +129,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <button class="tab-btn" onclick="switchTab('utm',this)">UTM Campaigns</button>
     <button class="tab-btn" onclick="switchTab('perf',this)">Performance</button>
     <button class="tab-btn" onclick="switchTab('sessions',this)">Sessions</button>
+    <button class="tab-btn" onclick="switchTab('sections',this)">Sections</button>
     <button class="tab-btn" onclick="switchTab('live',this)">Live Feed</button>
   </div>
 
@@ -235,6 +237,23 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div id="sessions-list"></div>
   </div></div>
 
+  <!-- SECTIONS TAB -->
+  <div class="tab-panel" id="tab-sections"><div class="container">
+    <div class="table-card" style="margin-bottom:16px">
+      <h2>Section Engagement</h2>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">How visitors engage with each section of your homepage. Time spent and reach rate per section.</p>
+      <table class="data-table" id="sections-table">
+        <thead><tr><th>Section</th><th class="num">Views</th><th class="num">Unique</th><th class="num">Avg Time</th><th class="num">Max Time</th><th class="num">Reach Rate</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="chart-card">
+      <h2>Section Funnel</h2>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:16px">What percentage of visitors scroll to each section.</p>
+      <div id="section-funnel"></div>
+    </div>
+  </div></div>
+
   <!-- LIVE FEED TAB -->
   <div class="tab-panel" id="tab-live"><div class="container">
     <div class="recent-card">
@@ -305,7 +324,7 @@ function getDays() { return document.getElementById('range-select').value; }
 // --- Load All ---
 async function loadAll() {
   var days = getDays();
-  var [overview, pages, referrers, geo, devices, timeline, recent, utm, perf, sessions] = await Promise.all([
+  var [overview, pages, referrers, geo, devices, timeline, recent, utm, perf, sessions, sections] = await Promise.all([
     apiFetch('/api/overview?days=' + days),
     apiFetch('/api/pages?days=' + days),
     apiFetch('/api/referrers?days=' + days),
@@ -316,6 +335,7 @@ async function loadAll() {
     apiFetch('/api/utm?days=' + days),
     apiFetch('/api/performance?days=' + days),
     apiFetch('/api/sessions?limit=30&days=' + days),
+    apiFetch('/api/sections?days=' + days),
   ]);
   renderOverview(overview);
   renderPages(pages);
@@ -327,6 +347,7 @@ async function loadAll() {
   renderUtm(utm);
   renderPerf(perf);
   renderSessions(sessions);
+  renderSectionsTab(sections);
 }
 
 // --- Renderers ---
@@ -494,6 +515,38 @@ function renderSessions(rows) {
       '<div class="session-journey">' + esc(r.journey || '') + '</div>' +
     '</div>';
   }).join('') || '<div class="empty">No sessions yet</div>';
+}
+
+function renderSectionsTab(d) {
+  if (!d || d.error) return;
+  var rows = d.sections || [];
+  var total = d.total_sessions || 1;
+  var tbody = document.querySelector('#sections-table tbody');
+  var max = rows.length ? Math.max(...rows.map(r => r.total_views)) : 1;
+  tbody.innerHTML = rows.map(r => {
+    var reachPct = Math.round((r.unique_sessions / total) * 100);
+    return '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.total_views, max) + '%"></div>' +
+      esc(r.section_label || r.section_id) + '</div></td>' +
+      '<td class="num">' + fmt(r.total_views) + '</td>' +
+      '<td class="num">' + fmt(r.unique_sessions) + '</td>' +
+      '<td class="num">' + (r.avg_time_sec ? fmtTime(r.avg_time_sec) : '--') + '</td>' +
+      '<td class="num">' + (r.max_time_sec ? fmtTime(r.max_time_sec) : '--') + '</td>' +
+      '<td class="num">' + reachPct + '%</td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty">No section data yet. Visit your homepage and scroll through sections to generate data.</td></tr>';
+
+  // Funnel visualization
+  var funnel = document.getElementById('section-funnel');
+  if (rows.length === 0) { funnel.innerHTML = '<div class="empty">No data yet</div>'; return; }
+  funnel.innerHTML = rows.map(r => {
+    var reachPct = Math.round((r.unique_sessions / total) * 100);
+    var barWidth = Math.max(reachPct, 5);
+    return '<div style="margin-bottom:8px;display:flex;align-items:center;gap:12px">' +
+      '<div style="width:180px;font-size:13px;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-muted)">' + esc(r.section_label || r.section_id) + '</div>' +
+      '<div style="flex:1;background:var(--bg);border-radius:4px;height:28px;position:relative;overflow:hidden">' +
+        '<div style="width:' + barWidth + '%;background:linear-gradient(90deg,var(--accent),var(--green));height:100%;border-radius:4px;transition:width .5s"></div>' +
+        '<span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:var(--text)">' + reachPct + '% (' + fmtTime(r.avg_time_sec || 0) + ' avg)</span>' +
+      '</div></div>';
+  }).join('');
 }
 
 // --- Utilities ---
