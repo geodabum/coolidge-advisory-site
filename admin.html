@@ -146,16 +146,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       <div class="stat-card"><div class="label">Returning</div><div class="value" id="s-returning">--</div></div>
     </div>
     <div class="chart-card"><h2>Traffic Over Time</h2><div class="chart-area"><canvas id="timeline-chart"></canvas></div></div>
+    <div class="chart-card">
+      <h2>Traffic Heatmap</h2>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">When your visitors arrive. Darker = more traffic. All times EST.</p>
+      <div id="heatmap-grid" style="overflow-x:auto"></div>
+    </div>
   </div></div>
 
   <!-- PAGES TAB -->
   <div class="tab-panel" id="tab-pages"><div class="container">
-    <div class="table-card">
-      <h2>All Pages</h2>
-      <table class="data-table" id="pages-table">
-        <thead><tr><th>Page</th><th class="num">Views</th><th class="num">Unique</th><th class="num">Avg Time</th><th class="num">Avg Scroll</th></tr></thead>
-        <tbody></tbody>
-      </table>
+    <div class="tables-grid">
+      <div class="table-card">
+        <h2>All Pages</h2>
+        <table class="data-table" id="pages-table">
+          <thead><tr><th>Page</th><th class="num">Views</th><th class="num">Unique</th><th class="num">Avg Time</th><th class="num">Avg Scroll</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="table-card">
+        <h2>Entry Pages</h2>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">The first page visitors land on. Shows how they find your site.</p>
+        <table class="data-table" id="entry-pages-table">
+          <thead><tr><th>Landing Page</th><th class="num">Sessions</th><th class="num">Unique</th><th>Referrers</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </div></div>
 
@@ -360,7 +375,7 @@ function getDays() { return document.getElementById('range-select').value; }
 // --- Load All ---
 async function loadAll() {
   var days = getDays();
-  var [overview, pages, referrers, geo, devices, timeline, recent, utm, perf, sessions, sections] = await Promise.all([
+  var [overview, pages, referrers, geo, devices, timeline, recent, utm, perf, sessions, sections, heatmap, entryPages] = await Promise.all([
     apiFetch('/api/overview?days=' + days),
     apiFetch('/api/pages?days=' + days),
     apiFetch('/api/referrers?days=' + days),
@@ -372,9 +387,12 @@ async function loadAll() {
     apiFetch('/api/performance?days=' + days),
     apiFetch('/api/sessions?limit=30&days=' + days),
     apiFetch('/api/sections?days=' + days),
+    apiFetch('/api/heatmap?days=' + days),
+    apiFetch('/api/entry-pages?days=' + days),
   ]);
   renderOverview(overview);
   renderPages(pages);
+  renderEntryPages(entryPages);
   renderReferrers(referrers);
   renderGeo(geo);
   renderDevices(devices);
@@ -384,6 +402,8 @@ async function loadAll() {
   renderPerf(perf);
   renderSessions(sessions);
   renderSectionsTab(sections);
+  renderHeatmap(heatmap);
+  loadVisitorDropdown();
 }
 
 // --- Renderers ---
@@ -583,6 +603,59 @@ function renderSectionsTab(d) {
         '<span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;font-weight:600;color:var(--text)">' + reachPct + '% (' + fmtTime(r.avg_time_sec || 0) + ' avg)</span>' +
       '</div></div>';
   }).join('');
+}
+
+function renderHeatmap(rows) {
+  if (!Array.isArray(rows)) rows = [];
+  var grid = document.getElementById('heatmap-grid');
+  if (rows.length === 0) { grid.innerHTML = '<div class="empty">No data yet</div>'; return; }
+
+  // Build 7x24 matrix
+  var matrix = {};
+  var maxVal = 0;
+  rows.forEach(function(r) {
+    var key = r.day_of_week + '-' + r.hour;
+    matrix[key] = r.views;
+    if (r.views > maxVal) maxVal = r.views;
+  });
+
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var html = '<table style="border-collapse:collapse;width:100%;table-layout:fixed">';
+
+  // Hour headers
+  html += '<tr><td style="width:40px"></td>';
+  for (var h = 0; h < 24; h++) {
+    var label = h === 0 ? '12a' : h < 12 ? h + 'a' : h === 12 ? '12p' : (h-12) + 'p';
+    html += '<td style="text-align:center;font-size:10px;color:var(--text-muted);padding:2px 0">' + label + '</td>';
+  }
+  html += '</tr>';
+
+  // Day rows
+  for (var d = 0; d < 7; d++) {
+    html += '<tr><td style="font-size:11px;color:var(--text-muted);padding-right:6px;text-align:right">' + days[d] + '</td>';
+    for (var h = 0; h < 24; h++) {
+      var val = matrix[d + '-' + h] || 0;
+      var intensity = maxVal > 0 ? val / maxVal : 0;
+      var bg = val === 0 ? 'rgba(255,255,255,0.03)' : 'rgba(46,117,182,' + (0.15 + intensity * 0.85) + ')';
+      html += '<td style="padding:2px"><div title="' + days[d] + ' ' + h + ':00 - ' + val + ' views" style="width:100%;height:22px;border-radius:3px;background:' + bg + '"></div></td>';
+    }
+    html += '</tr>';
+  }
+  html += '</table>';
+  grid.innerHTML = html;
+}
+
+function renderEntryPages(rows) {
+  if (!Array.isArray(rows)) rows = [];
+  var tbody = document.querySelector('#entry-pages-table tbody');
+  var max = rows.length ? Math.max(...rows.map(r => r.sessions)) : 1;
+  tbody.innerHTML = rows.map(r => {
+    var refs = (r.referrers || '').split(',').filter(x => x && x !== 'direct' && x !== '').slice(0, 3).join(', ') || 'direct';
+    return '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.sessions, max) + '%"></div>' + esc(r.path) + '</div></td>' +
+      '<td class="num">' + fmt(r.sessions) + '</td>' +
+      '<td class="num">' + fmt(r.unique_visitors) + '</td>' +
+      '<td style="font-size:12px;color:var(--text-muted)">' + esc(refs) + '</td></tr>';
+  }).join('') || '<tr><td colspan="4" class="empty">No data yet</td></tr>';
 }
 
 // --- Utilities ---
