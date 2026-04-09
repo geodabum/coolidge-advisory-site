@@ -55,13 +55,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .table-card{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:24px;overflow:hidden}
 .table-card h2{font-size:15px;font-weight:600;margin-bottom:16px}
 .data-table{width:100%;border-collapse:collapse}
-.data-table th{text-align:left;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;padding:8px 0;border-bottom:1px solid var(--card-border)}
-.data-table td{padding:8px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04)}
+.data-table th{text-align:left;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;padding:8px 8px 8px 0;border-bottom:1px solid var(--card-border)}
+.data-table td{padding:8px 8px 8px 0;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04)}
 .data-table td.num{text-align:right;font-variant-numeric:tabular-nums}
 .data-table th.num{text-align:right}
 .data-table tr:last-child td{border-bottom:none}
 .bar-cell{display:flex;align-items:center;gap:8px}
-.mini-bar{height:6px;border-radius:3px;background:var(--accent);min-width:2px}
+.bar-label{flex-shrink:0;min-width:120px}
+.mini-bar{height:6px;border-radius:3px;background:var(--accent);min-width:2px;flex:1;max-width:200px}
 
 .recent-card{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:24px;margin-bottom:24px}
 .recent-card h2{font-size:15px;font-weight:600;margin-bottom:16px}
@@ -414,7 +415,7 @@ function renderPages(rows) {
   var tbody = document.querySelector('#pages-table tbody');
   var max = rows.length ? Math.max(...rows.map(r => r.views)) : 1;
   tbody.innerHTML = rows.map(r =>
-    '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div>' + displayPath(r.path) + '</div></td>' +
+    '<tr><td><div class="bar-cell"><span class="bar-label">' + displayPath(r.path) + '</span><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div></div></td>' +
     '<td class="num">' + fmt(r.views) + '</td><td class="num">' + fmt(r.unique_visitors) + '</td>' +
     '<td class="num">' + (r.avg_duration ? fmtTime(r.avg_duration) : '--') + '</td>' +
     '<td class="num">' + (r.avg_scroll ? Math.round(r.avg_scroll) + '%' : '--') + '</td></tr>'
@@ -426,7 +427,7 @@ function renderReferrers(rows) {
   var tbody = document.querySelector('#referrers-table tbody');
   var max = rows.length ? Math.max(...rows.map(r => r.views)) : 1;
   tbody.innerHTML = rows.map(r =>
-    '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div>' + esc(r.referrer || 'direct') + '</div></td>' +
+    '<tr><td><div class="bar-cell"><span class="bar-label">' + esc(r.referrer || 'direct') + '</span><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div></div></td>' +
     '<td class="num">' + fmt(r.views) + '</td><td class="num">' + fmt(r.unique_visitors) + '</td></tr>'
   ).join('') || '<tr><td colspan="3" class="empty">No referrer data yet</td></tr>';
 }
@@ -437,7 +438,7 @@ function renderGeo(rows) {
   var max = rows.length ? Math.max(...rows.map(r => r.views)) : 1;
   tbody.innerHTML = rows.map(r => {
     var loc = [r.city, r.region, r.country].filter(x => x && x !== 'Unknown').join(', ');
-    return '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div>' + esc(loc || r.country) + '</div></td>' +
+    return '<tr><td><div class="bar-cell"><span class="bar-label">' + esc(loc || r.country) + '</span><div class="mini-bar" style="width:' + pct(r.views, max) + '%"></div></div></td>' +
       '<td class="num">' + fmt(r.views) + '</td><td class="num">' + fmt(r.unique_visitors) + '</td></tr>';
   }).join('') || '<tr><td colspan="3" class="empty">No data yet</td></tr>';
 }
@@ -455,7 +456,7 @@ function renderSimpleTable(containerId, rows, key) {
   var el = document.getElementById(containerId);
   el.innerHTML = '<table class="data-table"><thead><tr><th>Type</th><th class="num">Count</th></tr></thead><tbody>' +
     rows.map(r =>
-      '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.count, max) + '%"></div>' + esc(r[key]) + '</div></td><td class="num">' + fmt(r.count) + '</td></tr>'
+      '<tr><td><div class="bar-cell"><span class="bar-label">' + esc(r[key]) + '</span><div class="mini-bar" style="width:' + pct(r.count, max) + '%"></div></div></td><td class="num">' + fmt(r.count) + '</td></tr>'
     ).join('') + '</tbody></table>' || '<div class="empty">No data</div>';
 }
 
@@ -567,8 +568,8 @@ function renderSectionsTab(d) {
   var max = rows.length ? Math.max(...rows.map(r => r.total_views)) : 1;
   tbody.innerHTML = rows.map(r => {
     var reachPct = Math.round((r.unique_sessions / total) * 100);
-    return '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.total_views, max) + '%"></div>' +
-      esc(r.section_label || r.section_id) + '</div></td>' +
+    return '<tr><td><div class="bar-cell"><span class="bar-label">' +
+      esc(r.section_label || r.section_id) + '</span><div class="mini-bar" style="width:' + pct(r.total_views, max) + '%"></div></div></td>' +
       '<td class="num">' + fmt(r.total_views) + '</td>' +
       '<td class="num">' + fmt(r.unique_sessions) + '</td>' +
       '<td class="num">' + (r.avg_time_sec ? fmtTime(r.avg_time_sec) : '--') + '</td>' +
@@ -637,7 +638,7 @@ function renderEntryPages(rows) {
   var max = rows.length ? Math.max(...rows.map(r => r.sessions)) : 1;
   tbody.innerHTML = rows.map(r => {
     var refs = (r.referrers || '').split(',').filter(x => x && x !== 'direct' && x !== '').slice(0, 3).join(', ') || 'direct';
-    return '<tr><td><div class="bar-cell"><div class="mini-bar" style="width:' + pct(r.sessions, max) + '%"></div>' + displayPath(r.path) + '</div></td>' +
+    return '<tr><td><div class="bar-cell"><span class="bar-label">' + displayPath(r.path) + '</span><div class="mini-bar" style="width:' + pct(r.sessions, max) + '%"></div></div></td>' +
       '<td class="num">' + fmt(r.sessions) + '</td>' +
       '<td class="num">' + fmt(r.unique_visitors) + '</td>' +
       '<td style="font-size:12px;color:var(--text-muted)">' + esc(refs) + '</td></tr>';
