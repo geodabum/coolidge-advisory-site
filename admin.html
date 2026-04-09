@@ -554,7 +554,7 @@ function renderSessions(rows) {
         (r.total_duration ? '<span class="badge">' + fmtTime(r.total_duration) + '</span>' : '') +
         (r.utm_source ? '<span class="badge-green badge">via ' + esc(r.utm_source) + '</span>' : '') +
       '</div>' +
-      '<div class="session-journey">' + esc(r.journey || '') + '</div>' +
+      '<div class="session-journey">' + (r.journey || '').split(' > ').map(function(p){ return displayPath(p.trim()); }).join(' > ') + '</div>' +
     '</div>';
   }).join('') || '<div class="empty">No sessions yet</div>';
 }
@@ -649,7 +649,7 @@ function el(id) { return document.getElementById(id); }
 function fmt(n) { return n == null ? '--' : Number(n).toLocaleString(); }
 function pct(v, max) { return Math.round((v / max) * 100); }
 function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-function displayPath(p) { if (p === '/') return 'Home'; return esc(p.replace(/^\/insights\//, '').replace(/\.html$/, '').replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); })); }
+function displayPath(p) { if (p === '/') return 'Home'; if (p === '/insights/' || p === '/insights') return 'Insights'; return esc(p.replace(/^\/insights\//, '').replace(/\.html$/, '').replace(/-/g, ' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); })); }
 function fmtTime(sec) {
   sec = Math.round(sec);
   if (sec < 60) return sec + 's';
