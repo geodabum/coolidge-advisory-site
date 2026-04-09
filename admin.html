@@ -565,9 +565,17 @@ function renderSectionsTab(d) {
   if (!d || d.error) return;
   var rows = (d.sections || []).filter(r => r.section_id !== 'navLinks' && r.section_id !== 'nav');
   var total = d.total_sessions || 1;
+
+  // Sort table: views DESC, unique DESC, avg time DESC
+  var tableRows = rows.slice().sort(function(a, b) {
+    if (b.total_views !== a.total_views) return b.total_views - a.total_views;
+    if (b.unique_sessions !== a.unique_sessions) return b.unique_sessions - a.unique_sessions;
+    return (b.avg_time_sec || 0) - (a.avg_time_sec || 0);
+  });
+
   var tbody = document.querySelector('#sections-table tbody');
-  var max = rows.length ? Math.max(...rows.map(r => r.total_views)) : 1;
-  tbody.innerHTML = rows.map(r => {
+  var max = tableRows.length ? Math.max(...tableRows.map(r => r.total_views)) : 1;
+  tbody.innerHTML = tableRows.map(r => {
     var reachPct = Math.round((r.unique_sessions / total) * 100);
     return '<tr><td><div class="bar-cell"><span class="bar-label">' +
       esc(r.section_label || r.section_id) + '</span><div class="bar-track"><div class="mini-bar" style="width:' + pct(r.total_views, max) + '%"></div></div></div></td>' +
@@ -578,10 +586,17 @@ function renderSectionsTab(d) {
       '<td class="num">' + reachPct + '%</td></tr>';
   }).join('') || '<tr><td colspan="6" class="empty">No section data yet. Visit your homepage and scroll through sections to generate data.</td></tr>';
 
-  // Funnel visualization
+  // Sort funnel: reach % DESC, avg time DESC
+  var funnelRows = rows.slice().sort(function(a, b) {
+    var aPct = Math.round((a.unique_sessions / total) * 100);
+    var bPct = Math.round((b.unique_sessions / total) * 100);
+    if (bPct !== aPct) return bPct - aPct;
+    return (b.avg_time_sec || 0) - (a.avg_time_sec || 0);
+  });
+
   var funnel = document.getElementById('section-funnel');
-  if (rows.length === 0) { funnel.innerHTML = '<div class="empty">No data yet</div>'; return; }
-  funnel.innerHTML = rows.map(r => {
+  if (funnelRows.length === 0) { funnel.innerHTML = '<div class="empty">No data yet</div>'; return; }
+  funnel.innerHTML = funnelRows.map(r => {
     var reachPct = Math.round((r.unique_sessions / total) * 100);
     var barWidth = Math.max(reachPct, 5);
     return '<div style="margin-bottom:8px;display:flex;align-items:center;gap:12px">' +
