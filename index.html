@@ -837,4 +837,24 @@ document.querySelectorAll('.fade-in').forEach(function(el) {
       var href = link.getAttribute('href');
       if (href === '#' + activeId) {
         link.style.color = '#2E75B6';
-        link.style.fontWeight 
+        link.style.fontWeight = '700';
+      } else {
+        link.style.color = '';
+        link.style.fontWeight = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'complete') {
+    setTimeout(track, 50);
+    setTimeout(initSectionTracking, 200);
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(track, 50);
+      setTimeout(initSectionTracking, 200);
+    });
+  }
+})();
+</script>
+</body>
+</html>
