@@ -331,7 +331,7 @@ async function refreshLive() {
   var recent = await apiFetch('/api/recent?limit=100' + ip);
   renderRecent(recent);
   var indicator = document.getElementById('live-indicator');
-  if (indicator) { indicator.textContent = 'Updated ' + new Date().toLocaleTimeString(); }
+  if (indicator) { indicator.textContent = 'Updated ' + new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York' }); }
 }
 async function loadVisitorDropdown() {
   var days = getDays();
@@ -468,7 +468,7 @@ function renderTimeline(rows) {
   timelineChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: rows.map(r => { var d = new Date(r.date + 'T12:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }),
+      labels: rows.map(r => { var d = new Date(r.date + 'T12:00:00'); return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' }); }),
       datasets: [
         { label: 'Views', data: rows.map(r => r.views), borderColor: '#2E75B6', backgroundColor: 'rgba(46,117,182,.1)', fill: true, tension: .3, pointRadius: 2 },
         { label: 'Visitors', data: rows.map(r => r.visitors), borderColor: '#34D399', backgroundColor: 'rgba(52,211,153,.05)', fill: true, tension: .3, pointRadius: 2 }
@@ -490,7 +490,7 @@ function renderRecent(rows) {
   var list = document.getElementById('recent-list');
   list.innerHTML = rows.map(r => {
     var t = new Date(r.timestamp);
-    var time = t.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    var time = t.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' });
     var loc = [r.city, r.region, r.country].filter(x => x && x !== 'Unknown').join(', ');
     return '<div class="recent-item">' +
       '<div class="ri-top"><span class="ri-path">' + displayPath(r.path) + '</span><span class="ri-time">' + time + '</span></div>' +
@@ -541,7 +541,7 @@ function renderSessions(rows) {
   if (!Array.isArray(rows)) rows = [];
   var container = document.getElementById('sessions-list');
   container.innerHTML = rows.map(r => {
-    var started = new Date(r.started).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    var started = new Date(r.started).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZone: 'America/New_York' });
     var loc = [r.city, r.country].filter(x => x && x !== 'Unknown').join(', ');
     return '<div class="session-card">' +
       '<div class="session-header">' +
