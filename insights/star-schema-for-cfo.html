@@ -14,59 +14,13 @@
 <meta name="twitter:description" content="Star schema dimensional modeling is a business decision disguised as a technical one. Here is why your CFO should care.">
 <meta name="description" content="Your CFO does not care about fact tables. They care about seeing margin by product, by customer, by region, in a format they can trust.">
 <link rel="canonical" href="https://coolidgeadvisory.com/insights/star-schema-for-cfo.html">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="canonical" href="https://coolidgeadvisory.com/insights/star-schema-for-cfo.html">
-<link rel="icon" type="image/png" sizes="512x512" href="../coolidge-icon-512.png">
-<link rel="apple-touch-icon" sizes="512x512" href="../coolidge-icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none;transition:color .2s}
-a:hover{color:var(--navy)}
-.container{max-width:1100px;margin:0 auto;padding:0 2rem}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
-nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
-.nav-logo svg{width:30px;height:30px;flex-shrink:0}
-.nav-links{display:flex;gap:2.25rem;align-items:center}
-.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
-.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
-.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
-.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
-.article-header{padding:8rem 0 3rem;background:var(--navy-deep)}
-.article-header .container{max-width:760px}
-.article-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem}
-.article-tag{font-size:.625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(133,183,235,0.85);background:rgba(46,117,182,0.15);padding:4px 10px;border-radius:3px}
-.article-date{font-size:.75rem;color:rgba(255,255,255,0.35)}
-.article-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;font-weight:400;margin-bottom:1.25rem}
-.article-header p{font-size:1.0625rem;color:rgba(255,255,255,0.5);line-height:1.85;max-width:600px}
-.article-body{padding:3.5rem 0 5rem}
-.article-body .container{max-width:760px}
-.article-body h2{font-family:var(--serif);font-size:1.375rem;color:var(--navy);margin:2.5rem 0 1rem;line-height:1.3}
-.article-body p{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:1.25rem}
-.article-body strong{color:var(--text)}
-.article-body ul{margin:0 0 1.25rem 1.5rem}
-.article-body li{font-size:.9375rem;color:var(--text-secondary);line-height:1.9;margin-bottom:.5rem}
-.article-cta{padding:4rem 0;background:var(--light);text-align:center;border-top:1px solid rgba(194,209,222,0.25)}
-.article-cta h2{font-family:var(--serif);font-size:1.5rem;color:var(--navy);margin-bottom:.75rem}
-.article-cta p{font-size:.9375rem;color:var(--text-secondary);margin-bottom:1.5rem;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.8}
-.article-cta a.btn{display:inline-flex;background:var(--navy);color:var(--white);padding:.75rem 1.75rem;border-radius:5px;font-weight:600;font-size:.875rem;transition:all .25s}
-.article-cta a.btn:hover{background:var(--accent);color:var(--white);transform:translateY(-1px)}
-.back-link{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;color:rgba(255,255,255,0.4);margin-bottom:1.5rem}
-.back-link:hover{color:var(--white)}
-footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
-footer .container{display:flex;justify-content:space-between;align-items:center}
-footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
-@media(max-width:768px){
-  .nav-links{display:none}.menu-btn{display:block}
-  .article-header{padding:6.5rem 0 2.5rem}
-  footer .container{flex-direction:column;gap:.5rem;text-align:center}
-}
-</style>
+<link rel="icon" type="image/png" sizes="512x512" href="coolidge-icon-512.png">
+<link rel="apple-touch-icon" sizes="512x512" href="coolidge-icon-512.png">
+
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,20 +48,138 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   "mainEntityOfPage": "https://coolidgeadvisory.com/insights/star-schema-for-cfo.html"
 }
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0E1116; --ink-2:#1A1F26; --graphite:#2A313A;
+  --paper:#FAF7F1; --bone:#F2EEE6; --bone-2:#E6E1D6;
+  --rule:#C9C2B0; --ox:#7A1F2B; --ox-ink:#E89A9F;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Geist',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(0.2,0.7,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px;background:var(--paper)}
+body{font-family:var(--sans);color:var(--graphite);line-height:1.55;background:var(--paper);-webkit-font-smoothing:antialiased;font-weight:400}
+a{color:var(--ink);text-decoration:none;transition:color .12s var(--ease)}
+a:hover{color:var(--ox)}
+.container{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:900px){.container{padding:0 32px}}
+.uc{text-transform:uppercase;letter-spacing:.22em}
+.mono{font-family:var(--mono)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,241,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .24s var(--ease),background .24s var(--ease)}
+nav.scrolled{border-bottom-color:var(--rule);background:rgba(250,247,241,0.97)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:baseline;gap:14px;color:var(--ink);line-height:1}
+.nav-logo .mark-word{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:-0.04em;color:var(--ink)}
+.nav-logo .mark-tag{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--graphite)}
+.nav-logo .dot{color:var(--ox)}
+.nav-links{display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--graphite);font-family:var(--sans);font-size:13px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{border:1px solid var(--ink);color:var(--ink)!important;padding:9px 18px;border-radius:0;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .12s var(--ease),color .12s var(--ease)}
+.nav-cta:hover{background:var(--ink);color:var(--paper)!important}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.menu-btn svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.5}
+
+/* ARTICLE HEADER */
+.article-header{padding:11rem 0 4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.article-header .container{max-width:860px}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--graphite);margin-bottom:3rem}
+.back-link:hover{color:var(--ox)}
+.article-meta{display:flex;align-items:center;gap:1.25rem;margin-bottom:2rem;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;flex-wrap:wrap}
+.article-fileno{color:var(--ox)}
+.article-tag{color:var(--graphite)}
+.article-date{color:var(--graphite);opacity:.7}
+.article-header h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.25rem,5vw,4rem);color:var(--ink);line-height:1;letter-spacing:-0.035em;margin-bottom:2rem;max-width:22ch}
+.article-header h1 em{font-style:italic;color:var(--ox);font-weight:300}
+.article-header .deck{font-family:var(--serif);font-weight:400;font-size:1.25rem;color:var(--graphite);line-height:1.55;max-width:60ch;letter-spacing:-0.005em}
+
+/* ARTICLE BODY */
+.article-body{padding:5rem 0 6rem;background:var(--paper)}
+.article-body .container{max-width:680px}
+.article-body h2{font-family:var(--serif);font-weight:400;font-size:1.625rem;color:var(--ink);margin:3rem 0 1.25rem;line-height:1.2;letter-spacing:-0.02em}
+.article-body h2:first-child{margin-top:0}
+.article-body p{font-family:var(--sans);font-size:16px;color:var(--graphite);line-height:1.75;margin-bottom:1.25rem}
+.article-body strong{color:var(--ink);font-weight:600}
+.article-body ul{margin:0 0 1.25rem 1.5rem}
+.article-body li{font-family:var(--sans);font-size:16px;color:var(--graphite);line-height:1.75;margin-bottom:.5rem}
+.article-body em{font-style:italic;color:var(--ox)}
+
+/* RULE SIG */
+.rule-sig{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--graphite);justify-content:center;margin:0 auto}
+.rule-sig::before,.rule-sig::after{content:"";flex:1;height:1.5px;background:var(--ink)}
+
+/* CTA */
+.article-cta{padding:5.5rem 0;background:var(--ink);color:var(--paper);text-align:center}
+.article-cta .rule-sig{color:var(--ox-ink);margin-bottom:1.75rem}
+.article-cta .rule-sig::before,.article-cta .rule-sig::after{background:var(--ox-ink)}
+.article-cta h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.75rem,3.2vw,2.5rem);color:var(--paper);margin-bottom:1rem;line-height:1.05;letter-spacing:-0.03em}
+.article-cta h2 em{font-style:italic;color:var(--ox-ink);font-weight:300}
+.article-cta p{font-family:var(--serif);font-size:1.125rem;color:rgba(250,247,241,0.7);margin:0 auto 2.25rem;max-width:56ch;line-height:1.55}
+.article-cta a.btn{display:inline-flex;align-items:center;gap:12px;background:var(--paper);color:var(--ink);padding:16px 28px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:all .12s var(--ease)}
+.article-cta a.btn:hover{background:var(--ox);color:var(--paper)}
+
+/* FOOTER */
+footer{padding:2rem 0;background:var(--ink);border-top:1px solid rgba(201,194,176,0.1)}
+footer .container{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,241,0.35)}
+footer .right{display:flex;align-items:center;gap:1.5rem}
+footer a{color:rgba(250,247,241,0.35)}
+footer a:hover{color:var(--paper)}
+
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid var(--rule);border-top:1px solid var(--rule)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+  .nav-logo .mark-tag{display:none}
+  .article-header{padding:7.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.75rem;text-align:center}
+}
+</style>
 </head>
 <body>
-<nav><div class="container">
-<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
-<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="../#approach">Approach</a><a href="../#results">Engagements</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
-<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-</div></nav>
-<section class="article-header"><div class="container">
-<a href="./" class="back-link">&larr; All Insights</a>
-<div class="article-meta"><span class="article-tag">Data Modeling</span><span class="article-date">January 2026</span></div>
-<h1>Star Schema for the CFO: Why Dimensional Modeling Is a Business Decision, Not a Technical One</h1>
-<p>Dimensional modeling is not a technical preference. It is the structural decision that determines whether your leadership team gets the visibility they need to run the business.</p>
-</div></section>
-<section class="article-body"><div class="container">
+<nav id="nav">
+  <div class="container">
+    <a href="index.html" class="nav-logo" aria-label="Coolidge Advisory — home">
+      <span class="mark-word">Coolidge<span class="dot">.</span></span>
+      <span class="mark-tag">Advisory</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#capabilities">Capabilities</a>
+      <a href="index.html#industries">Industries</a>
+      <a href="index.html#approach">Method</a>
+      <a href="index.html#results">Record</a>
+      <a href="index.html#insights">Insights</a>
+      <a href="index.html#about">Firm</a>
+      <a href="index.html#contact" class="nav-cta">Schedule a Briefing</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="19" x2="21" y2="19"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="article-header">
+  <div class="container">
+    <a href="index.html#insights" class="back-link">← All Insights</a>
+    <div class="article-meta">
+      <span class="article-fileno">CA-008</span>
+      <span class="article-tag">Data Modeling</span>
+      <span class="article-date">January 2026</span>
+    </div>
+    <h1>Star Schema for the CFO: Why Dimensional Modeling Is a Business Decision, Not a Technical One</h1>
+    <p class="deck">Dimensional modeling is not a technical preference. It is the structural decision that determines whether your leadership team gets the visibility they need to run the business.</p>
+  </div>
+</section>
+
+<section class="article-body">
+  <div class="container">
 <h2>The visibility problem</h2>
 <p>Every CFO has the same core requirement: the ability to see financial performance sliced by the dimensions that matter to the business. Margin by product line. Revenue by customer segment. Cost by department. Profitability by region. These are not complex requests. But in most organizations, answering them requires days of manual effort because the underlying data is not structured to support the question.</p>
 <p>The root cause is almost always the same. The data is stored in the same format it was captured: normalized tables optimized for transactional processing, not analytical querying. Answering a business question requires joining six, eight, or twelve tables, applying business logic that lives in someone's head, and producing a result that cannot be independently verified.</p>
@@ -122,15 +194,34 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
 <h2>The business case</h2>
 <p>Organizations that implement star schema dimensional modeling typically see report development time decrease by 60 to 80 percent because the data is pre-organized for the questions the business asks. They see executive adoption of self-service analytics increase because the model is intuitive enough for non-technical users to explore. And they see the finance team's confidence in the numbers increase because every metric is defined once, governed centrally, and traceable to its source.</p>
 <p>Dimensional modeling is not a technical decision made by the data team. It is a business decision that determines whether leadership gets the visibility they need to protect margin, allocate capital, and operate with confidence.</p>
-</div></section>
-<section class="article-cta"><div class="container">
-<h2>Ready to discuss your data architecture?</h2>
-<p>We start with a focused conversation about your current data landscape and what a modern infrastructure would look like for your organization.</p>
-<a href="mailto:info@coolidgeadvisory.com" class="btn">info@coolidgeadvisory.com</a>
-</div></section>
-<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><div style="display:flex;align-items:center;gap:1.25rem"><p>Tampa, Florida</p><a href="https://www.linkedin.com/company/coolidge-advisory" target="_blank" rel="noopener" style="display:flex;opacity:.25;transition:opacity .2s" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='.25'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.9)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div></footer>
+  </div>
+</section>
 
+<section class="article-cta">
+  <div class="container">
+    <div class="rule-sig">— Start with a briefing —</div>
+    <h2>Ready to discuss your data architecture?</h2>
+    <p>We start with a focused conversation about your current data landscape and what a modern infrastructure would look like for your organization.</p>
+    <a href="mailto:george@coolidgeadvisory.com" class="btn">Schedule a Briefing →</a>
+  </div>
+</section>
 
+<footer>
+  <div class="container">
+    <div>© 2026 Coolidge Advisory, Inc. · CA-008</div>
+    <div class="right">
+      <span>Tampa, Florida</span>
+      <a href="https://www.linkedin.com/company/coolidge-advisory" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 16);
+});
+</script>
 
 <script>
 (function() {
@@ -264,4 +355,5 @@ footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
   }
 })();
 </script>
-</body></html>
+</body>
+</html>

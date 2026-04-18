@@ -3,285 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insights | Coolidge Advisory</title>
-<meta name="description" content="Perspectives on data architecture, analytics, and AI from Coolidge Advisory. Technical depth for the CTO. Business impact for the CEO.">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="../coolidge-icon-512.png">
-<link rel="apple-touch-icon" sizes="512x512" href="../coolidge-icon-512.png">
+<title>Coolidge Insights — Coolidge Advisory</title>
+<meta name="description" content="Coolidge Insights: file-numbered essays on data architecture, analytics, and AI enablement. Written by the people who build the platforms.">
+<link rel="canonical" href="https://coolidgeadvisory.com/insights/">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="coolidge-icon-512.png">
+<link rel="apple-touch-icon" sizes="512x512" href="coolidge-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#1B3A5C;--navy-deep:#0F2540;--accent:#2E75B6;--light:#F4F7FA;--text:#2D2D2D;--text-secondary:#5A6B7D;--border:#C2D1DE;--white:#FFFFFF;--serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--sans);color:var(--text);line-height:1.7;background:var(--white);-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none;transition:color .2s}
-a:hover{color:var(--navy)}
-.container{max-width:1100px;margin:0 auto;padding:0 2rem}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(194,209,222,0.25)}
-nav .container{display:flex;align-items:center;justify-content:space-between;height:62px}
-.nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem;letter-spacing:-.01em}
-.nav-logo svg{width:30px;height:30px;flex-shrink:0}
+:root{--ink:#0E1116;--graphite:#2A313A;--paper:#FAF7F1;--bone:#F2EEE6;--bone-2:#E6E1D6;--rule:#C9C2B0;--ox:#7A1F2B;--ox-ink:#E89A9F;--serif:'Newsreader',Georgia,serif;--sans:'Geist',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--ease:cubic-bezier(0.2,0.7,0.2,1)}
+html{font-size:16px;background:var(--paper);scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--graphite);line-height:1.55;background:var(--paper);-webkit-font-smoothing:antialiased}
+a{color:var(--ink);text-decoration:none;transition:color .12s var(--ease)}
+a:hover{color:var(--ox)}
+.container{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:900px){.container{padding:0 32px}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,247,241,0.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .24s var(--ease)}
+nav.scrolled{border-bottom-color:var(--rule);background:rgba(250,247,241,0.97)}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:baseline;gap:14px;color:var(--ink)}
+.nav-logo .mark-word{font-family:var(--serif);font-size:22px;letter-spacing:-0.04em;color:var(--ink)}
+.nav-logo .mark-tag{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--graphite)}
+.nav-logo .dot{color:var(--ox)}
 .nav-links{display:flex;gap:2.25rem;align-items:center}
-.nav-links a{color:var(--text-secondary);font-size:.8125rem;font-weight:500;letter-spacing:.015em}
-.nav-cta{background:var(--navy);color:var(--white)!important;padding:.5rem 1.25rem;border-radius:5px;font-size:.8125rem;font-weight:600}
+.nav-links a{color:var(--graphite);font-size:13px;font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{border:1px solid var(--ink);color:var(--ink)!important;padding:9px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.nav-cta:hover{background:var(--ink);color:var(--paper)!important}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
-.menu-btn svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:2}
-.page-header{padding:8rem 0 3rem;background:var(--navy-deep)}
-.page-header .section-label{font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(133,183,235,0.6);margin-bottom:.875rem}
-.page-header h1{font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);color:var(--white);line-height:1.25;margin-bottom:1rem}
-.page-header p{font-size:1.0625rem;color:rgba(255,255,255,0.45);max-width:540px;line-height:1.85}
-.insights-section{padding:4rem 0 5.5rem}
-.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.insight-card{border:1px solid rgba(194,209,222,0.3);border-radius:8px;transition:all .3s;overflow:hidden}
-.insight-card:hover{border-color:var(--accent);box-shadow:0 4px 24px rgba(27,58,92,0.05);transform:translateY(-1px)}
-.insight-card a{display:flex;flex-direction:column;height:100%;padding:1.75rem 1.5rem;text-decoration:none;color:inherit}
-.insight-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:.875rem}
-.insight-tag{font-size:.5625rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:rgba(46,117,182,0.06);padding:3px 8px;border-radius:3px}
-.insight-date{font-size:.6875rem;color:var(--text-secondary);opacity:.6}
-.insight-card h3{font-size:.9375rem;font-weight:700;color:var(--navy);line-height:1.4;margin-bottom:.5rem;flex-grow:1}
-.insight-card p{font-size:.8125rem;color:var(--text-secondary);line-height:1.7}
-footer{padding:1.75rem 0;background:var(--navy-deep);border-top:1px solid rgba(133,183,235,0.06)}
-footer .container{display:flex;justify-content:space-between;align-items:center}
-footer p{font-size:.6875rem;color:rgba(255,255,255,0.18);letter-spacing:.02em}
-@media(max-width:768px){
-  .nav-links{display:none}.menu-btn{display:block}
-  .insights-grid{grid-template-columns:1fr}
-  .page-header{padding:6.5rem 0 2.5rem}
-  footer .container{flex-direction:column;gap:.5rem;text-align:center}
+.menu-btn svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.5}
+.page-header{padding:11rem 0 4rem;background:var(--paper);border-bottom:1px solid var(--rule)}
+.section-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ox);margin-bottom:1.5rem;display:flex;align-items:center;gap:14px}
+.section-eyebrow::before{content:"";width:40px;height:1.5px;background:var(--ink)}
+.page-header h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.5rem,5vw,4rem);color:var(--ink);line-height:1;letter-spacing:-0.035em;margin-bottom:1.5rem;max-width:18ch}
+.page-header h1 em{font-style:italic;color:var(--ox);font-weight:300}
+.page-header p{font-family:var(--serif);font-size:1.25rem;color:var(--graphite);max-width:60ch;line-height:1.55;letter-spacing:-0.005em}
+.insights-section{padding:5rem 0 7rem;background:var(--paper)}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.insight-card{background:var(--paper);border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background .12s var(--ease)}
+.insight-card:hover{background:var(--bone)}
+.insight-card a{display:flex;flex-direction:column;height:100%;padding:2rem 1.75rem 2.25rem;color:inherit}
+.insight-meta{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+.insight-fileno{color:var(--ox)}
+.insight-tag{color:var(--graphite)}
+.insight-date{color:var(--graphite);opacity:.7;margin-left:auto}
+.insight-card h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;color:var(--ink);line-height:1.25;margin-bottom:.75rem;letter-spacing:-0.015em;flex-grow:0}
+.insight-card p{font-family:var(--sans);font-size:13px;color:var(--graphite);line-height:1.7;flex-grow:1}
+.insight-more{margin-top:1.25rem;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+footer{padding:2rem 0;background:var(--ink);border-top:1px solid rgba(201,194,176,0.1)}
+footer .container{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(250,247,241,0.35)}
+footer .right{display:flex;gap:1.5rem}
+footer a{color:rgba(250,247,241,0.35)}footer a:hover{color:var(--paper)}
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .nav-links.open{display:flex}.menu-btn{display:block}.nav-logo .mark-tag{display:none}
+  .insights-grid{grid-template-columns:1fr}.page-header{padding:7.5rem 0 2.5rem}
+  footer .container{flex-direction:column;gap:.75rem;text-align:center}
 }
 </style>
 </head>
 <body>
-<nav><div class="container">
-<a href="../" class="nav-logo"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#1B3A5C"/><rect x="10" y="30" width="28" height="5.5" rx="1.5" fill="#fff" opacity=".35"/><rect x="13" y="21" width="22" height="5.5" rx="1.5" fill="#fff" opacity=".6"/><rect x="16" y="12" width="16" height="5.5" rx="1.5" fill="#fff"/></svg>Coolidge Advisory</a>
-<div class="nav-links" id="navLinks"><a href="../#capabilities">Capabilities</a><a href="../#industries">Industries</a><a href="../#approach">Approach</a><a href="../#results">Engagements</a><a href="./">Insights</a><a href="../#about">Firm</a><a href="../#contact" class="nav-cta">Schedule a Briefing</a></div>
-<button class="menu-btn" onclick="document.getElementById('navLinks').classList.toggle('open')"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+<nav id="nav"><div class="container">
+<a href="index.html" class="nav-logo"><span class="mark-word">Coolidge<span class="dot">.</span></span><span class="mark-tag">Advisory</span></a>
+<div class="nav-links" id="navLinks">
+<a href="index.html#capabilities">Capabilities</a>
+<a href="index.html#industries">Industries</a>
+<a href="index.html#approach">Method</a>
+<a href="index.html#results">Record</a>
+<a href="insights.html">Insights</a>
+<a href="index.html#about">Firm</a>
+<a href="index.html#contact" class="nav-cta">Schedule a Briefing</a>
+</div>
+<button class="menu-btn" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">
+<svg viewBox="0 0 24 24"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="19" x2="21" y2="19"/></svg>
+</button>
 </div></nav>
-
-<section class="page-header">
-  <div class="container">
-    <div class="section-label">Insights</div>
-    <h1>Perspectives on data, architecture, and AI.</h1>
-    <p>Thought leadership from our practice. Technical depth for the CTO. Business impact for the CEO. Written by the people who build the platforms.</p>
-  </div>
-</section>
-
-<section class="insights-section">
-  <div class="container">
-    <div class="insights-grid">
-
+<section class="page-header"><div class="container">
+<div class="section-eyebrow">Coolidge Insights</div>
+<h1>Perspectives on data,<br>architecture, and <em>AI.</em></h1>
+<p>The firm's published thinking. Technical depth for the CTO. Business impact for the CEO. File-numbered, written by the people who build the platforms.</p>
+</div></section>
+<section class="insights-section"><div class="container">
+<div class="insights-grid">
       <div class="insight-card"><a href="ax-2012-migration.html">
-        <div class="insight-meta"><span class="insight-tag">ERP Migration</span><span class="insight-date">Mar 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-012</span><span class="insight-tag">ERP Migration</span><span class="insight-date">Mar 2026</span></div>
         <h3>What Your AX 2012 Data Migration Actually Requires</h3>
         <p>Why the data layer should be built before the ERP is replaced. A data-first migration strategy for organizations still running end-of-life Dynamics AX.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="power-bi-margin-truth.html">
-        <div class="insight-meta"><span class="insight-tag">Analytics</span><span class="insight-date">Mar 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-011</span><span class="insight-tag">Analytics</span><span class="insight-date">Mar 2026</span></div>
         <h3>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin</h3>
         <p>Most implementations skip the semantic layer. The result is dashboards that look polished but produce numbers your CFO cannot certify.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="directlake-architecture.html">
-        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-010</span><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
         <h3>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost</h3>
         <p>The choice most organizations make by default. Why it should be made by design, and how it impacts capacity consumption by 30 to 50 percent.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="medallion-architecture.html">
-        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-009</span><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
         <h3>Medallion Architecture Is Not Optional. It Is the Foundation.</h3>
         <p>Bronze, Silver, Gold is the pattern that separates data platforms that scale from platforms that collapse under their own weight.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="star-schema-for-cfo.html">
-        <div class="insight-meta"><span class="insight-tag">Data Modeling</span><span class="insight-date">Jan 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-008</span><span class="insight-tag">Data Modeling</span><span class="insight-date">Jan 2026</span></div>
         <h3>Star Schema for the CFO: Why Dimensional Modeling Is a Business Decision</h3>
         <p>Your CFO does not care about fact tables. They care about seeing margin by product, by customer, by region, in a format they can trust.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="ai-readiness.html">
-        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Jan 2026</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-007</span><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Jan 2026</span></div>
         <h3>Your Data Is Not Ready for AI. Here Is What "Ready" Actually Looks Like.</h3>
         <p>Every vendor is selling AI. Very few are asking whether your data foundation can support it. Four conditions that must be met first.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="ahca-competitive-intelligence.html">
-        <div class="insight-meta"><span class="insight-tag">Healthcare</span><span class="insight-date">Dec 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-001</span><span class="insight-tag">Healthcare</span><span class="insight-date">Dec 2025</span></div>
         <h3>AHCA Data as Competitive Intelligence: What Most Health Systems Are Missing</h3>
         <p>Florida's AHCA datasets contain the financial fingerprint of every provider in the state. Most use it for compliance. The winners use it for positioning.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="bad-architecture-cost.html">
-        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Dec 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-002</span><span class="insight-tag">Architecture</span><span class="insight-date">Dec 2025</span></div>
         <h3>The Hidden Cost of Bad Data Architecture</h3>
         <p>When your Fabric or Snowflake bill doubles, the problem is usually upstream: unnecessary duplication, missing partitioning, or Import Mode where DirectLake should be.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="demand-forecasting-distributors.html">
-        <div class="insight-meta"><span class="insight-tag">Distribution</span><span class="insight-date">Nov 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-004</span><span class="insight-tag">Distribution</span><span class="insight-date">Nov 2025</span></div>
         <h3>Demand Forecasting for Distributors: From Gut Instinct to Data-Driven Purchasing</h3>
         <p>Most mid-market distributors make purchasing decisions on experience and intuition. AI-driven forecasting on governed data changes that equation.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="copilot-power-bi.html">
-        <div class="insight-meta"><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Nov 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-006</span><span class="insight-tag">AI &amp; Automation</span><span class="insight-date">Nov 2025</span></div>
         <h3>Copilot in Power BI: What It Can Do, What It Cannot, and What Your Data Needs First</h3>
         <p>The promise is real, but only if the underlying data model is properly structured. A star schema with clean business logic is the prerequisite.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="erp-not-data-strategy.html">
-        <div class="insight-meta"><span class="insight-tag">Strategy</span><span class="insight-date">Oct 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-003</span><span class="insight-tag">Strategy</span><span class="insight-date">Oct 2025</span></div>
         <h3>ERP Replacement Is Not a Data Strategy. Build the Data Layer First.</h3>
         <p>The new ERP will not solve your reporting problems. The data platform should be designed independently so it survives the next migration too.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
 
       <div class="insight-card"><a href="data-governance-architecture.html">
-        <div class="insight-meta"><span class="insight-tag">Governance</span><span class="insight-date">Oct 2025</span></div>
+        <div class="insight-meta"><span class="insight-fileno">CA-005</span><span class="insight-tag">Governance</span><span class="insight-date">Oct 2025</span></div>
         <h3>Data Governance Is Not a Policy Document. It Is an Architecture Pattern.</h3>
         <p>Row-level security, lineage tracking, and quality gates should be built into the platform from day one, not written into a binder that nobody reads.</p>
+        <span class="insight-more">Read →</span>
       </a></div>
-
-    </div>
-  </div>
-</section>
-
-<footer><div class="container"><p>&#169; 2026 Coolidge Advisory, Inc. All rights reserved.</p><div style="display:flex;align-items:center;gap:1.25rem"><p>Tampa, Florida</p><a href="https://www.linkedin.com/company/coolidge-advisory" target="_blank" rel="noopener" style="display:flex;opacity:.25;transition:opacity .2s" onmouseover="this.style.opacity='.5'" onmouseout="this.style.opacity='.25'"><svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,.9)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div></div></footer>
-
-
-
-<script>
-(function() {
-  var W = 'https://coolidge-analytics.coolidgeadvisory.workers.dev';
-  var sid = sessionStorage.getItem('_ca_sid');
-  if (!sid) {
-    sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    sessionStorage.setItem('_ca_sid', sid);
-  }
-  var returning = !!localStorage.getItem('_ca_v');
-  localStorage.setItem('_ca_v', '1');
-  var params = new URLSearchParams(location.search);
-  var loadMs = 0;
-  try { var perf = performance.getEntriesByType('navigation')[0]; if (perf) loadMs = Math.round(perf.loadEventEnd - perf.startTime); } catch(e) {}
-  var conn = '';
-  try { var nav = navigator.connection || navigator.mozConnection || navigator.webkitConnection; if (nav) conn = nav.effectiveType || nav.type || ''; } catch(e) {}
-
-  function track() {
-    if (loadMs <= 0) { try { var perf = performance.getEntriesByType('navigation')[0]; if (perf && perf.loadEventEnd > 0) loadMs = Math.round(perf.loadEventEnd - perf.startTime); } catch(e) {} }
-    var data = {
-      path: location.pathname + location.hash, referrer: document.referrer || '',
-      sw: screen.width, sh: screen.height, sid: sid,
-      lang: navigator.language || '', tz: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
-      utm_source: params.get('utm_source') || '', utm_medium: params.get('utm_medium') || '',
-      utm_campaign: params.get('utm_campaign') || '', utm_term: params.get('utm_term') || '',
-      utm_content: params.get('utm_content') || '',
-      load_ms: loadMs, conn: conn, returning: returning
-    };
-    if (navigator.sendBeacon) { navigator.sendBeacon(W + '/track', JSON.stringify(data)); }
-    else { fetch(W + '/track', { method: 'POST', body: JSON.stringify(data), keepalive: true }).catch(function() {}); }
-  }
-
-  var maxScroll = 0, startTime = Date.now();
-  function getScrollPct() {
-    var h = document.documentElement, b = document.body;
-    var scrollTop = window.pageYOffset || h.scrollTop || b.scrollTop || 0;
-    var docHeight = Math.max(h.scrollHeight, b.scrollHeight, h.offsetHeight, b.offsetHeight);
-    var winHeight = window.innerHeight || h.clientHeight;
-    if (docHeight <= winHeight) return 100;
-    return Math.min(100, Math.round((scrollTop / (docHeight - winHeight)) * 100));
-  }
-  window.addEventListener('scroll', function() { var s = getScrollPct(); if (s > maxScroll) maxScroll = s; }, { passive: true });
-
-  function sendPing() {
-    var duration = Math.round((Date.now() - startTime) / 1000);
-    var data = { sid: sid, path: location.pathname + location.hash, scroll: maxScroll, duration: duration };
-    if (navigator.sendBeacon) { navigator.sendBeacon(W + '/ping', JSON.stringify(data)); }
-  }
-  document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'hidden') { sendPing(); sendSectionData(); } });
-  window.addEventListener('pagehide', function() { sendPing(); sendSectionData(); });
-
-  var sectionTimers = {};
-  var currentSection = null;
-
-  function initSectionTracking() {
-    var sections = document.querySelectorAll('section[id]');
-    var tracked = [];
-    sections.forEach(function(el) {
-      var id = el.id;
-      if (!id) return;
-      var h = el.querySelector('h1, h2, h3');
-      var label = h ? h.textContent.trim().substring(0, 60) : id;
-      tracked.push({ el: el, id: id, label: label });
-      sectionTimers[id] = { label: label, time: 0, entered: false, enter_pct: 0 };
-    });
-    if (tracked.length === 0) return;
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        var id = entry.target.id;
-        if (!sectionTimers[id]) return;
-        if (entry.isIntersecting) {
-          sectionTimers[id].entered = true;
-          sectionTimers[id].lastSeen = Date.now();
-          sectionTimers[id].enter_pct = getScrollPct();
-          currentSection = id;
-          updateScrollSpy(id);
-        } else {
-          if (sectionTimers[id].lastSeen) {
-            sectionTimers[id].time += Math.round((Date.now() - sectionTimers[id].lastSeen) / 1000);
-            sectionTimers[id].lastSeen = null;
-          }
-        }
-      });
-    }, { threshold: 0.3 });
-
-    tracked.forEach(function(s) { observer.observe(s.el); });
-  }
-
-  function sendSectionData() {
-    Object.keys(sectionTimers).forEach(function(id) {
-      if (sectionTimers[id].lastSeen) {
-        sectionTimers[id].time += Math.round((Date.now() - sectionTimers[id].lastSeen) / 1000);
-        sectionTimers[id].lastSeen = Date.now();
-      }
-    });
-    var sections = [];
-    Object.keys(sectionTimers).forEach(function(id) {
-      if (sectionTimers[id].entered) {
-        sections.push({ id: id, label: sectionTimers[id].label, time: sectionTimers[id].time, enter_pct: sectionTimers[id].enter_pct });
-      }
-    });
-    if (sections.length > 0) {
-      var data = { sid: sid, path: location.pathname + location.hash, sections: sections };
-      if (navigator.sendBeacon) { navigator.sendBeacon(W + '/sections', JSON.stringify(data)); }
-    }
-  }
-
-  function updateScrollSpy(activeId) {
-    var navLinks = document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
-    navLinks.forEach(function(link) {
-      var href = link.getAttribute('href');
-      if (href === '#' + activeId) {
-        link.style.color = '#2E75B6';
-        link.style.fontWeight = '700';
-      } else {
-        link.style.color = '';
-        link.style.fontWeight = '';
-      }
-    });
-  }
-
-  if (document.readyState === 'complete') {
-    setTimeout(track, 50);
-    setTimeout(initSectionTracking, 200);
-  } else {
-    window.addEventListener('load', function() {
-      setTimeout(track, 50);
-      setTimeout(initSectionTracking, 200);
-    });
-  }
-})();
-</script>
-</body>
-</html>
+</div></div></section>
+<footer><div class="container">
+<div>© 2026 Coolidge Advisory, Inc. · File CA-003</div>
+<div class="right"><span>Tampa, Florida</span><a href="https://www.linkedin.com/company/coolidge-advisory" target="_blank" rel="noopener">LinkedIn</a></div>
+</div></footer>
+<script>var n=document.getElementById('nav');window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>16)});</script>
+</body></html>
