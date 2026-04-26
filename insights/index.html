@@ -61,12 +61,13 @@
   --obsidian:#0B0D0E;--graphite:#1C1F22;--ink:#2A2E33;
   --slate:#5A6370;--stone:#8A8E93;
   --bone:#E8E3D6;--vellum:#F5F2EA;--paper:#FAF7F1;--white:#FFFFFF;
-  --bronze:#B87333;--bronze-dk:#8A5425;--bronze-lt:#D99866;
+  /* COOLIDGE COLOR RULE: --bronze (#A4641F) is the MARK color, used for graphic accents only (logos, hover bars, fill rules, dot motifs). --bronze-ink (#7A4914) is the INK color, used for all type on paper for AA-grade contrast. Do not invert. Do not introduce a third bronze. */
+  --bronze:#A4641F;--bronze-dk:#7A4914;--bronze-lt:#D99866;--bronze-ink:#7A4914;
   --silver:#B8BCC2;--silver-dk:#7D8088;--silver-lt:#E0E2E5;
-  --gold:#D4A437;--gold-dk:#9C7815;--gold-lt:#E8C776;
+  --gold:#D4A437;--gold-dk:#8C6810;--gold-lt:#E8C776;
   --teal:#1FB5A8;--teal-dk:#107A72;--teal-lt:#6ED6CC;
   --text:var(--obsidian);--text-secondary:var(--slate);
-  --rule:var(--bone);--accent:var(--bronze);
+  --rule:var(--bone);--accent:var(--bronze);--accent-on-light:var(--bronze-ink);
   --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
   --serif:'IBM Plex Serif',Georgia,serif;
   --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
@@ -131,14 +132,14 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .insight-card a{display:flex;flex-direction:column;height:100%;padding:1.95rem 1.75rem 2.1rem;color:inherit;text-decoration:none;position:relative}
 .insight-card a::after{content:'';position:absolute;left:0;top:0;height:2px;width:0;background:var(--bronze);transition:width .28s ease}
 .insight-card:hover a::after{width:100%}
-.insight-card:nth-child(3n+1) .insight-fileno{color:var(--bronze)}
+.insight-card:nth-child(3n+1) .insight-fileno{color:var(--bronze-ink)}
 .insight-card:nth-child(3n+1):hover a::after{background:var(--bronze)}
 .insight-card:nth-child(3n+2) .insight-fileno{color:var(--silver-dk)}
 .insight-card:nth-child(3n+2):hover a::after{background:var(--silver-dk)}
 .insight-card:nth-child(3n+3) .insight-fileno{color:var(--gold-dk)}
 .insight-card:nth-child(3n+3):hover a::after{background:var(--gold-dk)}
 .insight-meta{display:flex;align-items:center;gap:.85rem;margin-bottom:1.5rem;font-family:var(--mono);font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;line-height:1}
-.insight-fileno{color:var(--bronze);font-weight:500}
+.insight-fileno{color:var(--bronze-ink);font-weight:500}
 .insight-tag{color:var(--graphite);padding-left:.85rem;border-left:1px solid var(--bone)}
 .insight-date{color:var(--slate);margin-left:auto}
 .insight-card h3{font-family:var(--serif);font-weight:500;font-size:1.1875rem;color:var(--obsidian);line-height:1.28;margin-bottom:.85rem;letter-spacing:-.015em}
@@ -174,7 +175,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
   footer .container{flex-direction:column;text-align:center;gap:.75rem}
   .insight-card:nth-child(3n+1) .insight-fileno,
   .insight-card:nth-child(3n+2) .insight-fileno,
-  .insight-card:nth-child(3n+3) .insight-fileno{color:var(--bronze)}
+  .insight-card:nth-child(3n+3) .insight-fileno{color:var(--bronze-ink)}
   .insight-card:hover a::after{background:var(--bronze)}
 }
 @media(max-width:640px){
@@ -195,7 +196,7 @@ footer a.li:hover{opacity:.65}
 
 <nav id="nav">
   <div class="container">
-    <a href="/" class="nav-logo" aria-label="Coolidge Advisory — home">
+    <a href="/" class="nav-logo" aria-label="Coolidge Advisory, home">
       <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
         <defs>
           <mask id="navRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>

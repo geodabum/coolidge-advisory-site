@@ -61,12 +61,13 @@
   --obsidian:#0B0D0E;--graphite:#1C1F22;--ink:#2A2E33;
   --slate:#5A6370;--stone:#8A8E93;
   --bone:#E8E3D6;--vellum:#F5F2EA;--paper:#FAF7F1;--white:#FFFFFF;
-  --bronze:#B87333;--bronze-dk:#8A5425;--bronze-lt:#D99866;
+  /* COOLIDGE COLOR RULE: --bronze (#A4641F) is the MARK color, used for graphic accents only (logos, hover bars, fill rules, dot motifs). --bronze-ink (#7A4914) is the INK color, used for all type on paper for AA-grade contrast. Do not invert. Do not introduce a third bronze. */
+  --bronze:#A4641F;--bronze-dk:#7A4914;--bronze-lt:#D99866;--bronze-ink:#7A4914;
   --silver:#B8BCC2;--silver-dk:#7D8088;--silver-lt:#E0E2E5;
-  --gold:#D4A437;--gold-dk:#9C7815;--gold-lt:#E8C776;
+  --gold:#D4A437;--gold-dk:#8C6810;--gold-lt:#E8C776;
   --teal:#1FB5A8;--teal-dk:#107A72;--teal-lt:#6ED6CC;
   --text:var(--obsidian);--text-secondary:var(--slate);
-  --rule:var(--bone);--accent:var(--bronze);
+  --rule:var(--bone);--accent:var(--bronze);--accent-on-light:var(--bronze-ink);
   --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
   --serif:'IBM Plex Serif',Georgia,serif;
   --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
@@ -98,7 +99,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:4px}
 .menu-btn svg{width:24px;height:24px;stroke:var(--obsidian);fill:none;stroke-width:2}
 
-/* ARTICLE HERO — obsidian, mirrors insights listing hero */
+/* ARTICLE HERO: obsidian, mirrors insights listing hero */
 .article-hero{padding:9.5rem 0 4.5rem;background:var(--obsidian);position:relative;overflow:hidden;color:var(--vellum)}
 .article-hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:radial-gradient(ellipse at 80% 40%,rgba(212,164,55,0.07) 0%,transparent 60%);pointer-events:none}
 .article-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(184,115,51,0.35),rgba(184,188,194,0.3),rgba(212,164,55,0.35),transparent)}
@@ -116,7 +117,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .article-hero .deck{font-size:1.0625rem;color:rgba(245,242,234,.72);max-width:60ch;line-height:1.65;font-weight:400;letter-spacing:.002em}
 .article-hero .deck b,.article-hero .deck strong{color:var(--paper);font-weight:500}
 
-/* ARTICLE BODY — paper background, optimized for reading */
+/* ARTICLE BODY: paper background, optimized for reading */
 .article-body{padding:5rem 0 6rem;background:var(--paper)}
 .article-body .container{max-width:720px}
 .article-body h2{font-family:var(--serif);font-weight:500;font-size:1.6rem;color:var(--obsidian);margin:3rem 0 1.15rem;line-height:1.25;letter-spacing:-.015em;position:relative;padding-left:1.1rem}
@@ -170,7 +171,7 @@ footer a.li:hover{opacity:.65}
 
 <nav id="nav">
   <div class="container">
-    <a href="/" class="nav-logo" aria-label="Coolidge Advisory — home">
+    <a href="/" class="nav-logo" aria-label="Coolidge Advisory, home">
       <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
         <defs>
           <mask id="navRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
