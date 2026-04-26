@@ -157,14 +157,25 @@
   --white:#FFFFFF;
 
   /* ── The medallion triad — the brand ─────────────────────────────── */
-  --bronze:#B87333;       /* 01 · Capture  */
-  --bronze-dk:#8A5425;
+  /* ┌─────────────────────────────────────────────────────────────────┐
+     │ COOLIDGE COLOR RULE — codified, applies to every brand asset    │
+     │ • MARK color  #A4641F  → logos, accent rules, fills ≥24px,      │
+     │                          icon strokes on dark, links            │
+     │ • INK  color  #7A4914  → all type at any size, fine rules,      │
+     │                          captions, hairlines on paper           │
+     │ This two-tier system preserves the saturated brand hue for      │
+     │ recognition while giving body type AA-grade contrast (~7:1).    │
+     │ Do not invert. Do not introduce a third bronze.                 │
+     └─────────────────────────────────────────────────────────────────┘ */
+  --bronze:#A4641F;       /* 01 · Capture — MARK color (graphic accents only) */
+  --bronze-dk:#7A4914;
   --bronze-lt:#D99866;
+  --bronze-ink:#7A4914;   /* INK color — all type on paper. AAA contrast. */
   --silver:#B8BCC2;       /* 02 · Validate */
   --silver-dk:#7D8088;
   --silver-lt:#E0E2E5;
-  --gold:#D4A437;         /* 03 · Deliver (hero) */
-  --gold-dk:#9C7815;
+  --gold:#D4A437;         /* 03 · Deliver (hero — on dark only) */
+  --gold-dk:#8C6810;      /* For accents on light surfaces — AA contrast */
   --gold-lt:#E8C776;
 
   /* ── Reserved live / AI signal ───────────────────────────────────── */
@@ -177,6 +188,7 @@
   --text-secondary:var(--slate);
   --rule:var(--bone);
   --accent:var(--bronze);
+  --accent-on-light:var(--bronze-ink);  /* Use for type/lines on paper bg */
 
   /* ── Type stack ──────────────────────────────────────────────────── */
   --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
@@ -276,26 +288,29 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 
 .hero h1{
   font-family:var(--serif);
-  font-size:clamp(2.25rem,5vw,3.75rem);
+  font-size:clamp(2.35rem,5.2vw,3.95rem);
   color:var(--paper);
   line-height:1.04;
-  max-width:880px;
-  font-weight:500;
-  margin-bottom:1.75rem;
-  letter-spacing:-.02em;
+  max-width:900px;
+  font-weight:400;
+  margin-bottom:1.85rem;
+  letter-spacing:-.024em;
+  text-wrap:balance;
 }
 .hero h1 em{
-  font-style:normal;
+  font-style:italic;
   font-weight:400;
   color:var(--gold-lt);
 }
 .hero-body{
-  font-size:1.0625rem;
-  color:rgba(245,242,234,0.7);
-  max-width:620px;
-  line-height:1.75;
-  margin-bottom:2.75rem;
-  font-weight:400;
+  font-size:1.125rem;
+  color:rgba(245,242,234,0.72);
+  max-width:640px;
+  line-height:1.7;
+  margin-bottom:2.85rem;
+  font-weight:300;
+  letter-spacing:-.005em;
+  text-wrap:pretty;
 }
 .hero-cta{
   display:inline-flex;align-items:center;gap:10px;
@@ -304,7 +319,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
   font-weight:500;font-size:.875rem;
   transition:all .25s;letter-spacing:.005em;
 }
-.hero-cta:hover{background:var(--gold);color:var(--obsidian);transform:translateY(-1px)}
+.hero-cta:hover{background:var(--gold);color:var(--obsidian);transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,164,55,0.18)}
 .hero-cta svg{width:14px;height:14px;transition:transform .25s}
 .hero-cta:hover svg{transform:translateX(3px)}
 
@@ -365,22 +380,22 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 }
 
 /* ── STATS ───────────────────────────────────────────────────────── */
-.stats{padding:3rem 0;background:var(--graphite);border-bottom:1px solid rgba(212,164,55,0.1)}
-.stats .container{display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
-.stat{text-align:center;min-width:120px}
+.stats{padding:3.5rem 0;background:var(--graphite);border-bottom:1px solid rgba(212,164,55,0.1);position:relative;overflow:hidden}
+.stats .container{display:flex;justify-content:center;gap:4.5rem;flex-wrap:wrap}
+.stat{text-align:center;min-width:140px}
 .stat-number{
-  font-family:var(--serif);font-size:1.95rem;color:var(--paper);
-  font-weight:500;line-height:1.1;letter-spacing:-.02em;
+  font-family:var(--serif);font-size:2.95rem;color:var(--paper);
+  font-weight:500;line-height:1;letter-spacing:-.025em;
 }
 .stat-number sup{
-  font-family:var(--mono);font-size:.55em;font-weight:400;
-  color:var(--gold);margin-left:2px;vertical-align:super;letter-spacing:0;
+  font-family:var(--mono);font-size:.42em;font-weight:400;
+  color:var(--gold);margin-left:3px;letter-spacing:0;top:-.65em;position:relative;
 }
 .stat-label{
   font-family:var(--mono);font-size:.625rem;
-  color:rgba(245,242,234,0.48);letter-spacing:.16em;
-  text-transform:uppercase;margin-top:.45rem;
-  font-weight:400;line-height:1.5;
+  color:rgba(245,242,234,0.5);letter-spacing:.18em;
+  text-transform:uppercase;margin-top:.85rem;
+  font-weight:400;line-height:1.55;
 }
 
 /* ── TRUST ───────────────────────────────────────────────────────── */
@@ -396,21 +411,21 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* ── SECTION COMMON ──────────────────────────────────────────────── */
 .section-label{
   font-family:var(--mono);font-size:.6875rem;font-weight:500;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);
-  margin-bottom:1rem;display:inline-flex;align-items:center;gap:10px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-ink);
+  margin-bottom:1.125rem;display:inline-flex;align-items:center;gap:12px;
 }
 .section-label::before{
-  content:'';width:22px;height:1px;background:var(--bronze);opacity:.65;
+  content:'';width:24px;height:1px;background:var(--bronze-ink);opacity:.7;
 }
 .section-title{
   font-family:var(--serif);
-  font-size:clamp(1.85rem,3.4vw,2.55rem);
-  color:var(--obsidian);line-height:1.15;margin-bottom:1rem;
-  max-width:640px;font-weight:500;letter-spacing:-.02em;
+  font-size:clamp(1.95rem,3.6vw,2.75rem);
+  color:var(--obsidian);line-height:1.12;margin-bottom:1.125rem;
+  max-width:680px;font-weight:400;letter-spacing:-.022em;
 }
 .section-subtitle{
-  font-size:1rem;color:var(--slate);max-width:580px;
-  margin-bottom:3rem;line-height:1.75;font-weight:400;
+  font-size:1.0625rem;color:var(--slate);max-width:600px;
+  margin-bottom:3.25rem;line-height:1.7;font-weight:400;letter-spacing:-.005em;
 }
 
 /* ── CHALLENGE ───────────────────────────────────────────────────── */
@@ -422,11 +437,13 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .challenge-card{padding:2rem 1.75rem;background:var(--paper);transition:background .25s}
 .challenge-card:hover{background:var(--vellum)}
 .challenge-icon{
-  width:36px;height:36px;border:1px solid var(--bone);border-radius:3px;
+  width:40px;height:40px;border:1px solid var(--bone);border-radius:3px;
   display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.25rem;background:var(--paper);
+  margin-bottom:1.35rem;background:var(--paper);
+  transition:border-color .25s,background .25s;
 }
-.challenge-icon svg{width:18px;height:18px;stroke:var(--obsidian);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.challenge-card:hover .challenge-icon{border-color:var(--bronze-ink);background:var(--vellum)}
+.challenge-icon svg{width:18px;height:18px;stroke:var(--obsidian);fill:none;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter}
 .challenge-card h3{
   font-family:var(--sans);font-size:1rem;font-weight:500;
   color:var(--obsidian);margin-bottom:.625rem;
@@ -458,8 +475,10 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
   width:44px;height:44px;border:1px solid var(--bone);border-radius:3px;
   display:flex;align-items:center;justify-content:center;
   margin-bottom:1.5rem;background:var(--vellum);
+  transition:border-color .25s,background .25s;
 }
-.service-icon svg{width:22px;height:22px;stroke:var(--obsidian);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.service-card:hover .service-icon{border-color:var(--bronze-ink);background:var(--paper)}
+.service-icon svg{width:20px;height:20px;stroke:var(--obsidian);fill:none;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter}
 .service-card h3{
   font-family:var(--sans);font-size:1.125rem;font-weight:500;
   color:var(--obsidian);margin-bottom:.75rem;letter-spacing:-.015em;
@@ -478,7 +497,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .platform-group:last-child{margin-bottom:0}
 .platform-group-label{
   font-family:var(--mono);font-size:.5625rem;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-ink);
   margin-bottom:.875rem;opacity:.9;
 }
 .platform-list{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;align-items:center}
@@ -513,8 +532,10 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
   width:40px;height:40px;border:1px solid var(--bone);border-radius:3px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;background:var(--vellum);
+  transition:border-color .25s,background .25s;
 }
-.industry-icon svg{width:20px;height:20px;stroke:var(--obsidian);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.industry-card:hover .industry-icon{border-color:var(--bronze-ink);background:var(--paper)}
+.industry-icon svg{width:18px;height:18px;stroke:var(--obsidian);fill:none;stroke-width:1.5;stroke-linecap:square;stroke-linejoin:miter}
 .industry-card h3{
   font-family:var(--sans);font-size:1.0625rem;font-weight:500;
   color:var(--obsidian);letter-spacing:-.01em;
@@ -523,12 +544,24 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .industry-tags{display:flex;flex-wrap:wrap;gap:.375rem}
 .industry-tag{
   font-family:var(--mono);font-size:.625rem;font-weight:500;
-  color:var(--bronze);background:transparent;
+  color:var(--bronze-ink);background:transparent;
   border:1px solid var(--bone);padding:3px 10px;
   border-radius:2px;letter-spacing:.04em;text-transform:uppercase;
 }
 
 /* ── METHODOLOGY ─────────────────────────────────────────────────── */
+/* PULL QUOTE editorial rhythm break */
+.pullquote{padding:7.5rem 0 7.5rem;background:var(--paper);border-top:1px solid var(--bone);border-bottom:1px solid var(--bone);position:relative;overflow:hidden}
+.pullquote::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--bronze) 0,var(--bronze) 33.33%,var(--silver) 33.33%,var(--silver) 66.66%,var(--gold) 66.66%,var(--gold) 100%);opacity:.85}
+.pullquote .container{max-width:920px;text-align:left}
+.pullquote-mark{font-family:var(--mono);font-size:.6875rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-ink);margin-bottom:1.75rem;display:inline-flex;align-items:center;gap:12px}
+.pullquote-mark::before{content:'';width:24px;height:1px;background:var(--bronze-ink);opacity:.7}
+.pullquote blockquote{font-family:var(--serif);font-size:clamp(1.7rem,3.1vw,2.45rem);line-height:1.3;color:var(--obsidian);font-weight:400;letter-spacing:-.02em;max-width:880px;text-wrap:balance}
+.pullquote blockquote em{font-style:italic;color:var(--bronze-ink);font-weight:400}
+.pullquote-attr{margin-top:2.5rem;display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.pullquote-attr-rule{flex:0 0 36px;height:1px;background:var(--bone)}
+@media(max-width:768px){.pullquote{padding:4.5rem 0}}
+
 .methodology{padding:6rem 0;background:var(--obsidian);position:relative;overflow:hidden}
 .methodology::before{
   content:'';position:absolute;top:-30%;left:-10%;width:55%;height:160%;
@@ -582,6 +615,47 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .method-signature .sig-dot.g{background:var(--gold)}
 .method-signature .sig-arrow{color:rgba(245,242,234,0.35);font-family:var(--sans)}
 
+/* ── MANIFESTO ─ editorial breath between Method and Results ─────── */
+.manifesto{
+  padding:8rem 0;background:var(--paper);
+  border-top:1px solid var(--bone);border-bottom:1px solid var(--bone);
+  position:relative;overflow:hidden;
+}
+.manifesto::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 80% at 18% 50%, rgba(164,100,31,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 82% 50%, rgba(140,104,16,0.035) 0%, transparent 70%);
+}
+.manifesto .container{position:relative;z-index:1;max-width:1000px;text-align:left}
+.manifesto-eyebrow{
+  font-family:var(--mono);font-size:.6875rem;font-weight:500;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--bronze-ink);
+  margin-bottom:2rem;display:inline-flex;align-items:center;gap:14px;
+}
+.manifesto-eyebrow::before,
+.manifesto-eyebrow::after{
+  content:'';width:32px;height:1px;background:var(--bronze-ink);opacity:.55;
+}
+.manifesto-line{
+  font-family:var(--serif);
+  font-size:clamp(1.85rem,3.6vw,3rem);
+  line-height:1.22;letter-spacing:-.022em;
+  color:var(--obsidian);font-weight:400;
+  max-width:920px;text-wrap:balance;
+}
+.manifesto-line em{font-style:italic;color:var(--bronze-ink);font-weight:400}
+.manifesto-rule{
+  margin-top:2.75rem;display:flex;align-items:center;gap:14px;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--slate);
+}
+.manifesto-rule .rule-line{flex:0 0 36px;height:1px;background:var(--bone)}
+@media(max-width:768px){
+  .manifesto{padding:5.5rem 0}
+  .manifesto-eyebrow::after{display:none}
+}
+
 /* ── RESULTS ─────────────────────────────────────────────────────── */
 .results{padding:6rem 0;background:var(--vellum);border-top:1px solid var(--bone)}
 .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
@@ -600,7 +674,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .result-card:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(11,13,14,0.06)}
 .result-type{
   font-family:var(--mono);font-size:.625rem;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--bronze-ink);
   margin-bottom:.875rem;
 }
 .result-headline{
@@ -658,7 +732,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .insight-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1.125rem}
 .insight-tag{
   font-family:var(--mono);font-size:.5625rem;font-weight:500;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--bronze-ink);
   background:transparent;border:1px solid var(--bone);
   padding:3px 8px;border-radius:2px;
 }
@@ -675,7 +749,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .insights-more{text-align:center;margin-top:2.75rem}
 .insights-more a{
   font-family:var(--mono);font-size:.75rem;font-weight:500;
-  color:var(--bronze);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--bronze-ink);letter-spacing:.08em;text-transform:uppercase;
 }
 
 /* ── ABOUT INNER ─────────────────────────────────────────────────── */
@@ -699,7 +773,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
   margin-bottom:.2rem;font-weight:500;letter-spacing:-.02em;
 }
 .about-title{
-  font-family:var(--mono);font-size:.75rem;color:var(--bronze);
+  font-family:var(--mono);font-size:.75rem;color:var(--bronze-ink);
   font-weight:500;margin-bottom:1.5rem;
   letter-spacing:.1em;text-transform:uppercase;
 }
@@ -777,6 +851,194 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
   .cta-contact{flex-direction:column;gap:.75rem}
   footer .container{flex-direction:column;gap:.5rem;text-align:center}
 }
+
+/* ═════════════════════════════════════════════════════════════════════
+   A+ POLISH — film-grain, monogram seals, headshot, industries ribbon,
+   engagement model, animated stats
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* Film-grain overlay applied to all dark surfaces (hero, methodology, footer) */
+.grain::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  opacity:.07;mix-blend-mode:overlay;z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95  0 0 0 0 0.95  0 0 0 0 0.95  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Hero monogram watermark — faint, off-canvas right edge */
+.hero-watermark{
+  position:absolute;right:-180px;top:50%;transform:translateY(-50%);
+  width:680px;height:680px;opacity:.045;pointer-events:none;z-index:0;
+  filter:drop-shadow(0 0 30px rgba(212,164,55,0.3));
+}
+@media(max-width:1100px){.hero-watermark{display:none}}
+
+/* Industries served — typographic ribbon between hero and stats */
+.industries-ribbon{
+  background:var(--graphite);border-top:1px solid rgba(245,242,234,.08);
+  border-bottom:1px solid rgba(245,242,234,.08);
+  padding:1.5rem 0;
+}
+.industries-ribbon .container{
+  display:flex;align-items:center;justify-content:center;gap:1.25rem;
+  flex-wrap:wrap;font-family:var(--mono);font-size:.6875rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,234,.5);
+  text-align:center;
+}
+.industries-ribbon .ribbon-eyebrow{color:var(--gold-lt);opacity:.85}
+.industries-ribbon .ribbon-sep{opacity:.3;color:var(--gold)}
+
+/* Numbered eyebrows replacing stock icons */
+.numglyph{
+  width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.6875rem;font-weight:500;
+  letter-spacing:.18em;color:var(--bronze-ink);
+  border:1px solid var(--bone);border-radius:2px;background:var(--paper);
+  margin-bottom:1.35rem;transition:all .25s;
+  position:relative;
+}
+.numglyph::after{
+  content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
+  width:14px;height:1px;background:var(--bronze);transform-origin:center;
+  transition:width .3s;
+}
+.challenge-card:hover .numglyph,
+.service-card:hover .numglyph,
+.industry-card:hover .numglyph{
+  border-color:var(--bronze-ink);background:var(--vellum);
+}
+.challenge-card:hover .numglyph::after,
+.service-card:hover .numglyph::after,
+.industry-card:hover .numglyph::after{width:24px}
+.numglyph.dark{background:transparent;border-color:rgba(245,242,234,.15);color:var(--gold-lt)}
+.numglyph.dark::after{background:var(--gold)}
+
+/* Anonymized client sizing tag on result cards */
+.result-sizing{
+  font-family:var(--mono);font-size:.625rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--obsidian);
+  margin-bottom:1rem;padding:6px 10px;background:var(--vellum);
+  border-radius:2px;display:inline-block;border:1px solid var(--bone);
+}
+
+/* About — headshot with editorial 4×5 grayscale */
+.about-photo-wrap{
+  position:relative;width:240px;flex-shrink:0;
+}
+.about-photo{
+  width:240px;aspect-ratio:4/5;object-fit:cover;object-position:50% 22%;
+  display:block;border-radius:3px;
+  filter:grayscale(100%) contrast(1.05) brightness(.97);
+  border:1px solid var(--bone);
+}
+.about-photo-wrap::after{
+  content:'';position:absolute;inset:0;border-radius:3px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.05  0 0 0 0 0.05  0 0 0 0 0.05  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
+  opacity:.18;mix-blend-mode:multiply;pointer-events:none;border-radius:3px;
+}
+.about-photo-caption{
+  margin-top:.875rem;font-family:var(--mono);font-size:.5625rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--slate);
+  display:flex;align-items:center;gap:8px;
+}
+.about-photo-caption::before{
+  content:'';width:18px;height:1px;background:var(--bronze);opacity:.6;
+}
+
+/* Engagement Model section */
+.engage{padding:7rem 0;background:var(--paper);border-top:1px solid var(--bone)}
+.engage-header{max-width:680px;margin-bottom:3.5rem}
+.engage-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid var(--bone);border-radius:3px;overflow:hidden;
+  background:var(--bone);
+}
+.engage-phase{
+  padding:2.5rem 2rem 2.25rem;background:var(--paper);
+  position:relative;transition:background .25s;
+}
+.engage-phase:hover{background:var(--vellum)}
+.engage-phase::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--bronze);
+}
+.engage-phase.p2::before{background:var(--silver)}
+.engage-phase.p3::before{background:var(--gold)}
+.engage-phase-num{
+  font-family:var(--mono);font-size:.625rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--bronze-ink);
+  margin-bottom:.625rem;display:flex;align-items:center;gap:10px;
+}
+.engage-phase.p2 .engage-phase-num{color:var(--silver-dk)}
+.engage-phase.p3 .engage-phase-num{color:var(--gold-dk)}
+.engage-phase-num .dot{width:6px;height:6px;border-radius:50%;background:var(--bronze)}
+.engage-phase.p2 .engage-phase-num .dot{background:var(--silver)}
+.engage-phase.p3 .engage-phase-num .dot{background:var(--gold)}
+.engage-phase h3{
+  font-family:var(--serif);font-size:1.4rem;font-weight:500;
+  color:var(--obsidian);line-height:1.25;margin-bottom:.5rem;letter-spacing:-.018em;
+}
+.engage-phase .engage-phase-tag{
+  font-family:var(--sans);font-size:.875rem;font-style:italic;
+  color:var(--slate);margin-bottom:1.5rem;line-height:1.5;
+}
+.engage-phase ul{list-style:none;padding:0;margin:0 0 1.5rem}
+.engage-phase ul li{
+  font-size:.875rem;color:var(--slate);line-height:1.6;
+  padding:.5rem 0 .5rem 18px;position:relative;
+  border-top:1px solid var(--bone);
+}
+.engage-phase ul li:first-child{border-top:none}
+.engage-phase ul li::before{
+  content:'';position:absolute;left:0;top:1.05rem;
+  width:8px;height:1px;background:var(--bronze);
+}
+.engage-phase.p2 ul li::before{background:var(--silver-dk)}
+.engage-phase.p3 ul li::before{background:var(--gold-dk)}
+.engage-phase-meta{
+  margin-top:auto;padding-top:1rem;border-top:1px solid var(--bone);
+  display:flex;justify-content:space-between;align-items:baseline;
+}
+.engage-phase-meta-label{
+  font-family:var(--mono);font-size:.5625rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--slate);
+}
+.engage-phase-meta-value{
+  font-family:var(--serif);font-size:1rem;color:var(--obsidian);
+  font-weight:500;letter-spacing:-.005em;
+}
+.engage-phase{display:flex;flex-direction:column}
+.engage-howwework{
+  margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--bone);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem 3rem;
+}
+.engage-how{padding-right:1rem}
+.engage-how-label{
+  font-family:var(--mono);font-size:.625rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--bronze-ink);
+  margin-bottom:.625rem;
+}
+.engage-how p{font-size:.875rem;color:var(--slate);line-height:1.7;margin:0}
+
+@media(max-width:900px){
+  .engage-grid{grid-template-columns:1fr}
+  .engage-howwework{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .about-inner{grid-template-columns:1fr !important}
+  .about-photo-wrap{margin:0 auto}
+}
+@media(max-width:560px){
+  .engage-howwework{grid-template-columns:1fr}
+}
+
+/* Animated stats counter */
+.stat-number{transition:opacity .3s}
+
+/* Footer monogram glow */
+.footer-mark{
+  display:flex;align-items:center;gap:.625rem;
+  font-family:var(--mono);font-size:.625rem;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(245,242,234,.5);
+}
+.footer-mark svg{width:18px;height:18px;opacity:.7}
+
 </style>
 </head>
 <body>
@@ -786,7 +1048,7 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
      ═════════════════════════════════════════════════════════════════ -->
 <nav id="nav">
   <div class="container">
-    <a href="#" class="nav-logo" aria-label="Coolidge Advisory — home">
+    <a href="#" class="nav-logo" aria-label="Coolidge Advisory, home">
       <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
         <defs>
           <mask id="navRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
@@ -806,6 +1068,7 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
       <a href="#industries">Industries</a>
       <a href="#approach">Method</a>
       <a href="#results">Track Record</a>
+      <a href="#engagement">Engagement</a>
       <a href="#insights">Insights</a>
       <a href="#about">Firm</a>
       <a href="#contact" class="nav-cta">Schedule a Briefing</a>
@@ -819,7 +1082,19 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 <!-- ═════════════════════════════════════════════════════════════════
      HERO
      ═════════════════════════════════════════════════════════════════ -->
-<section class="hero">
+<section class="hero grain">
+  <svg class="hero-watermark" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
+    <defs>
+      <mask id="heroRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
+      <clipPath id="heroBarClip"><circle cx="48" cy="48" r="40"/></clipPath>
+    </defs>
+    <rect width="96" height="96" fill="#F5F2EA" mask="url(#heroRing)"/>
+    <g clip-path="url(#heroBarClip)">
+      <rect x="38" y="34"   width="56" height="5" fill="#A4641F"/>
+      <rect x="38" y="45.5" width="56" height="5" fill="#B8BCC2"/>
+      <rect x="38" y="57"   width="56" height="5" fill="#D4A437"/>
+    </g>
+  </svg>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-eyebrow">
@@ -858,12 +1133,28 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 <!-- ═════════════════════════════════════════════════════════════════
      STATS
      ═════════════════════════════════════════════════════════════════ -->
-<section class="stats">
+<div class="industries-ribbon">
   <div class="container">
-    <div class="stat"><div class="stat-number">13<sup>+</sup></div><div class="stat-label">Years Principal<br>Experience</div></div>
-    <div class="stat"><div class="stat-number">6</div><div class="stat-label">Industry<br>Verticals</div></div>
-    <div class="stat"><div class="stat-number">4</div><div class="stat-label">Countries<br>Delivered In</div></div>
-    <div class="stat"><div class="stat-number">100<sup>%</sup></div><div class="stat-label">Principal-Led<br>Engagements</div></div>
+    <span class="ribbon-eyebrow">Industries Served</span>
+    <span class="ribbon-sep">/</span>
+    <span>Regional Health Systems</span>
+    <span class="ribbon-sep">·</span>
+    <span>Mid-Market Manufacturing</span>
+    <span class="ribbon-sep">·</span>
+    <span>Multi-Site Physician Networks</span>
+    <span class="ribbon-sep">·</span>
+    <span>Cross-Border Distribution</span>
+    <span class="ribbon-sep">·</span>
+    <span>Professional Services</span>
+  </div>
+</div>
+
+<section class="stats grain">
+  <div class="container">
+    <div class="stat"><div class="stat-number" data-count="13" data-suffix="+">13<sup>+</sup></div><div class="stat-label">Years Principal<br>Experience</div></div>
+    <div class="stat"><div class="stat-number" data-count="6">6</div><div class="stat-label">Industry<br>Verticals</div></div>
+    <div class="stat"><div class="stat-number" data-count="4">4</div><div class="stat-label">Countries<br>Delivered In</div></div>
+    <div class="stat"><div class="stat-number" data-count="100" data-suffix="%">100<sup>%</sup></div><div class="stat-label">Principal-Led<br>Engagements</div></div>
   </div>
 </section>
 
@@ -890,32 +1181,32 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <p class="section-subtitle fade-in">These are the conditions that drive organizations to engage our practice. They are not technology problems. They are infrastructure problems, and they compound every quarter.</p>
     <div class="challenge-grid">
       <div class="challenge-card fade-in">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="numglyph">01</div>
         <h3>Reporting delays that stall executive decisions</h3>
         <p>Your finance team spends days pulling data from multiple systems, reconciling in spreadsheets, and delivering numbers that are outdated on arrival. Leadership cannot act because the reporting cycle is slower than the business cycle.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.07s">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="numglyph">02</div>
         <h3>Margin erosion that cannot be quantified</h3>
         <p>Revenue is known. Total cost is known. But margin by product line, by customer, by provider, by matter, by region cannot be determined because the data is fragmented across systems that were never designed to talk to each other.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.14s">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="numglyph">03</div>
         <h3>Legacy ERP creating operational and security risk</h3>
         <p>Systems like AX 2012, GP, and NAV are past end-of-life with no security patches being issued. Every month without a migration strategy compounds the risk to operations, data integrity, and compliance posture.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.21s">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="numglyph">04</div>
         <h3>High-value people absorbed by low-value work</h3>
         <p>Analysts copying data between systems. Controllers rebuilding the same workbooks every month. Your most capable people spending the majority of their time on manual processes that should have been automated years ago.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.28s">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <div class="numglyph">05</div>
         <h3>No single version of the truth</h3>
         <p>Sales, operations, and finance each report different numbers for the same metric. Without a governed, authoritative data layer, executive alignment is impossible. Every meeting begins with reconciling whose numbers are right.</p>
       </div>
       <div class="challenge-card fade-in" style="transition-delay:.35s">
-        <div class="challenge-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <div class="numglyph">06</div>
         <h3>AI and forecasting ambitions without the foundation</h3>
         <p>Demand forecasting, anomaly detection, and intelligent automation all require clean, structured, governed data as input. Without the right data architecture in place, AI initiatives produce noise rather than insight.</p>
       </div>
@@ -933,17 +1224,17 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <p class="section-subtitle fade-in">We design, build, and deploy the complete data infrastructure stack. From system integration through executive reporting. From raw data capture through AI-driven insight.</p>
     <div class="services-grid">
       <div class="service-card fade-in">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/></svg></div>
+        <div class="numglyph">I</div>
         <h3>Data Architecture &amp; Engineering</h3>
         <p>We connect ERP, billing, clinical, operational, and financial systems into a single governed platform. Medallion architecture, star schema dimensional modeling, DirectLake optimization, role-based security, full lineage tracking, and data quality governance. Architected for performance from the start so that capacity is never wasted and platform costs remain controlled as your data and user base grow.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.08s">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 20V10"/><path d="M9 20V6"/><path d="M13 20V12"/><path d="M17 20V4"/><path d="M21 20V8"/></svg></div>
+        <div class="numglyph">II</div>
         <h3>Analytics &amp; Executive Reporting</h3>
         <p>Dashboards that surface true margin by product, customer, region, provider, or matter. Operational reports that update automatically. Financial analytics your controller can certify and your board can trust. Every metric traced back to its source with full audit lineage.</p>
       </div>
       <div class="service-card fade-in" style="transition-delay:.16s">
-        <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <div class="numglyph">III</div>
         <h3>AI, Forecasting &amp; Intelligent Automation</h3>
         <p>Demand forecasting that transforms purchasing from intuition to precision. Anomaly detection that identifies errors before they reach financial statements. AI-powered analytics through fine-tuned Copilot integration, Power BI intelligent narratives, and custom models built on your governed data. Process automation that returns tens of thousands of manual hours annually to your highest-value people.</p>
       </div>
@@ -1020,27 +1311,27 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <p class="section-subtitle fade-in">We bring existing domain expertise to every engagement. The regulations, workflows, system landscapes, and data challenges specific to your sector are already part of our practice.</p>
     <div class="industries-grid">
       <div class="industry-card fade-in">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Healthcare</h3></div>
+        <div class="industry-header"><div class="numglyph">HC</div><h3>Healthcare</h3></div>
         <p>Enterprise health systems and multi-location physician practices. Financial decision support, regulatory compliance, competitive market intelligence, clinical analytics, per-provider profitability, and payer mix visibility. Our principal's healthcare background includes architecting enterprise financial platforms across statewide provider landscapes, building intelligence engines across major EHR and financial decision-support systems, and delivering the executive analytics that leadership teams depend on to benchmark performance and identify competitive positioning.</p>
         <div class="industry-tags"><span class="industry-tag">EHR / Clinical Systems</span><span class="industry-tag">Regulatory Analytics</span><span class="industry-tag">Financial Decision Support</span><span class="industry-tag">Claims Analytics</span><span class="industry-tag">HL7 / FHIR</span><span class="industry-tag">HIPAA</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.08s">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Financial Services</h3></div>
+        <div class="industry-header"><div class="numglyph">FS</div><h3>Financial Services</h3></div>
         <p>Regulatory reporting, risk analytics, portfolio visibility, and transaction monitoring. Data platforms built to the precision and auditability standards that financial institutions require. Governance, lineage, and compliance are embedded in every layer from initial design.</p>
         <div class="industry-tags"><span class="industry-tag">Regulatory Reporting</span><span class="industry-tag">Risk Analytics</span><span class="industry-tag">GL Modernization</span><span class="industry-tag">SOX Compliance</span><span class="industry-tag">Transaction Monitoring</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.16s">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l4-4h6l4 4v12"/><path d="M9 20v-4h6v4"/><path d="M9 12h1"/><path d="M14 12h1"/></svg></div><h3>Manufacturing</h3></div>
+        <div class="industry-header"><div class="numglyph">MF</div><h3>Manufacturing</h3></div>
         <p>Production analytics, quality monitoring, supply chain visibility, and ERP modernization. We surface what legacy systems conceal: true margin by product line, actual cost drivers, and operational constraints that cannot be identified through intuition alone.</p>
         <div class="industry-tags"><span class="industry-tag">ERP Modernization</span><span class="industry-tag">Production Analytics</span><span class="industry-tag">OEE Monitoring</span><span class="industry-tag">Supply Chain</span><span class="industry-tag">Margin by Product Line</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.24s">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="22" height="12" rx="2"/><path d="M1 10h22"/><path d="M6 14h4"/></svg></div><h3>Distribution &amp; Import</h3></div>
+        <div class="industry-header"><div class="numglyph">DI</div><h3>Distribution &amp; Import</h3></div>
         <p>Inventory optimization, demand forecasting, warehouse efficiency, customer profitability, SKU-level margin analysis, and logistics capacity management. We connect order, inventory, fulfillment, and carrier data across the complete operation, enabling purchasing, pricing, and shipping decisions grounded in data rather than assumption. Our architecture ensures capacity is never overburdened by inefficient data pipelines, keeping platform costs controlled as volume scales.</p>
         <div class="industry-tags"><span class="industry-tag">Demand Forecasting</span><span class="industry-tag">Inventory Optimization</span><span class="industry-tag">Warehouse Analytics</span><span class="industry-tag">SKU Profitability</span><span class="industry-tag">Logistics &amp; Carrier Integration</span><span class="industry-tag">ERP Migration</span></div>
       </div>
       <div class="industry-card fade-in" style="transition-delay:.32s">
-        <div class="industry-header"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Legal &amp; Professional Services</h3></div>
+        <div class="industry-header"><div class="numglyph">LP</div><h3>Legal &amp; Professional Services</h3></div>
         <p>Matter profitability analysis, resource utilization tracking, client revenue analytics, and operational reporting. We connect billing, time tracking, and case management data into a single governed view, giving firm leadership the financial clarity to manage growth, pricing, and staffing.</p>
         <div class="industry-tags"><span class="industry-tag">Matter Profitability</span><span class="industry-tag">Billing Analytics</span><span class="industry-tag">Utilization Tracking</span><span class="industry-tag">Client Revenue Analysis</span></div>
       </div>
@@ -1051,7 +1342,15 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 <!-- ═════════════════════════════════════════════════════════════════
      METHOD (Medallion)
      ═════════════════════════════════════════════════════════════════ -->
-<section class="methodology" id="approach">
+<section class="pullquote">
+  <div class="container">
+    <div class="pullquote-mark fade-in">A note on philosophy</div>
+    <blockquote class="fade-in">Strategy without engineering produces slide decks. Engineering without strategy produces technical debt. <em>This firm delivers both.</em></blockquote>
+    <div class="pullquote-attr fade-in"><span class="pullquote-attr-rule"></span><span>George Bommersheim &middot; Founding Principal</span></div>
+  </div>
+</section>
+
+<section class="methodology grain" id="approach">
   <div class="container">
     <div class="section-label fade-in">The method</div>
     <h2 class="section-title fade-in">The Medallion method.</h2>
@@ -1089,6 +1388,32 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 </section>
 
 <!-- ═════════════════════════════════════════════════════════════════
+     MANIFESTO — editorial breath between Method and Results
+     ═════════════════════════════════════════════════════════════════ -->
+<section class="manifesto" aria-label="Practice principle">
+  <div class="container">
+    <div class="manifesto-eyebrow fade-in">Principle</div>
+    <p class="manifesto-line fade-in">A data platform is not a project. <em>It is a balance sheet item</em>, designed to compound for a decade, not depreciate in eighteen months.</p>
+    <div class="manifesto-rule fade-in">
+      <span class="rule-line"></span>
+      <svg width="20" height="20" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none" style="flex-shrink:0">
+        <defs>
+          <mask id="manifestoRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
+          <clipPath id="manifestoBarClip"><circle cx="48" cy="48" r="40"/></clipPath>
+        </defs>
+        <rect width="96" height="96" fill="#F5F2EA" mask="url(#manifestoRing)"/>
+        <g clip-path="url(#manifestoBarClip)">
+          <rect x="38" y="34"   width="56" height="5" fill="#A4641F"/>
+          <rect x="38" y="45.5" width="56" height="5" fill="#B8BCC2"/>
+          <rect x="38" y="57"   width="56" height="5" fill="#D4A437"/>
+        </g>
+      </svg>
+      <span>The Coolidge view</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════════
      RESULTS
      ═════════════════════════════════════════════════════════════════ -->
 <section class="results" id="results">
@@ -1099,24 +1424,28 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <div class="results-grid">
       <div class="result-card fade-in">
         <div class="result-type">Enterprise Health System</div>
+        <div class="result-sizing">$2B+ Statewide Provider Network</div>
         <div class="result-headline">Regulatory Intelligence, Competitive Benchmarking &amp; Financial Decision Support</div>
         <p class="result-body">Designed and built an enterprise financial decision-support platform integrating regulatory datasets across a complete statewide provider landscape. Architected competitive intelligence models enabling executive leadership to benchmark organizational performance against all regional providers on pricing, charge capture, and payer mix. Led full-lifecycle EHR and financial system migrations, replacing weeks of manual regulatory reporting with automated executive dashboards, real-time competitive positioning, and governed self-service analytics with full data lineage.</p>
         <div class="result-metrics"><span class="result-metric">Statewide benchmarking</span><span class="result-metric">Multi-system migration</span><span class="result-metric">Automated regulatory reporting</span></div>
       </div>
       <div class="result-card fade-in" style="transition-delay:.07s">
         <div class="result-type">Physician Practices</div>
+        <div class="result-sizing">Multi-Site Practice Group</div>
         <div class="result-headline">Clinical &amp; Financial Analytics</div>
         <p class="result-body">Deployed analytics platforms connecting clinical and financial data across multiple physician practice locations. Delivered per-provider profitability visibility, patient volume trending, and payer mix analysis that had been inaccessible within the practice's existing billing infrastructure.</p>
         <div class="result-metrics"><span class="result-metric">Per-provider profitability</span><span class="result-metric">Payer mix clarity</span><span class="result-metric">Multi-location consolidation</span></div>
       </div>
       <div class="result-card fade-in" style="transition-delay:.14s">
         <div class="result-type">Enterprise Automation</div>
+        <div class="result-sizing">Fortune 1000 · 20,000+ Hours Recovered</div>
         <div class="result-headline">RPA Framework &amp; Data Workflow Automation</div>
-        <p class="result-body">Engineered an enterprise RPA framework eliminating 5,000+ manual hours annually, reallocating human capital from repetitive data extraction to high-value analytics. Integrated RPA with ETL processes to improve data extraction, transformation, and validation across multiple enterprise systems. Led enterprise platform migration reducing licensing costs by 15% while increasing automation uptime and reliability.</p>
-        <div class="result-metrics"><span class="result-metric">5,000+ hours automated</span><span class="result-metric">15% licensing reduction</span><span class="result-metric">99%+ match accuracy</span></div>
+        <p class="result-body">Engineered an enterprise RPA framework eliminating 20,000+ manual hours annually, reallocating human capital from repetitive data extraction to high-value analytics. Integrated RPA with ETL processes to improve data extraction, transformation, and validation across multiple enterprise systems. Led enterprise platform migration reducing licensing costs by 15% while increasing automation uptime and reliability.</p>
+        <div class="result-metrics"><span class="result-metric">20,000+ hours automated</span><span class="result-metric">15% licensing reduction</span><span class="result-metric">99%+ match accuracy</span></div>
       </div>
       <div class="result-card fade-in" style="transition-delay:.21s">
         <div class="result-type">International Operations</div>
+        <div class="result-sizing">5 European Countries · Cross-Border</div>
         <div class="result-headline">Multi-Country Supply Chain &amp; Logistics Build-Out</div>
         <p class="result-body">Established and scaled five independent supply chains across five European countries, designing end-to-end operational workflows spanning procurement, warehousing, and regional distribution. Built and led cross-functional warehouse teams with standardized processes, performance metrics, and reporting structures across distributed operations.</p>
         <div class="result-metrics"><span class="result-metric">5 countries</span><span class="result-metric">End-to-end supply chain</span><span class="result-metric">Standardized operations</span></div>
@@ -1135,11 +1464,9 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <p class="section-subtitle fade-in">We are not a staffing agency. We are not a generalist firm. We are not a vendor aligned to a single platform. We are practitioners who design, build, and stand behind every layer we deliver.</p>
     <div class="diff-grid">
       <div class="diff-card fade-in"><h3>Strategy Through Delivery</h3><p>The person who designs your architecture is the person who builds it. No handoffs between a strategy team and an implementation team. Single accountability from first conversation through production deployment.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.07s"><h3>Revenue-First Orientation</h3><p>Every engagement begins with the questions your executive team needs answered: Where is margin eroding? Which segments are profitable? Where is the organization exposed? Technology decisions follow the business imperative, not the other way around.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.14s"><h3>Structured Knowledge Transfer</h3><p>We do not create dependency. Every engagement includes mentorship and documentation so your internal team can own, operate, and evolve the platform independently. The investment is designed to compound.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.21s"><h3>Migration-Proof Architecture</h3><p>The platforms we build are designed to survive ERP upgrades, system migrations, and organizational growth. When your source systems change, the data layer carries forward, preserving every dollar invested in the foundation.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.28s"><h3>Outcome Accountability</h3><p>We measure success by financial and operational impact: margin improvements quantified, manual processes eliminated, decision cycles shortened, compliance risks resolved. Results are the deliverable.</p></div>
-      <div class="diff-card fade-in" style="transition-delay:.35s"><h3>Cross-Industry Intelligence</h3><p>With a principal who has delivered across healthcare, finance, legal, manufacturing, and distribution, we apply pattern recognition that single-vertical consultancies cannot. Solutions proven in one sector frequently accelerate outcomes in another.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.07s"><h3>Migration-Proof Architecture</h3><p>The platforms we build are designed to survive ERP upgrades, system migrations, and organizational growth. When your source systems change, the data layer carries forward, preserving every dollar invested in the foundation.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.14s"><h3>Outcome Accountability</h3><p>We measure success by financial and operational impact: margin improvements quantified, manual processes eliminated, decision cycles shortened, compliance risks resolved. Results are the deliverable.</p></div>
+      <div class="diff-card fade-in" style="transition-delay:.21s"><h3>Cross-Industry Intelligence</h3><p>With a principal who has delivered across healthcare, finance, legal, manufacturing, and distribution, we apply pattern recognition that single-vertical consultancies cannot. Solutions proven in one sector frequently accelerate outcomes in another.</p></div>
     </div>
   </div>
 </section>
@@ -1155,21 +1482,21 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
     <div class="insights-grid">
       <div class="insight-card fade-in">
         <a href="insights/ax-2012-migration.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%">
-        <div class="insight-meta"><span class="insight-tag">ERP Migration</span><span class="insight-date">Mar 2026</span></div>
+        <div class="insight-meta"><span class="insight-tag">ERP Migration</span><span class="insight-date">Essay 01</span></div>
         <h3>What Your AX 2012 Data Migration Actually Requires</h3>
         <p>AX 2012 R3 exited extended support in January 2023. Here is what a data-first migration strategy looks like and why the data layer should be built before the ERP is replaced.</p>
         </a>
       </div>
       <div class="insight-card fade-in" style="transition-delay:.05s">
         <a href="insights/power-bi-margin-truth.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%">
-        <div class="insight-meta"><span class="insight-tag">Analytics</span><span class="insight-date">Mar 2026</span></div>
+        <div class="insight-meta"><span class="insight-tag">Analytics</span><span class="insight-date">Essay 02</span></div>
         <h3>Why Your Power BI Dashboards Are Not Telling You the Truth About Margin</h3>
         <p>Most Power BI implementations connect directly to source systems without a governed semantic layer. The result is dashboards that look impressive but produce numbers nobody can certify.</p>
         </a>
       </div>
       <div class="insight-card fade-in" style="transition-delay:.1s">
         <a href="insights/directlake-architecture.html" style="text-decoration:none;color:inherit;display:flex;flex-direction:column;height:100%">
-        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Feb 2026</span></div>
+        <div class="insight-meta"><span class="insight-tag">Architecture</span><span class="insight-date">Essay 03</span></div>
         <h3>DirectLake, Import Mode, and the Architecture Decision That Determines Your Platform Cost</h3>
         <p>The choice between DirectLake and Import Mode in Microsoft Fabric has a direct impact on capacity consumption, refresh costs, and query performance.</p>
         </a>
@@ -1184,29 +1511,24 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
      ═════════════════════════════════════════════════════════════════ -->
 <section class="about" id="about">
   <div class="container">
-    <div class="about-inner">
-      <div class="about-left">
-        <div class="about-mark">
-          <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
-            <defs>
-              <mask id="aboutRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
-              <clipPath id="aboutBarClip"><circle cx="48" cy="48" r="40"/></clipPath>
-            </defs>
-            <rect width="96" height="96" fill="#0B0D0E" mask="url(#aboutRing)"/>
-            <g clip-path="url(#aboutBarClip)">
-              <rect x="38" y="34"   width="56" height="5" fill="#B87333"/>
-              <rect x="38" y="45.5" width="56" height="5" fill="#B8BCC2"/>
-              <rect x="38" y="57"   width="56" height="5" fill="#D4A437"/>
-            </g>
-          </svg>
+    <!-- Firm intro: full-width editorial paragraph -->
+    <div style="max-width:780px;margin-bottom:4rem" class="fade-in">
+      <div class="section-label">The firm</div>
+      <p style="font-size:1rem;color:var(--slate);line-height:1.8;margin-bottom:1.5rem">Coolidge Advisory is a data architecture and analytics consultancy built on more than a decade of enterprise-grade delivery across healthcare systems, physician practices, financial institutions, law firms, manufacturers, and distributors in the United States and internationally. A member of the Microsoft AI Cloud Partner Program, the firm specializes in Microsoft Fabric, Power BI, and Azure data architecture. Our principal's career spans six industries and ranges from family-held and owner-operated businesses to large-scale enterprise operations. Coolidge Advisory brings that same rigor to every engagement regardless of scale.</p>
+      <p style="font-size:1rem;color:var(--slate);line-height:1.8;margin-bottom:0">We operate a deliberately principal-led model. Every engagement, from initial architecture through production deployment, is led and delivered by senior practitioners who build what they design. The person who sets the strategy is the same person writing the code and standing behind the results.</p>
+    </div>
+
+    <!-- Leadership block: photo + bio -->
+    <div style="border-top:1px solid var(--bone);padding-top:3rem">
+      <div class="about-inner">
+        <div class="about-left">
+          <div class="about-photo-wrap fade-in">
+            <img class="about-photo" src="george-headshot.jpg" alt="George Bommersheim, Founding Principal" />
+          </div>
+          <div class="about-photo-caption">George Bommersheim &middot; Tampa, FL</div>
+          <div class="cred-badges" style="margin-top:.875rem"><span class="cred-badge">MBA</span><span class="cred-badge">MHA</span><span class="cred-badge">CSBI</span><span class="cred-badge">LSSGB</span></div>
         </div>
-        <div class="cred-badges"><span class="cred-badge">MBA</span><span class="cred-badge">MHA</span><span class="cred-badge">CSBI</span><span class="cred-badge">LSSGB</span></div>
-      </div>
-      <div>
-        <div class="section-label">The firm</div>
-        <p style="font-size:.9375rem;color:var(--slate);line-height:1.8;margin-bottom:1.5rem">Coolidge Advisory is a data architecture and analytics consultancy built on more than a decade of enterprise-grade delivery across healthcare systems, physician practices, financial institutions, law firms, manufacturers, and distributors in the United States and internationally. A member of the Microsoft AI Cloud Partner Program, the firm specializes in Microsoft Fabric, Power BI, and Azure data architecture. Our principal's career spans six industries and ranges from family-held and owner-operated businesses to large-scale enterprise operations. Coolidge Advisory brings that same rigor to every engagement regardless of scale.</p>
-        <p style="font-size:.9375rem;color:var(--slate);line-height:1.8;margin-bottom:2rem">We operate a deliberately principal-led model. Every engagement, from initial architecture through production deployment, is led and delivered by senior practitioners who build what they design. The person who sets the strategy is the same person writing the code and standing behind the results.</p>
-        <div style="border-top:1px solid var(--bone);padding-top:1.5rem">
+        <div>
           <div class="section-label">Leadership</div>
           <div class="about-name">George Bommersheim</div>
           <div class="about-title">Founding Principal</div>
@@ -1220,9 +1542,103 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 </section>
 
 <!-- ═════════════════════════════════════════════════════════════════
+     ENGAGEMENT MODEL — phased retainer, how we work together
+     ═════════════════════════════════════════════════════════════════ -->
+<section class="engage" id="engagement">
+  <div class="container">
+    <div class="engage-header fade-in">
+      <div class="section-label">Engagement Model</div>
+      <h2 class="section-title">A phased model.<br>You decide the pace.</h2>
+      <p class="section-subtitle">Engagements are structured in three phases. Each phase delivers standalone value. You are not committed to all three upfront. We start, you see results, and you decide whether to continue. Each phase builds on the last, so nothing is wasted.</p>
+    </div>
+
+    <div class="engage-grid fade-in">
+      <!-- Phase 1 -->
+      <div class="engage-phase p1">
+        <div class="engage-phase-num"><span class="dot"></span>Phase 01</div>
+        <h3>Process Automation</h3>
+        <div class="engage-phase-tag">Local infrastructure. No cloud. Immediate results.</div>
+        <ul>
+          <li>Custom Python scripts replacing manual data transfers between systems, scheduled and validated.</li>
+          <li>Built-in validation at every step. Schema checks, row counts, and business rules enforced before data moves.</li>
+          <li>Error logging and alerting so failures are visible the moment they occur, with full diagnostics.</li>
+          <li>Full documentation. Every script and schedule is yours to operate, modify, and extend.</li>
+        </ul>
+        <div class="engage-phase-meta">
+          <span class="engage-phase-meta-label">Timeline</span>
+          <span class="engage-phase-meta-value">2&ndash;4 weeks</span>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="engage-phase p2">
+        <div class="engage-phase-num"><span class="dot"></span>Phase 02</div>
+        <h3>Data Foundation</h3>
+        <div class="engage-phase-tag">Governed data platform on Microsoft Fabric.</div>
+        <ul>
+          <li>Microsoft Fabric Lakehouse with full Medallion Architecture: Bronze, Silver, and Gold layers.</li>
+          <li>Star Schema dimensional models organized around customer, product, location, time, and channel.</li>
+          <li>Automated nightly pipelines from source systems via read-only snapshot. Zero load on production.</li>
+          <li>Power BI dashboards with row-level security. Finance, operations, and sales each see their own truth.</li>
+        </ul>
+        <div class="engage-phase-meta">
+          <span class="engage-phase-meta-label">Timeline</span>
+          <span class="engage-phase-meta-value">8&ndash;12 weeks</span>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="engage-phase p3">
+        <div class="engage-phase-num"><span class="dot"></span>Phase 03</div>
+        <h3>Intelligence &amp; AI</h3>
+        <div class="engage-phase-tag">Forecasting, optimization, and AI on real business data.</div>
+        <ul>
+          <li>Demand forecasting using Prophet and time-series models on historical sales by product and customer.</li>
+          <li>Operational optimization: warehouse routing, inventory intelligence, slow-mover and reorder analytics.</li>
+          <li>AI-driven natural-language queries on your governed data, fine-tuned on your domain and vocabulary.</li>
+          <li>Automated reporting for finance and operations, delivered without manual effort.</li>
+        </ul>
+        <div class="engage-phase-meta">
+          <span class="engage-phase-meta-label">Timeline</span>
+          <span class="engage-phase-meta-value">Ongoing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- How we work together -->
+    <div class="engage-howwework fade-in">
+      <div class="engage-how">
+        <div class="engage-how-label">Direct Engagement</div>
+        <p>All work is performed by the principal architect, supported by senior practitioners on substantial engagements. No subcontractors. No junior resources. No handoffs.</p>
+      </div>
+      <div class="engage-how">
+        <div class="engage-how-label">Remote-First, On-Site as Needed</div>
+        <p>Majority of work is performed remotely. On-site visits for discovery, executive briefings, and operational walkthroughs as the engagement requires.</p>
+      </div>
+      <div class="engage-how">
+        <div class="engage-how-label">Weekly Cadence</div>
+        <p>Standing weekly check-in to review progress, discuss priorities, and plan the upcoming week. Asynchronous communication available throughout.</p>
+      </div>
+      <div class="engage-how">
+        <div class="engage-how-label">Full Transparency</div>
+        <p>You have complete visibility into everything we build. Every script, every pipeline, every data model is documented and explained so your team owns it completely.</p>
+      </div>
+      <div class="engage-how">
+        <div class="engage-how-label">Monthly Retainer</div>
+        <p>Engagements run on a monthly advisory and delivery retainer. Each phase runs at the same monthly rate. You are not locked into a multi-phase contract.</p>
+      </div>
+      <div class="engage-how">
+        <div class="engage-how-label">Flexibility</div>
+        <p>Either party may conclude the engagement at the end of any month with thirty days written notice. Scope can be flexed up by mutual agreement when delivery requires it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════════
      CTA
      ═════════════════════════════════════════════════════════════════ -->
-<section class="cta" id="contact">
+<section class="cta grain" id="contact">
   <div class="container">
     <h2>Start with a briefing.</h2>
     <p>A focused conversation about your current data landscape, the decisions your leadership team needs to make, and what a modern data infrastructure would look like for your organization.</p>
@@ -1241,6 +1657,21 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
      ═════════════════════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
+    <div class="footer-mark">
+      <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="none">
+        <defs>
+          <mask id="footerRing"><rect width="96" height="96" fill="black"/><circle cx="48" cy="48" r="40" fill="white"/><circle cx="48" cy="48" r="26" fill="black"/><rect x="48" y="26" width="44" height="44" fill="black"/></mask>
+          <clipPath id="footerBarClip"><circle cx="48" cy="48" r="40"/></clipPath>
+        </defs>
+        <rect width="96" height="96" fill="#F5F2EA" mask="url(#footerRing)"/>
+        <g clip-path="url(#footerBarClip)">
+          <rect x="38" y="34"   width="56" height="5" fill="#A4641F"/>
+          <rect x="38" y="45.5" width="56" height="5" fill="#B8BCC2"/>
+          <rect x="38" y="57"   width="56" height="5" fill="#D4A437"/>
+        </g>
+      </svg>
+      <span>Coolidge Advisory</span>
+    </div>
     <p>&#169; 2026 Coolidge Advisory, Inc. &middot; A Data Advisory Practice</p>
     <div class="footer-meta">
       <p>Microsoft AI Cloud Partner Program Member</p>
@@ -1252,31 +1683,39 @@ footer .footer-tag{color:rgba(245,242,234,0.25);letter-spacing:.18em;text-transf
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-/* Enable fade-in animations only after JS confirms observer works */
-document.documentElement.classList.add('js-ready');
-
-var nav = document.getElementById('nav');
-window.addEventListener('scroll', function() {
-  nav.classList.toggle('scrolled', window.scrollY > 16);
-});
-
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(function(el) {
-  observer.observe(el);
-});
+/* ────────────────────────────────────────────────────────────────
+   Reveal: animate fade-ins via IntersectionObserver, with a HARD
+   600ms safety net that forces every fade-in visible no matter what.
+   Content is never hidden by JS failure. Respects reduced-motion.
+   ──────────────────────────────────────────────────────────────── */
+(function(){
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    /* Skip animation entirely; CSS already keeps fade-ins visible. */
+  } else {
+    document.documentElement.classList.add('js-ready');
+    var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }) : null;
+    var fades = document.querySelectorAll('.fade-in');
+    if (io) { fades.forEach(function(el){ io.observe(el); }); }
+    /* Safety net: if anything is still hidden after 1.2s (above-fold load,
+       observer didn't fire, scrolled past, etc.) reveal everything. */
+    setTimeout(function(){
+      document.documentElement.classList.add('fail-safe');
+      fades.forEach(function(el){ el.classList.add('visible'); });
+    }, 1200);
+  }
+  var nav = document.getElementById('nav');
+  if (nav) {
+    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 16); }, { passive: true });
+  }
+})();
 </script>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════
-   Coolidge Advisory — site analytics beacon
+   Coolidge Advisory: site analytics beacon
    ═══════════════════════════════════════════════════════════════════ */
 (function() {
   var W = 'https://coolidge-analytics.coolidgeadvisory.workers.dev';
@@ -1407,6 +1846,43 @@ document.querySelectorAll('.fade-in').forEach(function(el) {
       setTimeout(initSectionTracking, 200);
     });
   }
+})();
+</script>
+
+<!-- ─────────────────────────────────────────────────────────────────
+     Animated stats counter: counts up from 0 to data-count when the
+     stats section enters the viewport. Respects reduced-motion.
+     ───────────────────────────────────────────────────────────────── -->
+<script>
+(function(){
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return; // leave numbers as-rendered
+  var stats = document.querySelectorAll('.stat-number[data-count]');
+  if (!stats.length || !('IntersectionObserver' in window)) return;
+  function animateOne(el){
+    if (el.dataset.done === '1') return;
+    el.dataset.done = '1';
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1400;
+    var start = performance.now();
+    function frame(now){
+      var t = Math.min(1, (now - start) / duration);
+      // easeOutCubic
+      var eased = 1 - Math.pow(1 - t, 3);
+      var val = Math.round(target * eased);
+      el.innerHTML = val + (suffix ? '<sup>' + suffix + '</sup>' : '');
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    el.innerHTML = '0' + (suffix ? '<sup>' + suffix + '</sup>' : '');
+    requestAnimationFrame(frame);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { animateOne(e.target); io.unobserve(e.target); }
+    });
+  }, {threshold: 0.4});
+  stats.forEach(function(s){ io.observe(s); });
 })();
 </script>
 </body>
